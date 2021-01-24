@@ -1,0 +1,1245 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Handling Network Upgrades · Oasis Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="shooter">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tabs/bootstrap.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="adding-or-removing-nodes.html" />
+    
+    
+    <link rel="prev" href="wiping-node-state.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Oasis Network</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../oasis-network/overview.html">
+            
+                <a href="../../oasis-network/overview.html">
+            
+                    
+                    Overview of the Oasis Network 长，已翻译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../oasis-network/network-parameters.html">
+            
+                <a href="../../oasis-network/network-parameters.html">
+            
+                    
+                    Network Parameters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-network-primer/">
+            
+                    
+                    Why Oasis? 与faq内容一样，长
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution">
+            
+                    
+                    ROSE Token Metrics 跳转到链外
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <a target="_blank" href="https://oasisprotocol.org/papers">
+            
+                    
+                    Papers 3篇白皮书，跳转到链外，翻译么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../oasis-network/connect-with-us.html">
+            
+                <a href="../../oasis-network/connect-with-us.html">
+            
+                    
+                    Community Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Run a Node</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../node-operator-overview.html">
+            
+                <a href="../node-operator-overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../prerequisites/">
+            
+                <a href="../prerequisites/">
+            
+                    
+                    Prerequisites
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../prerequisites/hardware-recommendations.html">
+            
+                <a href="../prerequisites/hardware-recommendations.html">
+            
+                    
+                    Hardware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../prerequisites/oasis-node.html">
+            
+                <a href="../prerequisites/oasis-node.html">
+            
+                    
+                    Oasis Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../set-up-your-node/">
+            
+                <a href="../set-up-your-node/">
+            
+                    
+                    Set Up Your Node
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../set-up-your-node/run-validator.html">
+            
+                <a href="../set-up-your-node/run-validator.html">
+            
+                    
+                    Run a Validator Node 长，技术术语多
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../set-up-your-node/run-non-validator.html">
+            
+                <a href="../set-up-your-node/run-non-validator.html">
+            
+                    
+                    Run a Non-validator Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../set-up-your-node/run-seed-node.html">
+            
+                <a href="../set-up-your-node/run-seed-node.html">
+            
+                    
+                    Run a Seed Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../set-up-your-node/creating-an-entity-package.html">
+            
+                <a href="../set-up-your-node/creating-an-entity-package.html">
+            
+                    
+                    Create an Entity Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../set-up-your-node/amend-commission-schedule.html">
+            
+                <a href="../set-up-your-node/amend-commission-schedule.html">
+            
+                    
+                    Amend Commission Schedule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../set-up-your-node/sentry-node-architecture.html">
+            
+                <a href="../set-up-your-node/sentry-node-architecture.html">
+            
+                    
+                    Sentry Node Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Node Maintenance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="wiping-node-state.html">
+            
+                <a href="wiping-node-state.html">
+            
+                    
+                    Wiping Node State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.4.2" data-path="handling-network-upgrades.html">
+            
+                <a href="handling-network-upgrades.html">
+            
+                    
+                    Handling Network Upgrades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="adding-or-removing-nodes.html">
+            
+                <a href="adding-or-removing-nodes.html">
+            
+                    
+                    Adding or Removing Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Node Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../upgrade-log.html">
+            
+                <a href="../upgrade-log.html">
+            
+                    
+                    Upgrade Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Manage Your ROSE Tokens  介绍钱包</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../manage-tokens/overview.html">
+            
+                <a href="../../manage-tokens/overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../manage-tokens/terminology.html">
+            
+                <a href="../../manage-tokens/terminology.html">
+            
+                    
+                    Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../manage-tokens/staking-and-delegating.html">
+            
+                <a href="../../manage-tokens/staking-and-delegating.html">
+            
+                    
+                    Staking and Delegating
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../manage-tokens/holding-rose-tokens/">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/">
+            
+                    
+                    Custody & Wallets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../manage-tokens/holding-rose-tokens/custody-providers.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/custody-providers.html">
+            
+                    
+                    Custody Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="../../manage-tokens/holding-rose-tokens/ledger-wallet.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/ledger-wallet.html">
+            
+                    
+                    Self-Custody With Ledger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="../../manage-tokens/holding-rose-tokens/file-based-signer.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/file-based-signer.html">
+            
+                    
+                    File-Based Signer
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../manage-tokens/web-wallets.html">
+            
+                <a href="../../manage-tokens/web-wallets.html">
+            
+                    
+                    Web Wallets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../../manage-tokens/mobile-wallets/">
+            
+                <a href="../../manage-tokens/mobile-wallets/">
+            
+                    
+                    Mobile Wallets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/">
+            
+                <a href="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/">
+            
+                    
+                    Bitpie Wallet Guide 比特派钱包
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1.1" data-path="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/testing-bitpie.html">
+            
+                <a href="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/testing-bitpie.html">
+            
+                    
+                    Testing Bitpie Wallet
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../../manage-tokens/oasis-cli-tools/">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/">
+            
+                    
+                    Oasis CLI Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="../../manage-tokens/oasis-cli-tools/prerequisites.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/prerequisites.html">
+            
+                    
+                    Prerequisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="../../manage-tokens/oasis-cli-tools/setup.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="../../manage-tokens/oasis-cli-tools/common-staking-info.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/common-staking-info.html">
+            
+                    
+                    Common Staking Info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.4" data-path="../../manage-tokens/oasis-cli-tools/list-accounts.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/list-accounts.html">
+            
+                    
+                    List Accounts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.5" data-path="../../manage-tokens/oasis-cli-tools/get-account-info.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/get-account-info.html">
+            
+                    
+                    Get Account Info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.6" data-path="../../manage-tokens/oasis-cli-tools/address.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/address.html">
+            
+                    
+                    Obtain Account Address From Entity's ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.7" data-path="../../manage-tokens/oasis-cli-tools/transfer-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/transfer-tokens.html">
+            
+                    
+                    Transfer Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.8" data-path="../../manage-tokens/oasis-cli-tools/delegate-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/delegate-tokens.html">
+            
+                    
+                    Delegate/Stake Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.9" data-path="../../manage-tokens/oasis-cli-tools/reclaim-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/reclaim-tokens.html">
+            
+                    
+                    Reclaim Delegated/Staked Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.10" data-path="../../manage-tokens/oasis-cli-tools/gas-costs.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/gas-costs.html">
+            
+                    
+                    Gas Costs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Contribute to the Network</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../contribute-to-the-network/run-validator.html">
+            
+                <a href="../../contribute-to-the-network/run-validator.html">
+            
+                    
+                    Run a Validator Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../contribute-to-the-network/network-governance.html">
+            
+                <a href="../../contribute-to-the-network/network-governance.html">
+            
+                    
+                    Network Governance 略长
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../contribute-to-the-network/contribution-guidelines.html">
+            
+                <a href="../../contribute-to-the-network/contribution-guidelines.html">
+            
+                    
+                    Contribution Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <a target="_blank" href="https://github.com/oasisprotocol">
+            
+                    
+                    Visit Our GitHub 就是url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Mainnet Initiatives</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../mainnet/mainnet.html">
+            
+                <a href="../../mainnet/mainnet.html">
+            
+                    
+                    Mainnet Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../mainnet/mainnet-beta-overview.html">
+            
+                <a href="../../mainnet/mainnet-beta-overview.html">
+            
+                    
+                    Mainnet Beta Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../mainnet/genesis-file.html">
+            
+                <a href="../../mainnet/genesis-file.html">
+            
+                    
+                    Genesis File Overview 参数配置多
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Oasis Protocol Foundation</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../foundation/testnet.html">
+            
+                <a href="../../foundation/testnet.html">
+            
+                    
+                    The Testnet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../foundation/delegation-policy.html">
+            
+                <a href="../../foundation/delegation-policy.html">
+            
+                    
+                    Delegation Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Developer Resources</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-core">
+            
+                    
+                    Oasis Core Documentation 跳转到链外
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+                <a target="_blank" href="https://github.com/oasisprotocol">
+            
+                    
+                    GitHub 就是url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Community Resources</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../community-resources/community-made-resources.html">
+            
+                <a href="../../community-resources/community-made-resources.html">
+            
+                    
+                    Community-Made Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Frequently Asked Questions</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../../faq/oasis-network-faq.html">
+            
+                <a href="../../faq/oasis-network-faq.html">
+            
+                    
+                    Oasis Network FAQ 长
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Handling Network Upgrades</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="handling-network-upgrades">Handling Network Upgrades</h1>
+<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>Following this guide when there is no network upgrade will result in you losing your place on the current network.</p>
+</div></div></p>
+<p>The following guide should be used when the network has agreed to do a software upgrade.</p>
+<h2 id="dump-network-state">Dump Network State</h2>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Do not stop your <a href="../prerequisites/oasis-node.html">Oasis Node</a> process just yet.</p>
+</div></div></p>
+<p>Before an upgrade we will update the <a href="../upgrade-log.html">Upgrade Log</a> to specify the block height at which to dump.</p>
+<p>To dump the state of the network to a genesis file, run:</p>
+<pre><code class="lang-bash">oasis-node genesis dump \
+  <span class="hljs-_">-a</span> unix:/serverdir/node/internal.sock \
+  --genesis.file /serverdir/etc/genesis_dump.json \
+  --height &lt;HEIGHT-TO-DUMP&gt;
+</code></pre>
+<p>replacing <code>&lt;HEIGHT-TO-DUMP&gt;</code> with the block height we specified.</p>
+<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>You can only run the following command <em>after</em> the <code>&lt;HEIGHT-TO-DUMP&gt;</code> block height has been reached on the network.</p>
+<p>To see the network&apos;s current height, run:</p>
+<pre><code class="lang-bash">oasis-node control status <span class="hljs-_">-a</span> unix:/serverdir/node/internal.sock
+</code></pre>
+<p>and observe the value of the <code>consensus.latest_height</code> key.</p>
+</div></div></p>
+<h2 id="patch-dumped-state">Patch Dumped State</h2>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>At the moment, we don&apos;t provide state patches.</p>
+</div></div></p>
+<h2 id="download-and-verify-the-provided-genesis-file">Download and Verify the Provided Genesis File</h2>
+<p>Download the new genesis file linked in the <a href="../../oasis-network/network-parameters.html">Network Parameters</a> and save it as <code>/serverdir/etc/genesis.json</code>.</p>
+<p>Then compare the dumped state with the downloaded genesis file:</p>
+<pre><code class="lang-bash">diff --unified=3 genesis_dump.json genesis.json
+</code></pre>
+<h3 id="example-diff-for-mainnet-beta-to-mainnet-network-upgrade">Example diff for Mainnet Beta to Mainnet network upgrade</h3>
+<p>Let&apos;s assume that the above <code>diff</code> command returns:</p>
+<pre><code class="lang-diff"><span class="hljs-comment">--- genesis_dump.json    2020-11-16 17:49:46.864554271 +0100</span>
+<span class="hljs-comment">+++ genesis.json    2020-11-16 17:49:40.353496022 +0100</span>
+<span class="hljs-meta">@@ -1,7 +1,7 @@</span>
+ {
+   &quot;height&quot;: 702000,
+<span class="hljs-deletion">-  &quot;genesis_time&quot;: &quot;2020-11-18T13:38:00Z&quot;,</span>
+<span class="hljs-deletion">-  &quot;chain_id&quot;: &quot;mainnet-beta-2020-10-01-1601568000&quot;,</span>
+<span class="hljs-addition">+  &quot;genesis_time&quot;: &quot;2020-11-18T16:00:00Z&quot;,</span>
+<span class="hljs-addition">+  &quot;chain_id&quot;: &quot;oasis-1&quot;,</span>
+   &quot;epochtime&quot;: {
+     &quot;params&quot;: {
+       &quot;interval&quot;: 600
+<span class="hljs-meta">@@ -2506,1563 +2506,1779 @@</span>
+       &quot;debonding_interval&quot;: 336,
+       &quot;reward_schedule&quot;: [
+         {
+<span class="hljs-deletion">-          &quot;until&quot;: 3696,</span>
+<span class="hljs-deletion">-          &quot;scale&quot;: &quot;1595&quot;</span>
+<span class="hljs-addition">+          &quot;until&quot;: 4842,</span>
+<span class="hljs-addition">+          &quot;scale&quot;: &quot;2081&quot;</span>
+         },
+         {
+<span class="hljs-deletion">-          &quot;until&quot;: 3720,</span>
+<span class="hljs-deletion">-          &quot;scale&quot;: &quot;1594&quot;</span>
+<span class="hljs-addition">+          &quot;until&quot;: 4866,</span>
+<span class="hljs-addition">+          &quot;scale&quot;: &quot;2080&quot;</span>
+         },
+
+        ... trimmed ...
+
+         {
+<span class="hljs-deletion">-          &quot;until&quot;: 35712,</span>
+<span class="hljs-addition">+          &quot;until&quot;: 36882,</span>
+           &quot;scale&quot;: &quot;2&quot;
+         },
+         {
+<span class="hljs-deletion">-          &quot;until&quot;: 35760,</span>
+<span class="hljs-addition">+          &quot;until&quot;: 36930,</span>
+           &quot;scale&quot;: &quot;1&quot;
+         }
+       ],
+<span class="hljs-meta">@@ -4087,7 +4303,6 @@</span>
+         &quot;transfer&quot;: 1000
+       },
+       &quot;min_delegation&quot;: &quot;100000000000&quot;,
+<span class="hljs-deletion">-      &quot;disable_transfers&quot;: true,</span>
+       &quot;fee_split_weight_propose&quot;: &quot;2&quot;,
+       &quot;fee_split_weight_vote&quot;: &quot;1&quot;,
+       &quot;fee_split_weight_next_propose&quot;: &quot;1&quot;,
+<span class="hljs-meta">@@ -4097,7 +4312,7 @@</span>
+     &quot;token_symbol&quot;: &quot;ROSE&quot;,
+     &quot;token_value_exponent&quot;: 9,
+     &quot;total_supply&quot;: &quot;10000000000000000000&quot;,
+<span class="hljs-deletion">-    &quot;common_pool&quot;: &quot;1835039672187348312&quot;,</span>
+<span class="hljs-addition">+    &quot;common_pool&quot;: &quot;2285039672187348312&quot;,</span>
+     &quot;last_block_fees&quot;: &quot;0&quot;,
+     &quot;ledger&quot;: {
+       &quot;oasis1qp0l8r2s3076n4xrq8av0uuqegj7z9kq55gu5exy&quot;: {
+<span class="hljs-meta">@@ -6419,7 +6634,7 @@</span>
+       },
+       &quot;oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6&quot;: {
+         &quot;general&quot;: {
+<span class="hljs-deletion">-          &quot;balance&quot;: &quot;1633038701000000000&quot;</span>
+<span class="hljs-addition">+          &quot;balance&quot;: &quot;1183038701000000000&quot;</span>
+         },
+         &quot;escrow&quot;: {
+           &quot;active&quot;: {
+<span class="hljs-meta">@@ -9862,6 +10077,8 @@</span>
+       }
+     }
+   },
+<span class="hljs-deletion">-  &quot;halt_epoch&quot;: 1440,</span>
+<span class="hljs-deletion">-  &quot;extra_data&quot;: null</span>
+<span class="hljs-addition">+  &quot;halt_epoch&quot;: 9940,</span>
+<span class="hljs-addition">+  &quot;extra_data&quot;: {</span>
+<span class="hljs-addition">+    &quot;quote&quot;: &quot;UXVpcyBjdXN0b2RpZXQgaXBzb3MgY3VzdG9kZXM/IFtzdWJtaXR0ZWQgYnkgT2FzaXMgQ29tbXVuaXR5IE1lbWJlciBEYW5peWFyIEJvcmFuZ2F6aXlldl0=&quot;</span>
+<span class="hljs-addition">+  }</span>
+ }
+</code></pre>
+<p>We can observe that the provided genesis file mostly updates some particular network parameters. In addition, some ROSE tokens were transferred from an account to the Common Pool. All other things remained unchanged.</p>
+<p>Let&apos;s break down the diff and explain what has changed.</p>
+<p>The following genesis file fields will always change on a network upgrade:</p>
+<ul>
+<li><code>chain_id</code>: A unique ID of the network.</li>
+<li><code>genesis_time</code>: Time from which the genesis file is valid.</li>
+<li><code>halt_epoch</code>: The epoch when the node will stop functioning. We set this to intentionally force an upgrade.</li>
+</ul>
+<p>The following fields were a particular change in this upgrade:</p>
+<ul>
+<li><code>staking.params.reward_schedule</code>: This field describes the staking reward model. It was changed to start at 20% (annualized) and range from 20% to 2% over the first 4 years of the network. For more details, see the updated <a href="https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution" target="_blank">Token Metrics and Distribution</a> doc.</li>
+<li><code>staking.params.disable_transfers</code>: This field was removed to enable token transfers.</li>
+<li><code>staking.common_pool</code>: This field represents the Common Pool. Its balance was increased by 450M ROSE to fund increased staking rewards.</li>
+<li><code>staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6</code>: This field corresponds to the Community and Ecosystem Wallet. Its <code>general.balance</code> was reduced by 450M ROSE and transferred to the Common Pool to fund increased staking rewards.</li>
+<li><code>extra_data</code>: This field can hold network&apos;s extra data, but is currently ignored everywhere. For this upgrade, we changed it back to the value in the Mainnet Beta genesis file to include the Oasis network&apos;s genesis quote: <em>&#x201D;</em><a href="https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F" target="_blank"><em>Quis custodiet ipsos custodes?</em></a><em>&#x201D; [submitted by Oasis Community Member Daniyar Borangaziyev].</em></li>
+</ul>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The balances in the genesis file are enumerated in nROSE, with 1 billion nROSE being equivalent to 1 ROSE token. For more details, see the <a href="../../mainnet/genesis-file.html">Genesis File Overview</a>.</p>
+</div></div></p>
+<p>If you obtain the same result, then you have successfully verified the provided genesis file.</p>
+<h2 id="stop-your-node">Stop Your Node</h2>
+<p>This will depend on your process manager. You should stop your <a href="../prerequisites/oasis-node.html">Oasis Node</a> process however this is done for your setup.</p>
+<h2 id="wipe-state">Wipe State</h2>
+<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>We do not suggest that you wipe <em>all</em> state. You might lose node identities and keys if you do it this way.</p>
+</div></div></p>
+<p>Before restarting your node you should wipe consensus state. The process for this is described in the <a href="wiping-node-state.html#state-wipe-and-keep-node-identity">Wiping Node State</a> document.</p>
+<h2 id="update-configuration">Update Configuration</h2>
+<p>If the <a href="../upgrade-log.html">Upgrade Log</a> provides instructions for updating your node&apos;s configuration, update the <code>/serverdir/etc/config.yml</code> file accordingly.</p>
+<h2 id="upgrade-oasis-node">Upgrade Oasis Node</h2>
+<p>Before starting your node again, make sure you upgrade your <a href="../prerequisites/oasis-node.html">Oasis Node</a> binary to the current version specified in the <a href="../../oasis-network/network-parameters.html">Network Parameters</a>.</p>
+<h2 id="start-your-node">Start Your Node</h2>
+<p>This will depend on your process manager. If you don&apos;t have a process manager, you should use one. However, to start the node without a process manager you can start the <a href="../prerequisites/oasis-node.html">Oasis Node</a> like so:</p>
+<pre><code class="lang-bash">oasis-node --config /serverdir/etc/config.yml
+</code></pre>
+<h2 id="clean-up">Clean Up</h2>
+<p>After you&apos;re comfortable with your node deployment, you can clean up the <code>genesis_dump.json</code> file.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="wiping-node-state.html" class="navigation navigation-prev " aria-label="Previous page: Wiping Node State">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="adding-or-removing-nodes.html" class="navigation navigation-next " aria-label="Next page: Adding or Removing Nodes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Handling Network Upgrades","level":"3.4.2","depth":2,"next":{"title":"Adding or Removing Nodes","level":"3.4.3","depth":2,"path":"run-a-node/maintenance-guides/adding-or-removing-nodes.md","ref":"run-a-node/maintenance-guides/adding-or-removing-nodes.md","articles":[]},"previous":{"title":"Wiping Node State","level":"3.4.1","depth":2,"path":"run-a-node/maintenance-guides/wiping-node-state.md","ref":"run-a-node/maintenance-guides/wiping-node-state.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","hints","page-ref","tabs"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-ref":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"tabs":{}},"theme":"default","author":"shooter","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Oasis Docs","gitbook":"*","description":"Oasis Docs"},"file":{"path":"run-a-node/maintenance-guides/handling-network-upgrades.md","mtime":"2021-01-23T14:03:18.714Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-24T10:09:35.279Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-tabs/bootstrap.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

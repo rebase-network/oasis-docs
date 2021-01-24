@@ -1,0 +1,1339 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Sentry Node Architecture · Oasis Docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="shooter">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tabs/bootstrap.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../maintenance-guides/" />
+    
+    
+    <link rel="prev" href="amend-commission-schedule.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Oasis Network</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../oasis-network/overview.html">
+            
+                <a href="../../oasis-network/overview.html">
+            
+                    
+                    Overview of the Oasis Network 长，已翻译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../oasis-network/network-parameters.html">
+            
+                <a href="../../oasis-network/network-parameters.html">
+            
+                    
+                    Network Parameters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-network-primer/">
+            
+                    
+                    Why Oasis? 与faq内容一样，长
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution">
+            
+                    
+                    ROSE Token Metrics 跳转到链外
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <a target="_blank" href="https://oasisprotocol.org/papers">
+            
+                    
+                    Papers 3篇白皮书，跳转到链外，翻译么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../oasis-network/connect-with-us.html">
+            
+                <a href="../../oasis-network/connect-with-us.html">
+            
+                    
+                    Community Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Run a Node</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../node-operator-overview.html">
+            
+                <a href="../node-operator-overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../prerequisites/">
+            
+                <a href="../prerequisites/">
+            
+                    
+                    Prerequisites
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../prerequisites/hardware-recommendations.html">
+            
+                <a href="../prerequisites/hardware-recommendations.html">
+            
+                    
+                    Hardware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../prerequisites/oasis-node.html">
+            
+                <a href="../prerequisites/oasis-node.html">
+            
+                    
+                    Oasis Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Set Up Your Node
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="run-validator.html">
+            
+                <a href="run-validator.html">
+            
+                    
+                    Run a Validator Node 长，技术术语多
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="run-non-validator.html">
+            
+                <a href="run-non-validator.html">
+            
+                    
+                    Run a Non-validator Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="run-seed-node.html">
+            
+                <a href="run-seed-node.html">
+            
+                    
+                    Run a Seed Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="creating-an-entity-package.html">
+            
+                <a href="creating-an-entity-package.html">
+            
+                    
+                    Create an Entity Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="amend-commission-schedule.html">
+            
+                <a href="amend-commission-schedule.html">
+            
+                    
+                    Amend Commission Schedule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.3.6" data-path="sentry-node-architecture.html">
+            
+                <a href="sentry-node-architecture.html">
+            
+                    
+                    Sentry Node Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../maintenance-guides/">
+            
+                <a href="../maintenance-guides/">
+            
+                    
+                    Node Maintenance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../maintenance-guides/wiping-node-state.html">
+            
+                <a href="../maintenance-guides/wiping-node-state.html">
+            
+                    
+                    Wiping Node State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../maintenance-guides/handling-network-upgrades.html">
+            
+                <a href="../maintenance-guides/handling-network-upgrades.html">
+            
+                    
+                    Handling Network Upgrades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../maintenance-guides/adding-or-removing-nodes.html">
+            
+                <a href="../maintenance-guides/adding-or-removing-nodes.html">
+            
+                    
+                    Adding or Removing Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Node Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../upgrade-log.html">
+            
+                <a href="../upgrade-log.html">
+            
+                    
+                    Upgrade Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Manage Your ROSE Tokens  介绍钱包</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../manage-tokens/overview.html">
+            
+                <a href="../../manage-tokens/overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../manage-tokens/terminology.html">
+            
+                <a href="../../manage-tokens/terminology.html">
+            
+                    
+                    Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../manage-tokens/staking-and-delegating.html">
+            
+                <a href="../../manage-tokens/staking-and-delegating.html">
+            
+                    
+                    Staking and Delegating
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../manage-tokens/holding-rose-tokens/">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/">
+            
+                    
+                    Custody & Wallets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../manage-tokens/holding-rose-tokens/custody-providers.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/custody-providers.html">
+            
+                    
+                    Custody Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="../../manage-tokens/holding-rose-tokens/ledger-wallet.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/ledger-wallet.html">
+            
+                    
+                    Self-Custody With Ledger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="../../manage-tokens/holding-rose-tokens/file-based-signer.html">
+            
+                <a href="../../manage-tokens/holding-rose-tokens/file-based-signer.html">
+            
+                    
+                    File-Based Signer
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../manage-tokens/web-wallets.html">
+            
+                <a href="../../manage-tokens/web-wallets.html">
+            
+                    
+                    Web Wallets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../../manage-tokens/mobile-wallets/">
+            
+                <a href="../../manage-tokens/mobile-wallets/">
+            
+                    
+                    Mobile Wallets
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/">
+            
+                <a href="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/">
+            
+                    
+                    Bitpie Wallet Guide 比特派钱包
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1.1" data-path="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/testing-bitpie.html">
+            
+                <a href="../../manage-tokens/mobile-wallets/bitpie-wallet-guide/testing-bitpie.html">
+            
+                    
+                    Testing Bitpie Wallet
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../../manage-tokens/oasis-cli-tools/">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/">
+            
+                    
+                    Oasis CLI Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="../../manage-tokens/oasis-cli-tools/prerequisites.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/prerequisites.html">
+            
+                    
+                    Prerequisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="../../manage-tokens/oasis-cli-tools/setup.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="../../manage-tokens/oasis-cli-tools/common-staking-info.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/common-staking-info.html">
+            
+                    
+                    Common Staking Info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.4" data-path="../../manage-tokens/oasis-cli-tools/list-accounts.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/list-accounts.html">
+            
+                    
+                    List Accounts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.5" data-path="../../manage-tokens/oasis-cli-tools/get-account-info.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/get-account-info.html">
+            
+                    
+                    Get Account Info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.6" data-path="../../manage-tokens/oasis-cli-tools/address.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/address.html">
+            
+                    
+                    Obtain Account Address From Entity's ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.7" data-path="../../manage-tokens/oasis-cli-tools/transfer-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/transfer-tokens.html">
+            
+                    
+                    Transfer Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.8" data-path="../../manage-tokens/oasis-cli-tools/delegate-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/delegate-tokens.html">
+            
+                    
+                    Delegate/Stake Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.9" data-path="../../manage-tokens/oasis-cli-tools/reclaim-tokens.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/reclaim-tokens.html">
+            
+                    
+                    Reclaim Delegated/Staked Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.10" data-path="../../manage-tokens/oasis-cli-tools/gas-costs.html">
+            
+                <a href="../../manage-tokens/oasis-cli-tools/gas-costs.html">
+            
+                    
+                    Gas Costs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Contribute to the Network</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../contribute-to-the-network/run-validator.html">
+            
+                <a href="../../contribute-to-the-network/run-validator.html">
+            
+                    
+                    Run a Validator Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../contribute-to-the-network/network-governance.html">
+            
+                <a href="../../contribute-to-the-network/network-governance.html">
+            
+                    
+                    Network Governance 略长
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../contribute-to-the-network/contribution-guidelines.html">
+            
+                <a href="../../contribute-to-the-network/contribution-guidelines.html">
+            
+                    
+                    Contribution Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" >
+            
+                <a target="_blank" href="https://github.com/oasisprotocol">
+            
+                    
+                    Visit Our GitHub 就是url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Mainnet Initiatives</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../mainnet/mainnet.html">
+            
+                <a href="../../mainnet/mainnet.html">
+            
+                    
+                    Mainnet Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../mainnet/mainnet-beta-overview.html">
+            
+                <a href="../../mainnet/mainnet-beta-overview.html">
+            
+                    
+                    Mainnet Beta Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../mainnet/genesis-file.html">
+            
+                <a href="../../mainnet/genesis-file.html">
+            
+                    
+                    Genesis File Overview 参数配置多
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Oasis Protocol Foundation</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../foundation/testnet.html">
+            
+                <a href="../../foundation/testnet.html">
+            
+                    
+                    The Testnet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../foundation/delegation-policy.html">
+            
+                <a href="../../foundation/delegation-policy.html">
+            
+                    
+                    Delegation Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Developer Resources</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <a target="_blank" href="https://docs.oasis.dev/oasis-core">
+            
+                    
+                    Oasis Core Documentation 跳转到链外
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+                <a target="_blank" href="https://github.com/oasisprotocol">
+            
+                    
+                    GitHub 就是url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Community Resources</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../community-resources/community-made-resources.html">
+            
+                <a href="../../community-resources/community-made-resources.html">
+            
+                    
+                    Community-Made Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Frequently Asked Questions</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../../faq/oasis-network-faq.html">
+            
+                <a href="../../faq/oasis-network-faq.html">
+            
+                    
+                    Oasis Network FAQ 长
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Sentry Node Architecture</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="sentry-node-architecture">Sentry Node Architecture</h1>
+<p>This guide provides instructions for a deployment using the Sentry node architecture to protect validator nodes from being directly exposed on the public network.</p>
+<p>This guide assumes a setup where an Oasis validator node is only accessible over a private network, with sentry nodes having access to it. The guide does not cover setting this infrastructure up. Knowledge of <a href="https://forum.cosmos.network/t/sentry-node-architecture-overview/454" target="_blank">Tendermint&apos;s Sentry Node architecture</a> is assumed as well.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>This is only an example of a Sentry node deployment, and we take no responsibility for mistakes contained therein. Make sure you understand what you are doing.</p>
+</div></div></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before following this guide, make sure you&apos;ve read the <a href="../prerequisites/oasis-node.html">Prerequisites</a> and <a href="run-validator.html">Running a Node on the Network</a> guides and created your Entity.</p>
+<h2 id="configuring-the-oasis-sentry-node">Configuring the Oasis Sentry Node</h2>
+<h3 id="initializing-sentry-node">Initializing Sentry Node</h3>
+<p>Sentry node identity keys can be initialized with:</p>
+<pre><code class="lang-bash">oasis-node identity init --datadir /serverdir/node
+</code></pre>
+<h3 id="configuring-sentry-node">Configuring Sentry Node</h3>
+<p>An Oasis node can be configured to run as a sentry node by setting the <code>worker.sentry.enabled</code> flag. The <code>tendermint.sentry.upstream_address</code> flag can be used to configure a list of nodes that will be protected by the sentry node.</p>
+<p>An example of full <code>YAML</code> configuration of a sentry node is below.</p>
+<p>Before using this configuration you should collect the following information to replace the  variables present in the configuration file:</p>
+<ul>
+<li>``: This is the external IP on which sentry node will be reachable.</li>
+<li><code>`: This the seed node address of the form</code>ID@IP:port`. You can find the current Oasis Seed Node address in the <a href="../../oasis-network/network-parameters.html">Network Parameters</a>.</li>
+<li><p>``: This is the Tendermint ID (address) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:</p>
+<pre><code class="lang-bash">oasis-node identity tendermint show-node-address --datadir /serverdir/node
+</code></pre>
+<p>on the validator node.</p>
+</li>
+<li><p>``: This is the (presumably) private address on which validator should be reachable from the sentry node.</p>
+</li>
+<li><p>``: This is the public TLS key of the Oasis validator node that will be protected by the sentry node. This public key can be obtained by running:</p>
+<pre><code class="lang-bash"> oasis-node identity show-sentry-client-pubkey --datadir /serverdir/node
+</code></pre>
+<p>on the validator node. Note that the above command is only available in <code>oasis-node</code> from version 20.8.1 onward.</p>
+</li>
+</ul>
+<pre><code class="lang-yaml"><span class="hljs-comment">##</span>
+<span class="hljs-comment"># Oasis Sentry Node Configuration</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This file&apos;s configurations are derived from the command line args found in the</span>
+<span class="hljs-comment"># root command of the oasis-node binary. For more information execute:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     oasis-node --help</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Settings on the command line that are separated by a dot all belong to the</span>
+<span class="hljs-comment"># same nested object. So &quot;--foo.bar.baz hello&quot; would translate to:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     foo:</span>
+<span class="hljs-comment">#       bar:</span>
+<span class="hljs-comment">#         baz: hello</span>
+<span class="hljs-comment">##</span>
+
+<span class="hljs-comment"># Set this to where you wish to store node data. The node artifacts</span>
+<span class="hljs-comment"># should also be located in this directory (for us this is /serverdir/node)</span>
+<span class="hljs-attr">datadir:</span> /serverdir/node
+
+<span class="hljs-comment"># Logging.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Per-module log levels are defined below. If you prefer just one unified log</span>
+<span class="hljs-comment"># level, you can use:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># log:</span>
+<span class="hljs-comment">#   level: debug</span>
+<span class="hljs-attr">log:</span>
+<span class="hljs-attr">  level:</span>
+    <span class="hljs-comment"># Per-module log levels. Longest prefix match will be taken. Fallback to</span>
+    <span class="hljs-comment"># &quot;default&quot;, if no match.</span>
+<span class="hljs-attr">    default:</span> debug
+<span class="hljs-attr">    tendermint:</span> warn
+    tendermint/context: error
+<span class="hljs-attr">  format:</span> JSON
+  <span class="hljs-comment"># By default logs are output to stdout. If you&apos;re running this in docker keep</span>
+  <span class="hljs-comment"># the default</span>
+  <span class="hljs-comment">#file: /var/log/oasis-node.log</span>
+
+<span class="hljs-comment"># Path to the genesis file for the current version of the network.</span>
+<span class="hljs-attr">genesis:</span>
+<span class="hljs-attr">  file:</span> /serverdir/etc/genesis.json
+
+<span class="hljs-comment"># Worker configuration.</span>
+<span class="hljs-attr">worker:</span>
+<span class="hljs-attr">  sentry:</span>
+    <span class="hljs-comment"># Enable sentry node.</span>
+<span class="hljs-attr">    enabled:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-comment"># Port used by validator nodes to query sentry node for registry</span>
+    <span class="hljs-comment"># information.</span>
+    <span class="hljs-comment"># IMPORTANT: Only validator nodes protected by the sentry node should have</span>
+    <span class="hljs-comment"># access to this port. This port should not be exposed on the public</span>
+    <span class="hljs-comment"># network.</span>
+<span class="hljs-attr">    control:</span>
+<span class="hljs-attr">      port:</span> <span class="hljs-number">9009</span>
+<span class="hljs-attr">      authorized_pubkey:</span>
+<span class="hljs-bullet">        -</span> {{ validator_sentry_client_grpc_public_key }}
+
+<span class="hljs-comment"># Tendermint backend configuration.</span>
+<span class="hljs-attr">consensus:</span>
+<span class="hljs-attr">  tendermint:</span>
+<span class="hljs-attr">    abci:</span>
+<span class="hljs-attr">      prune:</span>
+<span class="hljs-attr">        strategy:</span> keep_n
+        <span class="hljs-comment"># Keep ~1 hour of data since block production is ~1 block every 6 seconds.</span>
+        <span class="hljs-comment"># (3600/6 = 600)</span>
+<span class="hljs-attr">        num_kept:</span> <span class="hljs-number">600</span>
+<span class="hljs-attr">    core:</span>
+<span class="hljs-attr">      listen_address:</span> tcp://<span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">26656</span>
+<span class="hljs-attr">      external_address:</span> tcp://{{ external_address }}:<span class="hljs-number">26656</span>
+
+    <span class="hljs-comment"># List of seed nodes to connect to.</span>
+    <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> You can add additional seed nodes to this list if you want.</span>
+<span class="hljs-attr">    p2p:</span>
+<span class="hljs-attr">      seed:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">&quot;<span class="hljs-template-variable">{{ seed_node_address }}</span>&quot;</span>
+
+<span class="hljs-attr">    sentry:</span>
+<span class="hljs-attr">      upstream_address:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">&quot;<span class="hljs-template-variable">{{ validator_tendermint_id }}</span>@<span class="hljs-template-variable">{{ validator_private_address }}</span>:26656&quot;</span>
+</code></pre>
+<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>Multiple sentry nodes can be provisioned following the above steps.</p>
+</div></div></p>
+<h2 id="configuring-the-oasis-validator-node">Configuring the Oasis Validator Node</h2>
+<p>In this setup the Oasis validator node should not be exposed directly on the public network. The Oasis validator only needs to be able to connect to its sentry nodes, preferably via a private network.</p>
+<h3 id="initializing-validator-node">Initializing Validator Node</h3>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>If your validator node is already registered and running in a non-sentry setup, this step can be skipped as the Oasis validator will update its address in the Registry automatically once we redeploy it with new configuration.</p>
+</div></div></p>
+<p>When you are <a href="run-validator.html#initializing-a-node">initializing a validator node</a>, you should use the sentry node&apos;s external address and Consensus ID in the <code>node.consensus_address</code> flag. If you are running multiple sentry nodes, you can specify the <code>node.consensus_address</code> flag multiple times.</p>
+<p>To initialize a validator node with 2 sentry nodes, run the following commands from the <code>/localhostdir/node</code> directory:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">export</span> SENTRY1_CONSENSUS_ID=&lt;YOUR_SENTRY1_CONSENSUS_ID_B64&gt;
+<span class="hljs-built_in">export</span> SENTRY1_STATIC_IP=&lt;YOUR_SENTRY1_STATIC_IP&gt;
+<span class="hljs-built_in">export</span> SENTRY2_CONSENSUS_ID=&lt;YOUR_SENTRY2_CONSENSUS_ID_B64&gt;
+<span class="hljs-built_in">export</span> SENTRY2_STATIC_IP=&lt;YOUR_SENTRY2_STATIC_IP&gt;
+oasis-node registry node init \
+  --signer.backend file \
+  --signer.dir /localhostdir/entity \
+  --node.consensus_address <span class="hljs-variable">$SENTRY1_CONSENSUS_ID</span>@<span class="hljs-variable">$SENTRY1_STATIC_IP</span>:26656 \
+  --node.consensus_address <span class="hljs-variable">$SENTRY2_CONSENSUS_ID</span>@<span class="hljs-variable">$SENTRY2_STATIC_IP</span>:26656 \
+  --node.is_self_signed \
+  --node.role validator
+</code></pre>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><code>SENTRY_CONSENSUS_ID</code>: This is the Consensus ID of the sentry node in base64 format. This ID can be obtained from <code>consensus_pub.pem</code>:</p>
+<pre><code class="lang-bash">sed -n 2p /serverdir/node/consensus_pub.pem
+</code></pre>
+<p>on the sentry node.</p>
+</div></div></p>
+<h3 id="configuring-the-validator-node">Configuring the Validator Node</h3>
+<p>There are some configuration changes needed for the Oasis validator node to enable proxying through its sentry node. Most of these flags should be familiar from the Tendermint sentry node architecture.</p>
+<p>Since the validator node will not have an external address, the <code>consensus.tendermint.core.external_address</code> flag should be skipped. Similarly, the <code>consensus.tendermint.p2p.seed</code> flag can be skipped, as the <code>oasis-node</code> won&apos;t be directly connecting to any of the seed nodes.</p>
+<p>Tendermint Peer Exchange should be disabled on the validator with the <code>consensus.tendermint.p2p.disable_peer_exchange</code> flag.</p>
+<p>Sentry nodes can also be configured as Tendermint Persistent-Peers with the <code>consensus.tendermint.p2p.persistent_peer</code> flag.</p>
+<p>In addition to the familiar Tendermint setup above, the node needs to be configured to query sentry nodes for external addresses every time the validator preforms a re-registration. This is configured with the <code>worker.sentry.address</code> flag.</p>
+<p>The <code>worker.sentry.address</code> flag is of format: <code>&lt;pubkey&gt;@ip:port</code> where:</p>
+<ul>
+<li><code>&lt;pubkey&gt;</code>: Is the sentry node&apos;s TLS public key.</li>
+<li><code>ip:port</code>: Is the (private) address of the sentry node&apos;s control endpoint.</li>
+</ul>
+<p>Putting it all together, an example configuration of a validator node in the sentry node architecture is given below.</p>
+<p>Before using this configuration you should collect the following information to replace the <code>{{ var_name }}</code> variables present in the configuration file:</p>
+<ul>
+<li>``: This is the private IP address of the sentry node over which sentry node should be accessible to the validator.</li>
+<li><p>``: This is the sentry node&apos;s control endpoint TLS public key. This ID can be obtained by running:</p>
+<pre><code class="lang-bash"> oasis-node identity show-tls-pubkey --datadir /serverdir/node
+</code></pre>
+<p>on the sentry node. Note that the above command is only available in <code>oasis-node</code> from version 20.8.1 onward.</p>
+</li>
+<li><p>``: This is the Tendermint ID (address) of the sentry node that will be configured as a Persistent Peer. This ID can be obtained by running:</p>
+<pre><code class="lang-bash">oasis-node identity tendermint show-node-address --datadir /serverdir/node
+</code></pre>
+<p>on the sentry node.</p>
+</li>
+</ul>
+<pre><code class="lang-yaml"><span class="hljs-comment">##</span>
+<span class="hljs-comment"># Oasis Node Configuration</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This file&apos;s configurations are derived from the command line args found in</span>
+<span class="hljs-comment"># the root command of the oasis-node binary. For more information execute:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     oasis-node --help</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Settings on the command line that are separated by a dot all belong to the</span>
+<span class="hljs-comment"># same nested object. So &quot;--foo.bar.baz hello&quot; would translate to:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     foo:</span>
+<span class="hljs-comment">#       bar:</span>
+<span class="hljs-comment">#         baz: hello</span>
+<span class="hljs-comment">##</span>
+
+<span class="hljs-comment"># Set this to where you wish to store node data. The node artifacts</span>
+<span class="hljs-comment"># should also be located in this directory (for us this is /serverdir/node)</span>
+<span class="hljs-attr">datadir:</span> /serverdir/node
+
+<span class="hljs-comment"># Logging.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Per-module log levels are defined below. If you prefer just one unified log</span>
+<span class="hljs-comment"># level, you can use:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># log:</span>
+<span class="hljs-comment">#   level: debug</span>
+<span class="hljs-attr">log:</span>
+<span class="hljs-attr">  level:</span>
+    <span class="hljs-comment"># Per-module log levels. Longest prefix match will be taken. Fallback to</span>
+    <span class="hljs-comment"># &quot;default&quot;, if no match.</span>
+<span class="hljs-attr">    default:</span> debug
+<span class="hljs-attr">    tendermint:</span> warn
+    tendermint/context: error
+<span class="hljs-attr">  format:</span> JSON
+  <span class="hljs-comment"># By default logs are output to stdout. If you&apos;re running this in docker keep</span>
+  <span class="hljs-comment"># the default</span>
+  <span class="hljs-comment">#file: /var/log/oasis-node.log</span>
+
+<span class="hljs-comment"># Path to the genesis file for the current version of the network.</span>
+<span class="hljs-attr">genesis:</span>
+<span class="hljs-attr">  file:</span> /serverdir/etc/genesis.json
+
+<span class="hljs-comment"># Worker configuration.</span>
+<span class="hljs-attr">worker:</span>
+<span class="hljs-attr">  registration:</span>
+    <span class="hljs-comment"># In order for the node to register itself the entity.json of the entity</span>
+    <span class="hljs-comment"># used to provision the node must be available on the node.</span>
+<span class="hljs-attr">    entity:</span> /serverdir/node/entity/entity.json
+<span class="hljs-attr">  sentry:</span>
+<span class="hljs-attr">    address:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;<span class="hljs-template-variable">{{ sentry_node_grpc_public_key }}</span>@<span class="hljs-template-variable">{{ sentry_node_private_ip }}</span>:9009&quot;</span>
+
+<span class="hljs-comment"># Consensus backend.</span>
+<span class="hljs-attr">consensus:</span>
+  <span class="hljs-comment"># Setting this to true will mean that the node you&apos;re deploying will attempt</span>
+  <span class="hljs-comment"># to register as a validator.</span>
+<span class="hljs-attr">  validator:</span> <span class="hljs-literal">True</span>
+
+  <span class="hljs-comment"># Tendermint backend configuration.</span>
+<span class="hljs-attr">  tendermint:</span>
+<span class="hljs-attr">    abci:</span>
+<span class="hljs-attr">      prune:</span>
+<span class="hljs-attr">        strategy:</span> keep_n
+        <span class="hljs-comment"># Keep ~7 days of data since block production is ~1 block every 6 seconds.</span>
+        <span class="hljs-comment"># (7*24*3600/6 = 100800)</span>
+<span class="hljs-attr">        num_kept:</span> <span class="hljs-number">100800</span>
+<span class="hljs-attr">    core:</span>
+<span class="hljs-attr">      listen_address:</span> tcp://<span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">26656</span>
+<span class="hljs-attr">    p2p:</span>
+<span class="hljs-attr">      persistent_peer:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">&quot;<span class="hljs-template-variable">{{ sentry_node_tendermint_id }}</span>@<span class="hljs-template-variable">{{ sentry_node_private_ip }}</span>:26656&quot;</span>
+<span class="hljs-attr">      disable_peer_exchange:</span> <span class="hljs-literal">True</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="amend-commission-schedule.html" class="navigation navigation-prev " aria-label="Previous page: Amend Commission Schedule">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../maintenance-guides/" class="navigation navigation-next " aria-label="Next page: Node Maintenance">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Sentry Node Architecture","level":"3.3.6","depth":2,"next":{"title":"Node Maintenance","level":"3.4","depth":1,"path":"run-a-node/maintenance-guides/README.md","ref":"run-a-node/maintenance-guides/README.md","articles":[{"title":"Wiping Node State","level":"3.4.1","depth":2,"path":"run-a-node/maintenance-guides/wiping-node-state.md","ref":"run-a-node/maintenance-guides/wiping-node-state.md","articles":[]},{"title":"Handling Network Upgrades","level":"3.4.2","depth":2,"path":"run-a-node/maintenance-guides/handling-network-upgrades.md","ref":"run-a-node/maintenance-guides/handling-network-upgrades.md","articles":[]},{"title":"Adding or Removing Nodes","level":"3.4.3","depth":2,"path":"run-a-node/maintenance-guides/adding-or-removing-nodes.md","ref":"run-a-node/maintenance-guides/adding-or-removing-nodes.md","articles":[]}]},"previous":{"title":"Amend Commission Schedule","level":"3.3.5","depth":2,"path":"run-a-node/set-up-your-node/amend-commission-schedule.md","ref":"run-a-node/set-up-your-node/amend-commission-schedule.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","hints","page-ref","tabs"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-ref":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"tabs":{}},"theme":"default","author":"shooter","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Oasis Docs","gitbook":"*","description":"Oasis Docs"},"file":{"path":"run-a-node/set-up-your-node/sentry-node-architecture.md","mtime":"2021-01-23T14:03:18.717Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-24T10:09:35.279Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-tabs/bootstrap.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
