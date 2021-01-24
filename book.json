@@ -1,0 +1,3 @@
+{
+  "plugins": ["theme-default", "hints", "page-ref", "tabs"]
+}
