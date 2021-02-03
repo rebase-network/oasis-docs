@@ -1,125 +1,123 @@
 ---
-description: This page describes how to run a validator node on the Oasis Network.
+description: 本页面描述符如何在Oasis Network上运行验证器节点。
 ---
 
-# Run a Validator Node
+# 运行验证节点
 
 {% hint style="info" %}
-These instructions are for setting up a _validator_ node. If you want to run a _non-validator_ node instead, see the [instructions on running a non-validator node](run-non-validator.md).
+这些说明用于设置一个*验证*节点。如果你想验证 1 个 _非验证节点_，请看 [如何运行非验证器节点](run-non-validator.md)
 {% endhint %}
 
-This guide will cover setting up your validator node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+这份指南将介绍如何为 Oasis Network 设置验证器节点。使用本指南需要你对命令行有一些基本的了解。
 
-## Prerequisites
+## 前提条件
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your systems.
+在阅读本指南之前，请确保你已经阅读了[前提准备](../prerequisites/)部分，并在你的系统上安装了 Oasis Node 文件。
 
-### Stake requirements
+### 抵押需求
 
-To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](../../contribute-to-the-network/run-validator.md#stake-requirements) section of [Run a Validator Node](../../contribute-to-the-network/run-validator.md) doc.
+要成为 Oasis Network 上的验证者，你需要在托管帐户中放入足够的 token。 更多细节，请看[运行验证者节点](../../contribute-to-the-network/run-validator.md#stake-requirements)文档的[抵押要求](../../contribute-to-the-network/run-validator.md)部分。
 
-### Systems
+### 系统
 
-This guide assumes that you have two different physical machines that you will use for deployment. These machines are the following:
+假设你有两台不同的物理机用于部署。这两台机器如下：
 
-* Your local system, henceforth called the `localhost`.
-* A remote system to run as an Oasis node, henceforth called the `server`.
+- 你的本地系统，以后就称 `localhost`。
+- 作为 Oasis 节点运行的远程系统，称为 `server`。
 
-The reason for this is to ensure protection of the keys used to setup your node. Use of HSMs to store keys is highly recommended.
+这样做的原因是为了保护用于设置节点的密钥。强烈建议使用 HSM 存储密钥。
 
-## Creating Your Entity
+## Creating Your Entity 创建
 
 {% hint style="danger" %}
-Everything in this section should be done on the `localhost` as there are sensitive items that will be created.
+本节中的所有内容都应在 `localhost`上完成，因为将创建一些敏感的项目。
 {% endhint %}
 
-### Creating a Working Directory
+### Creating a Working Directory 创建 1 个工作目录
 
-During this entity initialization process, we will create keys and other important artifacts that are necessary for the deployment of nodes on the network. It is important that you save and protect the generated artifacts in this directory if you intend to use them to register your entity and nodes.
+在这个初始化过程中，我们将创建密钥和其他重要的工件，这些都是部署节点所必需的。如果你打算用它们来注册你的 entity 和节点，那么在这个目录中保存和保护生成的工件很重要。
 
-Inside `/localhostdir` you should create the following directories:
+在`/localhostdir`文件夹内，创建以下目录：
 
-* `entity`: This will store your entity. The private contents in this directory are safest if used on a machine kept disconnected from the internet.
+- `entity`：存储你的 entity。如果在断开网络连接的机器上使用，这个目录中的私密内容是最安全的。
 
-  The directory's permissions should be `rwx------`
+这个文件夹的权限是 `rwx------`
 
-* `node`: This will store a node we are calling "node". The name is not important. It simply represents one of your nodes. You can rename it to whatever you wish. The private contents of this directory will be used on the node itself.
+- `node`: 这将存储一个称之为 `node`的节点。名字并不重要。它只是代表你的一个节点。你可以把它重命名为任何你想要的名称。这个目录的私有内容将在节点本身上使用。
 
-  You should initialize this information on a system with access to the entity's private key.
+  你应该在可以访问 entity 私钥的系统上初始化这些信息。
 
-  The directory permissions should be `rwx------`
+这个文件夹的权限是 `rwx------`
 
-To create the directory structure, use the following command:
+要创建目录结构，可以用以下命令。
 
 ```bash
 mkdir -m700 -p {entity,node}
 ```
 
-### Copying the Genesis File
+### Copying the Genesis File 复制创世文件
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
+最新的 genesis 文件可以 [网络参数](../../oasis-network/network-parameters.md) 找到。
+你应该下载最新的`genesis.json`文件，将其复制到工作目录中，并设置以下环境变量指向这个路径。
 
 ```bash
 GENESIS_FILE_PATH=/localhostdir/genesis.json
 ```
 
-This will be needed later when generating transactions.
+以后在生成交易时，就会需要这个。
 
-### Initializing an Entity
+### Initializing an Entity Entity 初始化
 
-An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](https://docs.oasis.dev/oasis-core-ledger) device to protect your entity private key.
+Entity 对于控制网络上的节点至关重要，因为它控制着个人或组织质押的权益。我们强烈建议使用 HSM 或[Ledger]（https://docs.oasis.dev/oasis-core-ledger）设备保护你的的Entity私钥。
 
-#### Using a Ledger-based Signer
+#### Using a Ledger-based Signer 使用 基于 Ledger 的签名器
 
-The Ledger-based signer stores your private keys on your Ledger wallet. It is implemented as an Oasis Core signer plugin.
+基于 Ledger 的签名器将你的私钥存储在 Ledger 钱包上。它是作为一个 Oasis Core signer 插件实现的。
+你需要按照我们[Oasis Core Ledger 文档](https://docs.oasis.dev/oasis-core-ledger) 的[设置]((https://docs.oasis.dev/oasis-core-ledger/usage/setup) 部分进行设置。
 
-You will need to set it up as described in the [Setup](https://docs.oasis.dev/oasis-core-ledger/usage/setup) section of our [Oasis Core Ledger docs](https://docs.oasis.dev/oasis-core-ledger).
+由于 entity 的私钥存储在你的 Ledger 钱包上，你只需要按照我们的[Oasis Core Ledger 文档](https://docs.oasis.dev/oasis-core-ledger)中[导出公钥到 entity](https://docs.oasis.dev/oasis-core-ledger/usage/entity)部分的描述符导出 entity 的公钥。
 
-As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](https://docs.oasis.dev/oasis-core-ledger/usage/entity) section of our [Oasis Core Ledger docs](https://docs.oasis.dev/oasis-core-ledger).
+这将在`/localhostdir/entity`中创建一个文件：
 
-This will create 1 file in `/localhostdir/entity`:
-
-* `entity.json`: The entity descriptor. This is the JSON of the unsigned information to be sent to the registry application on the network.
+- `entity.json`：entity 的描述符。这个 JSON 文件描述符了 要发送到网络上的注册器应用程序的未签名的信息。
 
 {% hint style="info" %}
-There will be no signed entity descriptor, i.e. `entity_genesis.json`, created yet. It will get created when you'll update the entity descriptor with your signed node descriptor as described in the [Adding the Node to the Entity Descriptor](run-validator.md#adding-the-node-to-the-entity-descriptor) section.
+目前还没有创建有签名的 entity 描述符，即`entity_genesis.json`。当你用你的签名节点描述符更新 entity 描述符时，这个文件将被创建，就像[将节点添加到 描述符符](run-validator.md#adding-the-node-to-the-entity-descriptor)部分所述。
 {% endhint %}
 
-#### Using a File-based Signer
+#### Using a File-based Signer 使用文件签名器
 
 {% hint style="danger" %}
-We strongly suggest that you do not use any entity that is generated with the file-based signer on the Mainnet.
-
-When using the file-based signer the use of an [offline/air-gapped machine](https://en.wikipedia.org/wiki/Air_gap_%28networking%29) for this purpose is highly recommended. Gaining access to the entity private key can compromise your tokens.
+我们强烈建议你不要在主网上使用文件签名器生成的任何 entity。当使用文件的签名器时，强烈建议使用[网闸](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)。获得对 entity 私钥的访问权限可能会使的你的 token 处于风险中。
 {% endhint %}
 
-To initialize an entity simply run the following from `/localhostdir/entity`:
+要初始化一个 entity，只需在`/localhostdir/entity`中运行以下命令：
 
 ```bash
 oasis-node registry entity init
 ```
 
-This will generate three files in `/localhostdir/entity`:
+这个命令将会在`/localhostdir/entity` 生成三个文件：
 
-* `entity.pem`: The private key of the entity. **NEVER SHARE THIS AS IT CAN BE USED TO TRANSFER STAKE.**
-* `entity.json`: The entity descriptor. This is the JSON of the unsigned information to be sent to the registry application on the network.
-* `entity_genesis.json`: This JSON object contains the entity descriptor that has been signed with entity's private key, i.e. `entity.pem`. This is meant to be shared for inclusion in the Genesis block.
+- `entity.pem`：entity 的私钥。 **永远不要分享这个文件，因为它可以用来转帐。**
+- `entity.json`：entity 描述符。这是要发送给网络中的注册器应用程序的未签名的 JSON。
+- `entity_genesis.json`: 这个 JSON 对象包含用 entity 私钥签名的 entity 描述符，即`entity.pem`。这是为了在创世块中共享。
 
-### Initializing a Node
+### Initializing a Node 初始化节点
 
-A node registers itself to the network when the node starts up. However, in order to validate itself, the entity signs a public key associated with the node. This allows the node registration to happen without the uploading entity's private key to the internet.
+节点启动时，节点会将自己注册到网络中。然而，为了验证自己， entity 会签署一个与节点相关的公钥。这使得节点注册时无需上传 entity 的私钥到互联网上。
 
 {% hint style="info" %}
-To get the `$ENTITY_ID` needed below check the value of the `id` field in `entity.json`, e.g. with the following content in `entity.json`:
+要想得到下面需要的`$ENTITY_ID`，请检查`entity.json`中的`id`字段的值，比如`entity.json`中的内容：
 
 ```text
 {"v":1,"id":"2D5nSE3uFGvp2UkUY3w8OSjnCCYmQX/3JpJ77+aJGUQ="}
 ```
 
-the entity ID is `2D5nSE3uFGvp2UkUY3w8OSjnCCYmQX/3JpJ77+aJGUQ=`.
+entity ID 是 `2D5nSE3uFGvp2UkUY3w8OSjnCCYmQX/3JpJ77+aJGUQ=`.
 {% endhint %}
 
-To initialize a validator node, take note of the static IP of the server where your node will run, and issue the following commands from the `/localhostdir/node` directory:
+要初始化验证器节点，请记下将运行节点的服务器的静态 IP，并在`/ localhostdir/node`目录执行以下命令：
 
 ```bash
 ENTITY_ID=<YOUR-ENTITY-ID>
@@ -130,35 +128,34 @@ oasis-node registry node init \
   --node.role validator
 ```
 
-This command will create a validator node's identity so that it can be a self-signed node \(this is what allows self-registration\).
+这个命令将创建一个验证节点的身份，这样它就可以成为一个自签名节点（这就是允许自我注册的原因）。
 
 {% hint style="info" %}
-There are more options for node initialization that you can explore by running:
+更多的初始化选项，你可以通过一下命令：
 
 ```bash
 oasis-node registry node init --help
 ```
 
-The options shown above are just the minimum.
 {% endhint %}
 
-The command will generate the following files:
+该命令将生成以下文件：
 
-* `consensus.pem`: The node's consensus private key. **DO NOT SHARE**
-* `consensus_pub.pem`: The node's consensus public key.
-* `identity.pem`: The node's identity private key. **DO NOT SHARE**
-* `identity_pub.pem`: The node's identity public key.
-* `node_genesis.json`: The node's details if you wish to include this node in the genesis file of the network.
-* `p2p.pem`: The node's private key for libp2p. **DO NOT SHARE**
-* `p2p_pub.pem`: The node's public key for libp2p.
-* `sentry_client_tls_identity.pem`: The node's TLS private key for communicating with sentry nodes. **DO NOT SHARE**
-* `sentry_client_tls_identity_cert.pem`: The node's TLS certificate for communicating with sentry nodes.
+- `consensus.pem`: 节点的私钥。**不要分享**
+- `consensus_pub.pem`: 节点的公钥。
+- `identity.pem`:节点的标识私钥。**不要分享**
+- `identity_pub.pem`: 节点的标识公钥
+- `node_genesis.json`: 节点的详细信息，如果你希望将此节点包含在网络的创世文件中。
+- `p2p.pem`: 节点用于 libp2p 的私钥。 **不要分享**
+- `p2p_pub.pem`: 节点用于 libp2p 的公钥 .
+- `sentry_client_tls_identity.pem`: 用于与 sentry 节点通信的 节点 TLS 证书私钥。 **不要分享**
+- `sentry_client_tls_identity_cert.pem`: 用于与 sentry 节点通信的节点 TLS 证书。
 
-### Adding the Node to the Entity Descriptor
+### Adding the Node to the Entity Descriptor 将节点添加到 Entity 描述符
 
-Once the node has been initialized, we need to add it to the entity descriptor so that it can properly register itself when the node starts up. The instructions differ based on what kind of signer was used to generate the entity.
+节点初始化后，我们需要将其添加到 entity 描述符中，以便在节点启动时可以正确地注册自身。指令根据用于生成 entity 的签名者的类型而有所不同。
 
-* **If using the plugin-based signer,** execute the following command in the `/localhostdir/entity` directory \(again this assumes the use of the Ledger signer plugin in which case you will need to then confirm the signing operation on the Ledger device\):
+- **如果使用插件签名器**，在 `/localhostdir/entity` 执行以下命令(假设使用 Ledger 签名器，在这种情况下，你需要在 Ledger 设备上确认签名操作)：
 
 ```bash
 oasis-node registry entity update \
@@ -169,91 +166,93 @@ oasis-node registry entity update \
     --entity.node.descriptor /localhost/node/node_genesis.json
 ```
 
-* **If using the file-based signer**, execute the following command in the `/localhostdir/entity` directory:
+- **如果使用文件签名器**，在 `/localhostdir/entity` 执行以下命令：
 
 ```bash
 oasis-node registry entity update \
   --entity.node.descriptor /localhost/node/node_genesis.json
 ```
 
-This will update the entity descriptor in `entity.json` and subsequently the `entity_genesis.json` file that contains the signed entity descriptor payload.
+这将更新 `entity.json` 中的 entity 描述符，随后更新包含签名 entity 描述符的 `entity_genesis.json` 文件。
 
-## Running an Oasis Node on the `server`
+## Running an Oasis Node on the `server` 在服务器上运行 Oasis 节点
 
-### Setting up the Oasis Node's Working Directory
+### Setting up the Oasis Node's Working Directory Oasis 节点的工作目录
 
-Before we run the node on the `server` we need to ensure that we have a place to store necessary files for the node.
+在`server`上运行节点之前，我们需要确保有一个地方来保存节点所需的文件。
 
 {% hint style="info" %}
-We will reference the working directory on the `server` as `/serverdir` throughout the documentation.
+在整个文档中，我们将把`server`上的工作目录称为`/serverdir`。
 {% endhint %}
 
-#### Setting Up the the `/serverdir` Directory
+#### Setting Up the the `/serverdir` Directory 设置 `/serverdir` 目录
 
-In the `/serverdir` directory we will create the following subdirectories:
+在`/serverdir`目录下，我们将创建以下子目录：
 
-* `etc/` - this is to store the configuration
-* `node/` - this is to store the node's data
-* `node/entity/` - this is to store the public components of the node's entity
+- `etc/` - 保存配置
+- `node/` - 保存 节点数据
+- `node/entity/` - 这是为了保存节点 entity 的公共组件
 
-You can make this directory structure by executing the following command:
+通过执行以下命令来创建目录结构：
 
 ```bash
 mkdir -m700 -p /serverdir/{etc,node,node/entity}
 ```
 
-#### Copying the Node Artifacts from `/localhostdir`
+#### Copying the Node Artifacts from `/localhostdir` 从 `/localhostdir`复制节点文件
 
-In order for the node registration to work properly, as defined in `/localhostdir/entity.json`, you must copy the node's artifacts you generated in the [Initializing a Node](run-validator.md#initializing-a-node) section. To do so, upload the following files from `/localhostdir/node` to `/serverdir/node` over a secure channel \(e.g. SSH\):
+为了使节点注册能够正常工作，正如`/localhostdir/entity.json`中所定义的那样，你必须复制在 [初始化节点](run-validator.md#initializing-a-node)一节中生成的节点的工件。
 
-* `consensus.pem`
-* `consensus_pub.pem`
-* `identity.pem`
-* `identity_pub.pem`
-* `p2p.pem`
-* `p2p_pub.pem`
-* `sentry_client_tls_identity.pem`
-* `sentry_client_tls_identity_cert.pem`
+要做到这一点，请通过安全通道（比如 SSH） 从`/localhostdir/node`上传文件到`/serverdir/node`。
 
-After copying, make sure that all these files have `0600` permissions, i.e. only their owner has `read` and `write` permissions.
+- `consensus.pem`
+- `consensus_pub.pem`
+- `identity.pem`
+- `identity_pub.pem`
+- `p2p.pem`
+- `p2p_pub.pem`
+- `sentry_client_tls_identity.pem`
+- `sentry_client_tls_identity_cert.pem`
 
-To do so, run the following command:
+然后确保这些文件都是`0600`权限。
+
+你可以执行以下命令
 
 ```bash
 chmod -R 600 /serverdir/node/*.pem
 ```
 
 {% hint style="warning" %}
-You may have noticed that some of these files were listed as **DO NOT SHARE** in the [Initializing a Node](run-validator.md#initializing-a-node) section.
 
-In the future, these keys should be generated and referenced from an HSM. However, until HSM support is implemented, these keys should be kept as secure as possible on the `server`.
+在 [初始化节点]](run-validator.md#initializing-a-node) 这节点，你可能注意到了其中一些文件被列为**不共享**。
+将来，这些密钥应该从 HSM 中生成和引用。然而，在实现 HSM 支持之前，这些密钥应该尽可能安全地保存在服务器上。
 {% endhint %}
 
-#### Copying the Public Entity Artifacts from `/localhostdir`
+#### Copying the Public Entity Artifacts from `/localhostdir` 从 `/localhostdir` 复制公共 Entity 文件
 
-We will also need to have the public entity artifacts from the `/localhostdir` present on the `server`. Copy the `/localhostdir/entity/entity.json` file on `localhost` to `/serverdir/node/entity/entity.json` on the `server`.
+我们还需要将`/localhostdir`中的公共 entity 文件放在`server`上。将`localhost`上的`/localhostdir/entity/entity.json`文件复制到`server`上的`/serverdir/node/entity/entity.json`。
 
-#### Copying the Genesis File to the server
+#### Copying the Genesis File to the server 复制创世文件到服务器
 
-The latest Genesis file can be found in the [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+最近的创世文件在[网络参数](../../oasis-network/network-parameters.md)，你下载最近的 `genesis.json` ，然后在`server` 复制到 `/serverdir/etc/genesis.json`。
 
-#### Configuring the Oasis Node
+#### Configuring the Oasis Node 配置 Oasis 节点
 
-There are a variety of options available when running an Oasis node. The following YAML file is a basic configuration for a validator node on the network.
+在运行 Oasis 节点时，有多种选项可供选择。下面的 YAML 文件是网络上验证器节点的基本配置。
 
-Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
+在使用此配置之前，你应该收集以下信息来替换配置文件中存在的变量：
 
-* `{{ external_address }}`: The external IP you used when registering this node.
+- `{{ external_address }}`: 注册节点时使用外网 IP
 
 {% hint style="info" %}
-If you are using a [Sentry Node](sentry-node-architecture.md), you should use the public IP of that machine.
+如果你使用 [Sentry 节点](sentry-node-architecture.md)，你要使用有公共 ip 的机器。
 {% endhint %}
 
-* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+- `{{ seed_node_address }}`： 种子节点地址的格式为 `ID@IP:port`。
 
-  You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+当前 Oasis 种子节点地址在 [网络参数](../../oasis-network/network-parameters.md)。
 
-To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
+要使用这个配置，将它保存在`/serverdir/etc/config.yml`文件中，并将其作为`--config`的参数传递给`oasis-node`命令。
 
 ```yaml
 ##
@@ -331,49 +330,50 @@ consensus:
         - "{{ seed_node_address }}"
 ```
 
-#### Ensuring Proper Permissions
+#### Ensuring Proper Permissions 保证合适的权限
 
-Only the owner of the process that runs the Oasis node should have access to the files in the `/serverdir/node` directory. The `oasis-node` binary ensures that the files used by the node are as least privileged as possible so that you don't accidentally shoot yourself in the foot while operating a node.
+只有运行 Oasis 节点的进程的所有者才能访问`/serverdir/node`目录中的文件。 `oasis-node`文件可确保该节点使用的文件具有尽可能低的权限。
 
-To ensure proper permissions are set, we suggest running the following to remove all non-owner read/write/execute permissions:
+为了确保设置正确的权限，我们建议运行以下命令：
 
 ```bash
 chmod -R go-r,go-w,go-x /serverdir
 ```
 
 {% hint style="info" %}
-Just so it's clear, the following permissions are expected by the `oasis-node` binary:
+需要说明的是，`oasis-node`文件需要以下权限：
 
-* `700` for the `/serverdir/node` directory
-* `700` for the `/serverdir/node/entity` directory
-* `600` for all `*.pem` files
-{% endhint %}
+- `/serverdir/node` 目录的权限是 `700`
+- `/serverdir/node/entity` 目录的权限是 `700`
+- 所有`*.pem` 文件的权限是 `600`
+  {% endhint %}
 
 ### Starting the Oasis Node
 
-You can start the node by running the following command:
+通过运行以下命令来启动节点：
 
 ```bash
 oasis-node --config /serverdir/etc/config.yml
 ```
 
 {% hint style="success" %}
-The Oasis node is configured to run in the foreground by default.
+Oasis 节点默认配置为在前台运行。
 
-We recommend you configure and use it with a process manager like [systemd](https://github.com/systemd/systemd) or [Supervisor](http://supervisord.org/).
+我们建议你用一个进程管理器比如 [systemd](https://github.com/systemd/systemd) 或者 [Supervisor](http://supervisord.org/)，来管理节点。
 {% endhint %}
 
-### Verifying the Connection to the Network
+### Verifying the Connection to the Network 验证网络连接
 
-As part of the starting the server process, the `oasis-node` binary will, by default, setup an internal unix socket in the `datadir` of the Node. This socket can be used to communicate to the node and query details about the network.
+作为启动服务器进程的一部分，`oasis-node` 默认会在节点的 `datadir`中设置一个 socket。
+这个 socket 可以用来和节点通信，查询网络的详细信息。
 
-Run the following command:
+运行以下命令：
 
 ```bash
 oasis-node registry entity list -a unix:/serverdir/node/internal.sock
 ```
 
-If this command fails, you'll receive a non-zero exit code and there's a high likelihood that you are not connected to the network. However, if it does work properly it should respond with output like the following but with potentially many more values:
+如果这个命令失败，很有可能你没有连接到网络。如果正常工作，它会有如下的输出：
 
 ```text
 CVzqFIADD2Ed0khGBNf4Rvh7vSNtrL1ULTkWYQszDpc=
@@ -383,68 +383,61 @@ DVobZ8bWlOv2J6oHO0uITr5FPO5rIY2irdPNhByprHk=
 D2hqhJcmZnBmhw9TodOdoFPAjmRkpRatANCNHxIDHgA=
 ```
 
-Once you get to a node that's connected you can move on to the next section as your node is not yet registered as a validator on the Oasis Network.
+得到连接的节点后，你可以继续进行下一部分，因为你的节点尚未在 Oasis Network 上注册为验证器。
 
-## Staking and Registering
+## Staking and Registering 抵押和注册
 
 {% hint style="success" %}
-This step is not necessary if your entity was fully staked at genesis.
+如果你的 entity 在创世时就已经完全定好了，这一步就不需要了。
 {% endhint %}
 
 {% hint style="warning" %}
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../manage-tokens/oasis-cli-tools/get-account-info.md).
+如果你之前提交过抵押或注册交易，则你的 nonce 可能与示例中使用的 nonce 不同。 如果不确定，请使用[指南](../../manage-tokens/oasis-cli-tools/get-account-info.md) 检查帐户的 nonce。
 {% endhint %}
 
-Once you have been funded, you can complete the process of connecting your node to the network by registering both your entity and your node, as described below.
+一旦获得资金，就可以通过注册 entity 和节点来完成将节点连接到网络的过程，如下所述。
 
-### Check that your node is synced
+### Check that your node is synced 检查节点是否已同步
 
-Before you can make any transactions you'll have to make sure that your node is synced. To do so call this command on the server:
+在你进行任何交易之前，你必须确保你的节点已经同步好。你可以在服务器上执行这个命令：
 
 ```bash
 oasis-node control is-synced -a unix:/serverdir/node/internal.sock
 ```
 
-If your node is synced, the above command should output:
+如果你的节点是同步的，命令会输出：
 
 ```text
 node completed initial syncing
 ```
 
-If your node is not yet synced, you will need to wait before you can move forward.
+如果你的节点还没有同步，你需要等待同步完成，才能继续之后的操作
 
-### Generating a Staking \(Escrow\) Transaction on the `localhost`
+### Generating a Staking \(Escrow\) Transaction on the `localhost` 在`localhost`上生成一个抵押（托管）交易
 
-Your entity's private key should be disconnected from the internet on the `localhost`. Therefore, you need to generate the following transaction on the `localhost`.
+你的 entity 的私钥应该在`localhost`上与互联网断开连接。因此，你需要在`localhost`上生成以下交易。
 
 {% hint style="danger" %}
-The entity's private key is used to authorize transactions on your staking account.
-
-Hence it should never be present on the online `server`.
+entity 的私钥用于授权你的抵押账户上的交易。
+因此，它永远都不会出现在在线服务器上。
 {% endhint %}
 
-The current minimum stake required to register an entity and register a node as a validator is 200 tokens. So, we will generate an escrow transaction that escrows 200 tokens on your own entity.
+目前，注册一个 entity 和注册一个节点作为验证者所需的最低股权是 200 个代币。所以，我们将生成一个托管交易，托管自己 entity 上的 200 个 token。
 
 {% hint style="info" %}
-The Oasis node's staking application calls the operation of staking tokens "escrow."
+Oasis 将抵押 token 的操作称为 “托管”。
 {% endhint %}
 
-Before generating the escrow transaction, you need to set the following environment variables:
+在生成托管交易之前，你需要设置以下环境变量：
 
-* `GENESIS_FILE_PATH`: Path to the Genesis file on the `localhost`, i.e. `/localhostdir/genesis.json`.
-* `ENTITY_DIR_PATH`: Path to entity's artifacts directory on the `localhost`,
+- `GENESIS_FILE_PATH`：`localhost`上 Genesis 文件的路径，即`/localhostdir/genesis.json`。
+- `ENTITY_DIR_PATH`：Path to entity 在 `localhost`的路径，即`/localhostdir/entity/`.
+- `OUTPUT_TX_FILE_PATH`：包含输出的已签名交易的文件的路径。我们使用 `/localhostdir/signed-escrow.tx`.
+- `ACCOUNT_ADDRESS`：你的抵押账户的地址。
 
-  i.e. `/localhostdir/entity/`.
+  从 entity ID 中获取你的抵押帐户地址，请看 [从 entity ID 获取帐户地址](../../manage-tokens/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
 
-* `OUTPUT_TX_FILE_PATH`: Path to the file containing the outputted signed transaction.
-
-  For this guide, we will use `/localhostdir/signed-escrow.tx`.
-
-* `ACCOUNT_ADDRESS`: Your staking account address.
-
-  To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../manage-tokens/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
-
-Then execute the following command:
+命令如下：
 
 ```bash
 oasis-node stake account gen_escrow \
@@ -460,30 +453,22 @@ oasis-node stake account gen_escrow \
 ```
 
 {% hint style="info" %}
-The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Amber Network as each unit value used to track the account balance is 1x10^-9 tokens.
-
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../manage-tokens/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+`--stake.amount`看起来是一个非常大的数字，但实际上这只是相当于 Amber Network 的 200 个 tokne，因为账户余额的单位是 1x10^-9。
+`--transactions.fee.gas` 和 `--transaction.fee.amount` 选项取决于网络配置。
+你可以通过 [常用交易标志](../../manage-tokens/oasis-cli-tools/setup.md#common-transaction-flags) 获得更详细的信息。
 {% endhint %}
 
-### Generating Entity Registration Transaction
+### Generating Entity Registration Transaction 生成 entity 注册交易
 
-Before you can run your node successfully, you'll need to register your entity so that your node registers properly. You could do this process _after_ you submit the escrow transaction, however, to save steps we prepare everything before hand.
+在成功运行节点之前，需要注册 enitiy，以便节点能正确注册。 你可以在提交托管交易后执行此过程，但是，为了节省步骤，我们需要事前准备好一切。
 
-Before generating the register transaction, you need to set the following environment variables:
+- `GENESIS_FILE_PATH`： Genesis 文件在`localhost`的路径，即 `/localhostdir/genesis.json`。
 
-* `GENESIS_FILE_PATH`: Path to the Genesis file on the `localhost`, i.e.
+- `ENTITY_DIR_PATH`：entity 文件在 `localhost`的路径，即`/localhostdir/entity/`。
 
-  `/localhostdir/genesis.json`.
+- `OUTPUT_REGISTER_TX_FILE_PATH`： 签名交易输出文件的路径，我们使用 `/localhostdir/signed-register.tx`。
 
-* `ENTITY_DIR_PATH`: Path to entity's artifacts directory on the `localhost`,
-
-  i.e. `/localhostdir/entity/`.
-
-* `OUTPUT_REGISTER_TX_FILE_PATH`: Path to the file containing the outputted signed transaction.
-
-  For this guide, we will use `/localhostdir/signed-register.tx`.
-
-Then execute the following command:
+命令如下：
 
 ```bash
 oasis-node registry entity gen_register \
@@ -497,24 +482,21 @@ oasis-node registry entity gen_register \
 ```
 
 {% hint style="info" %}
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../manage-tokens/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+`--transactions.fee.gas` 和 `--transaction.fee.amount`依赖网络配置，
+你可以通过 [常用交易标志](../../manage-tokens/oasis-cli-tools/setup.md#common-transaction-flags) 获得更详细的信息。
 {% endhint %}
 
-### Submitting Your Transactions on the `server`
+### Submitting Your Transactions on the `server` 在 `server`端提交交易
 
-To complete the staking process we need to copy the generated escrow and registry transactions from your offline `localhost` to the `server` and submit them.
+为了完成抵押过程，我们需要将生成的托管和注册交易从离线的`localhost`复制到 `server`，并提交。
 
-To do so, follow these steps:
+要做到这一点，需要以下步骤：
 
-1. Copy the file `/localhostdir/signed-escrow.tx` on the `localhost` to
+1. 在 `localhost` 上的 `/localhostdir/signed-escrow.tx`复制到 `server`的 `/serverdir/signed-escrow.tx` 。
 
-   `/serverdir/signed-escrow.tx` on the `server`.
+2. 在`localhost`上的`/localhostdir/signed-register.tx` 复制到 `server`的 `/serverdir/signed-register.tx`。
 
-2. Copy the file `/localhostdir/signed-register.tx` on the `localhost` to
-
-   `/serverdir/signed-register.tx` on the `server`.
-
-3. Submit both transactions via `oasis-node consensus submit_tx` sub-command:
+3. 通过 `oasis-node consensus submit_tx`提交：
 
    ```bash
    oasis-node consensus submit_tx \
@@ -525,15 +507,15 @@ To do so, follow these steps:
     -a unix:/serverdir/node/internal.sock
    ```
 
-### Checking that Your Node is Properly Registered
+### Checking that Your Node is Properly Registered 检查节点是否正确注册。
 
-To ensure that your node is properly connected as a validator on the network, you can run the following command:
+为确保你的节点已作为验证器正确连接到网络上，可以运行以下命令：
 
 ```bash
 oasis-node control status -a unix:/serverdir/node/internal.sock
 ```
 
-If your node is registered and a validator, the above command should output \(some fields omitted for clarity\):
+如果你的节点已注册并为验证器，则上述命令应输出（省略了一些内容）：
 
 ```javascript
 {
@@ -569,14 +551,13 @@ If your node is registered and a validator, the above command should output \(so
 Pay attention to the `is_validator` field which should have the value of `true`.
 
 {% hint style="info" %}
-Nodes are only elected into the validator set at epoch transitions, so you may need to wait for up to an epoch before being considered.
+节点只有在 epoch 转换时才选入验证器集集中，因此你可能需要等待一个 epoch 才能被考虑。
 {% endhint %}
 
 {% hint style="warning" %}
-Note that in order to be elected in the validator set you need to have enough stake to be in the top K entities \(where K is a network-specific parameter specified by the `scheduler.max_validators` field in the genesis document\).
+需要注意的是，为了在验证者集中当选，你需要有足够的抵押来跻身前 K 个 entity（其中 K 是由 genesis 文档中`scheduler.max_validators`字段指定的参数）。
 {% endhint %}
 
-## You're a Validator!
+## You're a Validator! 你是验证者了！
 
-If you've made it this far, you've properly connected your node to the network and you're now a validator on the Oasis Network.
-
+到目前为止，你已经将节点正确连接到了网络上，你现在已经是 Oasis 网络上的验证者了。

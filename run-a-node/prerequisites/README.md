@@ -5,6 +5,3 @@ This sections lists hardware and software prerequisites for running an Oasis nod
 {% page-ref page="hardware-recommendations.md" %}
 
 {% page-ref page="oasis-node.md" %}
-
-
-

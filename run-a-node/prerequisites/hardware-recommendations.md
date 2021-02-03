@@ -1,21 +1,20 @@
-# Hardware
+# 硬件
 
 {% hint style="info" %}
-The hardware requirements listed on this page are the suggested minimum requirements. It might be possible to configure a system with less resources, but you run the risk of being underprovisioned and thereby prone to loss of stake.
+此页面上列出的硬件要求是建议的最低要求。可能可以用更少的资源配置系统，但存在配置不足的风险，从而容易失去收益。
 {% endhint %}
 
-## Minimum Requirements <a id="suggested-minimum-configurations"></a>
+## 最低要求 <a id="suggested-minimum-configurations"></a>
 
-The Oasis Network is composed of multiple classes of nodes that participate in different committees. The majority of committees have common system configurations for the participant nodes.
+Oasis Network 由多类节点组成，参与不同的委员会。大多数委员会的参与节点都有共同的系统配置。
 
-We suggest your system meets the following minimum system requirements to run an Oasis node:
+我们建议你的系统满足以下最低系统要求以运行Oasis节点。
 
 * 2.0 GHz x86-64 CPU
 
 {% hint style="warning" %}
-The CPU must have [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) support.
+CPU 必须有 [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) 支持.
 {% endhint %}
 
-* 2 GB ECC RAM
-* 500 GB High Speed Storage
-
+* 2 GB ECC 内存
+* 500 GB 高速储存

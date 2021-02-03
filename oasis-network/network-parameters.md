@@ -1,33 +1,32 @@
 ---
 description: >-
-  This page is meant to be kept up to date with the information from the
-  currently released network.
+  本页会及时更新当前发布的网络信息。
 ---
 
 # Network Parameters
 
-These are the current parameters for the Mainnet:
+以下是主网目前的参数：
 
-* [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-11-18/genesis.json):
+* [Genesis 文件](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-11-18/genesis.json):
   * SHA1: `60d82cbb175348aab5d71e69073c9f3562ec3286`
   * SHA256: `f53ddbc20e09a65906089e81f871d36b658b0d7f5205e17bf047bd822489b3ef`
-* Genesis document's hash \([explanation](../mainnet/genesis-file.md#genesis-file-vs-genesis-document)\):
+* Genesis 文档 hash \([说明](../mainnet/genesis-file.md#genesis-file-vs-genesis-document)\):
   * `a4dc2c4537992d6d2908c9779927ccfee105830250d903fd1abdfaf42cb45631`
-* Oasis seed node address:
+* Oasis seed node 地址:
   * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
 
 {% hint style="success" %}
-Feel free to use other seed nodes besides the one provided here.
+除了这里提供的seed node之外，你也可以使用其他种子节点。
 {% endhint %}
 
-* [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
+* [Oasis Core](https://github.com/oasisprotocol/oasis-core) 版本:
   * [20.12.4](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.4)
 
 {% hint style="info" %}
-The Oasis Node is part of the Oasis Core release.
+Oasis Node 是Oasis Core 的一部分。
 {% endhint %}
 
 {% hint style="danger" %}
-Do not use a newer version of Oasis Core since it likely contains changes that are incompatible with the version of Oasis Core used by other nodes.
+不要使用比较新的 Oasis Core版本，因为它可能与其他节点使用的 Oasis Core 版本不兼容。
 {% endhint %}
 
