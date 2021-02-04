@@ -55,7 +55,7 @@ description: 本页面描述符如何在Oasis Network上运行验证器节点。
 mkdir -m700 -p {entity,node}
 ```
 
-### Copying the Genesis File 复制创世文件
+### Copying the Genesis File 复制 Genesis 文件
 
 最新的 genesis 文件可以 [网络参数](../../oasis-network/network-parameters.md) 找到。
 你应该下载最新的`genesis.json`文件，将其复制到工作目录中，并设置以下环境变量指向这个路径。
@@ -64,7 +64,7 @@ mkdir -m700 -p {entity,node}
 GENESIS_FILE_PATH=/localhostdir/genesis.json
 ```
 
-以后在生成交易时，就会需要这个。
+以后在生成交易时，就会需要这个文件。
 
 ### Initializing an Entity Entity 初始化
 
@@ -238,21 +238,21 @@ chmod -R 600 /serverdir/node/*.pem
 
 #### Configuring the Oasis Node 配置 Oasis 节点
 
-在运行 Oasis 节点时，有多种选项可供选择。下面的 YAML 文件是网络上验证器节点的基本配置。
+在运行 Oasis 节点时，有多种选项可供选择。下面的 YAML 文件是验证器节点的基本配置。
 
-在使用此配置之前，你应该收集以下信息来替换配置文件中存在的变量：
+在使用这些配置前，你需要替换文件中的一些配置：
 
-- `{{ external_address }}`: 注册节点时使用外网 IP
+- `{{ external_address }}`：注册节点时使用外网 IP
 
 {% hint style="info" %}
 如果你使用 [Sentry 节点](sentry-node-architecture.md)，你要使用有公共 ip 的机器。
 {% endhint %}
 
-- `{{ seed_node_address }}`： 种子节点地址的格式为 `ID@IP:port`。
+- `{{ seed_node_address }}`：种子节点地址，格式为 `ID@IP:port`。
 
-当前 Oasis 种子节点地址在 [网络参数](../../oasis-network/network-parameters.md)。
+Oasis 种子节点地址可以在 [网络参数](../../oasis-network/network-parameters.md)这一节发现。
 
-要使用这个配置，将它保存在`/serverdir/etc/config.yml`文件中，并将其作为`--config`的参数传递给`oasis-node`命令。
+要使用这个配置，将它保存在`/serverdir/etc/config.yml`文件中，并将其作为`--config` 的参数传递给`oasis-node`命令。
 
 ```yaml
 ##

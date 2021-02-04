@@ -1,45 +1,52 @@
 ---
-description: This page describes how to run a seed node on the Oasis Network.
+description: 如何在 Oasis 网络中运行种子节点
 ---
 
-# Run a Seed Node
+# 运行种子节点
 
-This guide will cover setting up a seed node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+本文将介绍如何为Oasis Network设置种子节点。我们假设你对命令行工具的使用有基本的了解。
 
-## Prerequisites
+## 前提条件
 
-Before following this guide, make sure you've followed the [Prerequisites Guide](../prerequisites/oasis-node.md) and understand how to use the `oasis-node` binary.
+开始之前，需要你了解[前提准备](../prerequisites/)，并已经在你的系统里安装好了执行程序。
+
+## 前提条件
+
+(../prerequisites/)，并已经在你的系统里安装好了执行程序。
+
+开始之前，需要你了解[前提准备](../prerequisites/oasis-node.md)，并了解如何使用 `oasis-node`。
 
 {% hint style="danger" %}
 **Due to recent improvements to the seed node, it is recommended to use `oasis-node` with version** [**20.11.2**](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.11.2) **\(or later\).**
 {% endhint %}
 
-### Creating a Working Directory
+### 创建工作目录
 
-We will be creating the following directory structure inside a chosen top-level `/node` \(feel free to name your directories however you wish\) directory:
+我们将在顶级目录 `/node`(目录可以是任意名)中创建以下目录结构：
 
-* `etc`: This will store the node configuration and genesis file.
-* `data`: This will store the data directory needed by the running `oasis-node` binary, including the complete blockchain state.
+* `etc`： 保存 节点的配置，以及 genesis文件。
+* `data`：这将存储正在运行的 `oasis-node` 所需的数据目录，包括完整的区块链状态。
 
-  The directory permissions should be `rwx------`.
+目录的权限是`rwx------`。
 
-To create the directory structure, use the following command:
+你需要执行以下命令：
 
 ```text
 mkdir -m700 -p /node/{etc,data}
 ```
 
-### Copying the Genesis File
+### 复制 Genesis 文件
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
+最新的 genesis 文件可以在[网络参数](../../oasis-network/network-parameters.md) 这一节找到。
+你应该下载最新的`genesis.json`文件，将其复制到刚创建的`/node/etc`工作目录中。
 
-## Configuration
+## 配置
 
 {% hint style="info" %}
-This will configure the given node to only act as a seed node.
+这些配置仅应用于种子节点。
 {% endhint %}
 
-In order to configure the node create the `/node/etc/config.yml` file with the following content:
+为了配置节点，创建`/node/etc/config.yml`文件，内容如下：
 
 ```yaml
 datadir: /node/data
@@ -59,25 +66,25 @@ consensus:
     mode: seed
 ```
 
-## Starting the Oasis Node
+## 启动 Oasis 节点
 
-You can start the node by running the following command:
+使用以下命令运行节点：
 
 ```bash
 oasis-node --config /node/etc/config.yml
 ```
 
-### Seed node address
+### 种子节点地址
 
-To get the seed node Tendermint identity, run the following command:
+执行以下命令，获取种子节点的Tendermint标识：
 
 ```bash
 oasis-node identity tendermint show-node-address --datadir /node/data/
 ```
 
-### Share seed node address
+### 分享种子节点地址
 
-Nodes can now use your seed node by specifying it via a configuration flag:
+节点现在可以通过配置使用你的种子节点：
 
 ```bash
 --consensus.tendermint.p2p.seed <TENDERMINT_ADDRESS>@<EXTERNAL_IP>:26656

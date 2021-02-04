@@ -31,13 +31,13 @@ mkdir -m700 -p /node/{etc,data}
 
 ### 复制 Genesis 文件
 
-最新的 genesis 文件可以 [网络参数](../../oasis-network/network-parameters.md) 找到。
+最新的 genesis 文件可以在[网络参数](../../oasis-network/network-parameters.md) 这一节找到。
 你应该下载最新的`genesis.json`文件，将其复制到刚创建的`/node/etc`工作目录中。
 
 ## 配置
 
 {% hint style="info" %}
-这些节点配置将应用于共识层。
+这些配置仅应用于共识层。
 {% endhint %}
 
 为了配置节点，创建`/node/etc/config.yml`文件，内容如下：

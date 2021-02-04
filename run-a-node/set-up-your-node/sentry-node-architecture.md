@@ -1,53 +1,57 @@
-# Sentry Node Architecture
+# Sentry 节点架构
 
-This guide provides instructions for a deployment using the Sentry node architecture to protect validator nodes from being directly exposed on the public network.
+本指南提供了使用Sentry节点架构进行部署的说明，以保护验证器节点不直接暴露在公共网络上。
 
-This guide assumes a setup where an Oasis validator node is only accessible over a private network, with sentry nodes having access to it. The guide does not cover setting this infrastructure up. Knowledge of [Tendermint's Sentry Node architecture](https://forum.cosmos.network/t/sentry-node-architecture-overview/454) is assumed as well.
+本指南假定设置中的Oasis验证器节点只能通过专用网络访问，而sentry节点可以访问它。
+
+本指南并不包括设置这个基础设施。 假设你了解 [Tendermint的 Sentry 节点架构](https://forum.cosmos.network/t/sentry-node-architecture-overview/454)。
 
 {% hint style="danger" %}
-This is only an example of a Sentry node deployment, and we take no responsibility for mistakes contained therein. Make sure you understand what you are doing.
+这只是Sentry节点部署的一个示例，对于其中的错误，我们不承担任何责任。请确保你知道自己在做什么。
 {% endhint %}
 
-## Prerequisites
+## 前提条件
 
-Before following this guide, make sure you've read the [Prerequisites](../prerequisites/oasis-node.md) and [Running a Node on the Network](run-validator.md) guides and created your Entity.
+开始之前，需要你了解[前提准备]((../prerequisites/oasis-node.md)和 [运行节点](run-validator.md)，并创建了自己的 Entity
 
-## Configuring the Oasis Sentry Node
+## Oasis Sentry 节点配置
 
-### Initializing Sentry Node
+### 初始化 Sentry 节点
 
-Sentry node identity keys can be initialized with:
+Sentry的节点身份标识符，可以使用以下方法初始化：
 
 ```bash
 oasis-node identity init --datadir /serverdir/node
 ```
 
-### Configuring Sentry Node
+### 配置 Sentry 节点
 
-An Oasis node can be configured to run as a sentry node by setting the `worker.sentry.enabled` flag. The `tendermint.sentry.upstream_address` flag can be used to configure a list of nodes that will be protected by the sentry node.
+通过设置`worker.sentry.enabled`，可以将Oasis节点配置为作为Sentry节点运行。`tendermint.sentry.upstream_address`标志可以用来配置受sentry节点保护的节点列表。
 
-An example of full `YAML` configuration of a sentry node is below.
+下面是一个sentry节点的完整`YAML`配置的例子。
 
-Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
 
-* `{{ external_address }}`: This is the external IP on which sentry node will be reachable.
-* `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
-* `{{ validator_tendermint_id }}`: This is the Tendermint ID \(address\) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:
+在使用这些配置前，你需要替换文件中的一些配置：
+
+
+* `{{ external_address }}`：sentry 节点 可以访问的外网ip地址。
+* `{{ seed_node_address }}`：种子节点地址，格式为 `ID@IP:port`。Oasis 种子节点地址可以在 [网络参数](../../oasis-network/network-parameters.md)这一节发现。
+
+* `{{ validator_tendermint_id }}`: 这是 Oasis 验证器节点的Tendermint ID (地址)，这个节点将被sentry 节点保护。这个地址可以通过在验证节点运行以下命令获取到：
 
   ```bash
   oasis-node identity tendermint show-node-address --datadir /serverdir/node
   ```
 
-  on the validator node.
+* `{{ validator_private_address }}`: 这(大概)是一个私有地址，可以从 sentry 节点访问验证器。
 
-* `{{ validator_private_address }}`: This is the \(presumably\) private address on which validator should be reachable from the sentry node.
-* `{{ validator_sentry_client_grpc_public_key }}`: This is the public TLS key of the Oasis validator node that will be protected by the sentry node. This public key can be obtained by running:
+* `{{ validator_sentry_client_grpc_public_key }}`： 这是Oasis验证程序节点的公共TLS密钥，将由sentry节点保护。可以在验证节点运行以下命令获取这个公钥：
 
   ```bash
    oasis-node identity show-sentry-client-pubkey --datadir /serverdir/node
   ```
 
-  on the validator node. Note that the above command is only available in `oasis-node` from version 20.8.1 onward.
+需要注意的是，这个命令只有20.8.1版本以后的`oasis-node`才有。
 
 ```yaml
 ##
@@ -120,35 +124,37 @@ consensus:
     core:
       listen_address: tcp://0.0.0.0:26656
       external_address: tcp://{{ external_address }}:26656
-  
+
     # List of seed nodes to connect to.
     # NOTE: You can add additional seed nodes to this list if you want.
     p2p:
       seed:
         - "{{ seed_node_address }}"
-  
+
     sentry:
       upstream_address:
         - "{{ validator_tendermint_id }}@{{ validator_private_address }}:26656"
 ```
 
 {% hint style="success" %}
-Multiple sentry nodes can be provisioned following the above steps.
+可以按照上述步骤配置多个 sentry节点。
 {% endhint %}
 
-## Configuring the Oasis Validator Node
+## 配置验证节点
 
-In this setup the Oasis validator node should not be exposed directly on the public network. The Oasis validator only needs to be able to connect to its sentry nodes, preferably via a private network.
+在这种设置中，Oasis验证器节点不应该直接暴露在公共网络上。Oasis验证器最好是通过一个私有网络，
+能够连接到 sentry 节点。
 
-### Initializing Validator Node
+### 初始化验证节点
 
 {% hint style="info" %}
-If your validator node is already registered and running in a non-sentry setup, this step can be skipped as the Oasis validator will update its address in the Registry automatically once we redeploy it with new configuration.
+如果你的验证器节点已经在非sentry设置中注册并运行，可以跳过这一步，因为一旦我们用新的配置重新部署Oasis验证器，Oasis验证器将自动更新其在注册器中的地址。
 {% endhint %}
 
-When you are [initializing a validator node](run-validator.md#initializing-a-node), you should use the sentry node's external address and Consensus ID in the `node.consensus_address` flag. If you are running multiple sentry nodes, you can specify the `node.consensus_address` flag multiple times.
+当你 [初始化验证节点](run-validator.md#initializing-a-node)的时候，你应该在`node.consensus_address`中使用sentry节点的外部地址和共识ID。
+如果你正在运行多个sentry节点，则可以多次指定`node.consensus_address`。
 
-To initialize a validator node with 2 sentry nodes, run the following commands from the `/localhostdir/node` directory:
+要初始化一个带有2个sentry节点的验证器节点，在`/localhostdir/node`目录下运行以下命令：
 
 ```bash
 export SENTRY1_CONSENSUS_ID=<YOUR_SENTRY1_CONSENSUS_ID_B64>
@@ -165,52 +171,54 @@ oasis-node registry node init \
 ```
 
 {% hint style="info" %}
-`SENTRY_CONSENSUS_ID`: This is the Consensus ID of the sentry node in base64 format. This ID can be obtained from `consensus_pub.pem`:
+`SENTRY_CONSENSUS_ID`：这是sentry节点的base64格式的共识ID。该ID可从`consensus_pub.pem`中获得，需要在 sentry节点运行以下命令：
 
 ```bash
 sed -n 2p /serverdir/node/consensus_pub.pem
 ```
-
-on the sentry node.
 {% endhint %}
 
-### Configuring the Validator Node
+### 配置验证节点
 
-There are some configuration changes needed for the Oasis validator node to enable proxying through its sentry node. Most of these flags should be familiar from the Tendermint sentry node architecture.
+Oasis验证器节点需要进行一些配置更改，才能通过 sentry 节点实现代理。大部分配置跟 Tendermint sentry节点配置很相似。
 
-Since the validator node will not have an external address, the `consensus.tendermint.core.external_address` flag should be skipped. Similarly, the `consensus.tendermint.p2p.seed` flag can be skipped, as the `oasis-node` won't be directly connecting to any of the seed nodes.
+由于验证器节点没有外部地址，所以忽略配置`consensus.tendermint.core.external_address`。
+同样，`consensus.tendermint.p2p.seed`也可以忽略，因为`oasis-node`不会直接连接到任何种子节点。
 
-Tendermint Peer Exchange should be disabled on the validator with the `consensus.tendermint.p2p.disable_peer_exchange` flag.
+Tendermint Peer Exchange 应该在验证器禁用`consensus.tendermint.p2p.disable_peer_exchange`。
 
-Sentry nodes can also be configured as Tendermint Persistent-Peers with the `consensus.tendermint.p2p.persistent_peer` flag.
+Sentry 节点也能配置 Tendermint Persistent-Peers 通过 `consensus.tendermint.p2p.persistent_peer`。
 
-In addition to the familiar Tendermint setup above, the node needs to be configured to query sentry nodes for external addresses every time the validator preforms a re-registration. This is configured with the `worker.sentry.address` flag.
+除了上面熟悉的Tendermint设置外，每次验证器执行重新注册时，还需要将该节点配置为向Sentry节点查询外部地址。
 
-The `worker.sentry.address` flag is of format: `<pubkey>@ip:port` where:
+这个配置是 `worker.sentry.address`。
 
-* `<pubkey>`: Is the sentry node's TLS public key.
-* `ip:port`: Is the \(private\) address of the sentry node's control endpoint.
+`worker.sentry.address` 是这样的格式 `<pubkey>@ip:port`：
 
-Putting it all together, an example configuration of a validator node in the sentry node architecture is given below.
+* `<pubkey>`：是sentry节点的TLS公钥。
+* `ip:port`：是sentry节点的控制端的（私有）地址。
 
-Before using this configuration you should collect the following information to replace the `{{ var_name }}` variables present in the configuration file:
+综合来看，下面给出了一个sentry节点架构中验证器节点的配置示例。
 
-* `{{ sentry_node_private_ip }}`: This is the private IP address of the sentry node over which sentry node should be accessible to the validator.
-* `{{ sentry_node_grpc_public_key }}`: This is the sentry node's control endpoint TLS public key. This ID can be obtained by running:
+在使用这个配置之前，你应该收集以下信息来替换配置文件中的`{{ var_name }}`变量。
 
+* `{{ sentry_node_private_ip }}`：这是sentry节点的私有IP地址，sentry节点应该可以通过该地址访问验证器。
+
+* `{{ sentry_node_grpc_public_key }}`：这是哨兵节点的控制端点TLS公钥。这个ID可以在sentry节点运行
+以下命令获得：
   ```bash
    oasis-node identity show-tls-pubkey --datadir /serverdir/node
   ```
 
-  on the sentry node. Note that the above command is only available in `oasis-node` from version 20.8.1 onward.
+需要注意的是，这个命令只有20.8.1版本以后的`oasis-node`才有。
 
-* `{{ sentry_node_tendermint_id }}`: This is the Tendermint ID \(address\) of the sentry node that will be configured as a Persistent Peer. This ID can be obtained by running:
+* `{{ sentry_node_tendermint_id }}`： 这是哨兵节点的Tendermint ID \(地址\)，该节点将被配置为一个Persistent Peer。
+
+在运行sentry节点，运行以下命令获取此ID：
 
   ```bash
   oasis-node identity tendermint show-node-address --datadir /serverdir/node
   ```
-
-  on the sentry node.
 
 ```yaml
 ##
