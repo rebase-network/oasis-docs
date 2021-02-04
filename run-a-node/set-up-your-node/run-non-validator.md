@@ -1,8 +1,8 @@
 ---
-description: 如何在Oasis网络上运行非验证者节点。
+description: 如何在Oasis网络上运行非验证节点。
 ---
 
-# 运行一个非验证者节点
+# 运行一个非验证节点
 
 {% hint style="info" %}
 这些说明用于设置_非验证_节点，如果你想运行1个_验证_节点，请看[如何运行验证节点](run-validator.md)。

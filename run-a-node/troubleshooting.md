@@ -1,45 +1,44 @@
-# Node Troubleshooting
+# 节点故障排除
 
 {% hint style="danger" %}
-**BEFORE YOU BEGIN TROUBLESHOOTING**
+**在你进行故障排除之前**
 
-Before you begin troubleshooting we suggest you check all of the following:
+在开始故障排除之前，我们建议你检查以下所有内容：
 
-* Check that your current binary version is the latest listed on the [Current Network Parameters](../oasis-network/network-parameters.md)
-  * Check the version on your localhost using `oasis-node --version`
-  * Check the version on your server using `oasis-node --version`
-* If upgrading, make sure that you've wiped state \(unless that is explicitly not
+* 检查你当前的程序版本是[当前网络参数](../oasis-network/network-parameters.md)上列出的最新版本
 
-  required\)
+  * 在本地检查版本，使用 `oasis-node --version`
+  * 在服务器端检查版本，使用 `oasis-node --version`
+* 如果要升级，请确保已擦除状态（除非明确不需要）
 
-* If you're doing anything with the entity:
-  * Do you have the latest genesis?
-  * Do you have the correct private key \(or Ledger device\).
-  * If you're signing a transaction:
-    * Do you sufficient account balance to make the transaction?
-      * Run `oasis-node stake account info`
-    * Are you using the correct nonce?
-      * Run `oasis-node stake account info`
-* If you're generating a transaction:
-  * Do you have the latest genesis?
-* If you're submitting a transaction:
-  * Do you have the latest genesis?
-  * Is your node synced? If not, the transaction will fail to run properly
+* * 如果你要对实体做任何事情：
+  * 你有最新版本的 genesis么?
+  * 你有的正确的私钥么 (或者 Ledger 设备)。
+  * 如果你要签名一笔交易：
+    * 你的账户余额足够么？
+      * 运行 `oasis-node stake account info`
+    * 有没有使用正确的 nonce?
+      * 运行 `oasis-node stake account info`
+* 如果你正在生成一个交易：
+  * 你有最新版本的 genesis么?
+* 如果你要提交一个交易：
+  * 你有最新版本的 genesis么?
+  * 你的节点是否同步了？如果没有，交易将无法正常执行。
 {% endhint %}
 
-## Running a Node
+## 运行节点
 
-### Invalid Permissions
+### 无效的权限
 
-#### Permissions for node and entity
+#### 节点 和 entity 的权限
 
-Error Message:
+错误信息：
 
 ```text
 common/Mkdir: path '/serverdir/node' has invalid permissions: -rwxr-xr-x
 ```
 
-The `entity` and `node` directories both need to have permissions `rwx------`. Make sure you initialize the directory with correct permissions or change them using `chmod`:
+`entity` 和 `node` 目录的权限都是 `rwx------`。 确保目录的权限正确，或用`chmod`改变它们：
 
 ```bash
 mkdir --mode 700 --parents {entity,node}
@@ -50,33 +49,36 @@ chmod 700 /serverdir/node
 chmod 700 /serverdir/entity
 ```
 
-#### Permissions for .pem files
+#### `.pem` 文件的权限
 
-Error Message example:
+错误信息：
 
 ```text
 signature/signer/file: invalid PEM file permissions 700 on /serverdir/node/identity.pem
 ```
 
-All `.pem` files should have the permissions `600`. You can set the permissions for all `.pem` files in a directory using the following command:
+所有 `.pem` 文件的权限都是 `600`。使用下面的命令为目录中的所有`.pem`文件设置权限：
 
 ```bash
 chmod -R 600 /path/*.pem
 ```
 
-#### Serverdir Ownership
+#### Serverdir 的权限
 
-Another possible cause of permission issues is not giving ownership of your `serverdir` to the user running the node \(e.g. `docker-host` or replace with your user\):
+Another possible cause of permission issues is not giving ownership of your `serverdir` to the user running the node (e.g. `docker-host` or replace with your user):
+
+
+权限问题的另一个可能原因是没有将 `serverdir`的所有权授予运行该节点的用户（例如docker-host或替换为自己）：
 
 ```bash
 chown -R docker-host:docker-host /serverdir
 ```
 
-In general, to avoid problems when running docker, specify the user when running `docker` commands by adding the flag `--user $(id -u):$(id -g)`.
+通常，为避免在运行docker时出现问题，请在运行`docker`命令时通过添加 `--user $(id -u):$(id -g)` 来指定用户。
 
-### Cannot Find File
+### 找不到文件
 
-Error Message examples:
+错误信息：
 
 ```text
 no such file or directory
@@ -90,19 +92,19 @@ file does not exist
 ts=2019-11-17T03:42:09.778647033Z level=error module=cmd/registry/node caller=node.go:127 msg="failed to load entity" err="file does not exist"
 ```
 
-More often than you'd expect, this error is the result of setting the path incorrectly. You may have left something like `--genesis.file $GENESIS_FILE_PATH` in the command without setting `$GENESIS_FILE_PATH` first, or set the path incorrectly. Check that `echo $GENESIS_FILE_PATH` matches your expectation or provide a path in the command.
+错误的发生频率通常超出预期，这是错误地设置路径的结果。 你可能在命令中使用了`--genesis.file $GENESIS_FILE_PATH` 之类的内容，而没有事先设置`$GENESIS_FILE_PATH`或未正确设置路径。
+检查`echo $ GENESIS_FILE_PATH`是否不是你期望的文件地址或在命令中提供路径。
 
-Another possible cause: the files in your localhost directory cannot be read from the container. Make sure to run commands in the same session within the container.
+另一个可能的原因：无法从容器读取localhost目录中的文件。 确保在容器内的同一会话中运行命令。
 
-## Staking and Registering
+## 抵押和注册
 
-### Transaction Out of Gas
+### 交易的Out of Gas问题
 
-Error message:
+错误信息：
 
 ```text
 module=cmd/stake caller=stake.go:70 msg="failed to submit transaction" err="rpc error: code = Unknown desc = staking: add escrow transaction failed: out of gas" attempt=1
 ```
 
-The docs are now updated to show that you need to add `--stake.transaction.fee.gas` and `--stake.transaction.fee.amount` flags when generating your transaction. Note that if you're re-generating a transaction, you will need to increment the `--nonce` flag.
-
+现在文档已经更新，你在生成交易时需要添加`--stake.transaction.fee.gas`和`--stake.transaction.fee.alum`。请注意，如果你重新生成一个交易，你将需要增加`--nonce`。

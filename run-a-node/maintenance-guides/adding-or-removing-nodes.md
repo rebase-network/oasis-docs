@@ -1,23 +1,26 @@
-# Adding or Removing Nodes
+# 添加或删除节点
 
-At some point you may wish to add or remove nodes from your entity. In order to do so, you will need to have at least the following:
+在某些时候，你可能希望从entity中添加或删除节点。要做到这一点，至少需要具备以下条件：
 
-* Access to a synced node
-* Access to your entity's private key
+* 进入同步的节点
+* 获得你的entity的私钥
 
 ## Overview
 
-The process for adding/removing nodes is similar and has the following steps:
+增加/删除节点的过程类似，有以下步骤：
 
-1. Retrieve your up to date entity descriptor \(`entity.json`\)
-2. Update your entity descriptor by adding/removing a node
-3. Generate a `register` transaction to update your entity registration on the network.
+1. 检查最新的entity描述符(`entity.json`)。
 
-## Retrieving Your Latest Entity Descriptor
+2. 通过添加/删除一个节点来更新你的entity描述符。
 
-To ensure that we do not update your entity descriptor \(`entity.json`\) incorrectly we should get the latest entity descriptor state. For this operation, you will need to know your the base64 encoding of your entity's public key.
+3. 生成一个 `register`交易，更新你在网络上的entity注册。
 
-On your server run this command:
+
+## 检查最新的entity描述符
+
+为了确保不会错误地更新你的entity描述符(`entity.json`)，我们应该获取最新的entity描述符状态。对于这个操作，你需要知道你的entity公钥的base64编码。
+
+在你的服务器上运行如下命令：
 
 ```bash
 ENTITY_PUBLIC_KEY="some-base64-public-key"
@@ -25,17 +28,19 @@ oasis-node registry entity list \
     -a unix:/serverdir/node/internal.sock -v | grep $ENTITY_PUBLIC_KEY
 ```
 
-## Updating Your Entity Descriptor
+## 更新你的 Entity 描述符
 
-### To Add a Node
+### 添加一个节点
 
 {% hint style="info" %}
-Due to how the node election process works, only a single node from your entity can be selected as a validator for any given epoch. Additional nodes will _not_ give you more voting power nor will it, inherently, provide high availability to have multiple nodes.
+由于节点选举过程的工作方式，在任何给定的时代，只能从你的entity中选择一个节点作为验证者。
+额外的节点将_不会_给你更多的投票权，也就不会为拥有多个节点提供高可用性。
 {% endhint %}
 
-Adding a node is a simple operation that is directly supported by the `oasis-node` binary. For this operation you'll need to have initialized a new node, and you'll need to have the `node_genesis.json` file in order to add it to the entity descriptor.
+添加节点是一个简单的操作，由 `oasis-node`直接支持。
+对于这个操作，你需要初始化一个新节点，并且需要有`node_genesis.json`文件才能将其添加到entity描述符中。
 
-Assuming that the `node_genesis.json` is at `/localhostdir/new_node/node_genesis.json` the command is the following:
+假设 `node_genesis.json`位于 `/localhostdir/new_node/node_genesis.json`，命令如下：
 
 ```bash
 NEW_NODE_GENESIS_PATH=/localhostdir/new_node/node_genesis.json
@@ -44,9 +49,9 @@ oasis-node registry entity update \
   --entity.node.descriptor /localhostdir/new_node/node_genesis.json
 ```
 
-## To Remove a Node
+## 删除一个节点
 
-Removing a node requires updating the entity descriptor manually. The entity descriptor file is a simple JSON document that looks something like:
+删除节点需要手动更新entity描述符。 entity描述符文件是一个简单的JSON文档，看起来像：
 
 ```javascript
 {
@@ -59,12 +64,12 @@ Removing a node requires updating the entity descriptor manually. The entity des
 }
 ```
 
-In the above entity descriptor 2 nodes are attached to the entity:
+在上述entity描述符中，有2个节点与entity相连。
 
-1. A node with an identity `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=`
-2. A node with an identity `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=`
+1. 1个节点的标识是 `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=`
+2. 另1个节点的标识是  `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=`
 
-To remove the the Node `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=` you would remove it from the array in the `nodes` field, like so:
+要删除节点`BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=`，你可以从`nodes`字段的数组中删除它，像这样：
 
 ```javascript
 {
@@ -75,14 +80,13 @@ To remove the the Node `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=` you would 
   "allow_entity_signed_nodes": false
 }
 ```
+## 更新你在网络上的entity注册
 
-## Updating Your Entity Registration on the Network
+最后，为了在网络上提交更改，你需要生成一个`register` 交易，并将该交易提交给网络。
 
-Finally, to commit the changes on the network you'll need to generate a `register` transaction and submit that transaction to the network.
+### 生成一个`register` 交易
 
-### Generating a `register` Transaction
-
-Run this command on your localhost \(as you need your entity's private key\):
+在你的本地主机上运行这个命令（因为你需要entity私钥）：
 
 ```bash
 GENESIS_FILE_PATH="path/to/the/current/genesis"
@@ -97,23 +101,24 @@ oasis-node registry entity gen_register \
   --transaction.nonce 1
 ```
 
-Once this has exited with a `0` status, you should have a file at `$OUTPUT_REGISTER_TX_FILE_PATH`. Upload that file to your server.
+Once this has exited with a `0` status, you should have a file at `$OUTPUT_REGISTER_TX_FILE_PATH`.
 
-### Submitting the Transaction
+一旦退出时出现 `0`，你在`$OUTPUT_REGISTER_TX_FILE_PATH`会得到一个文件。将该文件上传到你的服务器。
 
-Run this command on your server:
+
+### 提交交易
+
+在服务器上运行命令：
 
 ```bash
 oasis-node consensus submit_tx \
   --transaction.file /serverdir/update_entity_registration.tx \
   -a unix:/serverdir/node/internal.sock
 ```
-
-If there are no errors, your entity registration should be updated. You can run this command to see the changes reflected:
+如果没有错误，你的entity注册应该已经更新。你可以运行这个命令来查看变化：
 
 ```bash
 ENTITY_PUBLIC_KEY="some-base64-public-key"
 oasis-node registry entity list \
     -a unix:/serverdir/node/internal.sock -v | grep $ENTITY_PUBLIC_KEY
 ```
-
