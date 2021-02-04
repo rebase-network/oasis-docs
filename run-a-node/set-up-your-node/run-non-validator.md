@@ -1,45 +1,46 @@
 ---
-description: This page describes how to run a non-validator node on the Oasis Network.
+description: 如何在Oasis网络上运行非验证者节点。
 ---
 
-# Run a Non-validator Node
+# 运行一个非验证者节点
 
 {% hint style="info" %}
-These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](run-validator.md).
+这些说明用于设置_非验证_节点，如果你想运行1个_验证_节点，请看[如何运行验证节点](run-validator.md)。
 {% endhint %}
 
-This guide will cover setting up your non-validator node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+本文将介绍如何为Oasis Network设置非验证者节点。我们假设你对命令行工具的使用有基本的了解。
 
-## Prerequisites
+## 前提条件
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your systems.
+开始之前，需要你了解[前提准备](../prerequisites/)，并已经在你的系统里安装好了执行程序。
 
-### Creating a Working Directory
+### 创建工作目录
 
-We will be creating the following directory structure inside a chosen top-level `/node` \(feel free to name your directories however you wish\) directory:
+我们将在顶级目录 `/node`(目录可以是任意名)中创建以下目录结构：
 
-* `etc`: This will store the node configuration and genesis file.
-* `data`: This will store the data directory needed by the running `oasis-node` binary, including the complete blockchain state.
+* `etc`： 保存 节点的配置，以及 genesis文件。
+* `data`：这将存储正在运行的 `oasis-node` 所需的数据目录，包括完整的区块链状态。
 
-  The directory permissions should be `rwx------`.
+目录的权限是`rwx------`。
 
-To create the directory structure, use the following command:
+你需要执行以下命令：
 
 ```bash
 mkdir -m700 -p /node/{etc,data}
 ```
 
-### Copying the Genesis File
+### 复制 Genesis 文件
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
+最新的 genesis 文件可以 [网络参数](../../oasis-network/network-parameters.md) 找到。
+你应该下载最新的`genesis.json`文件，将其复制到刚创建的`/node/etc`工作目录中。
 
-## Configuration
+## 配置
 
 {% hint style="info" %}
-This will configure the given node to only follow the consensus layer.
+这些节点配置将应用于共识层。
 {% endhint %}
 
-In order to configure the node create the `/node/etc/config.yml` file with the following content:
+为了配置节点，创建`/node/etc/config.yml`文件，内容如下：
 
 ```yaml
 datadir: /node/data
@@ -64,23 +65,23 @@ consensus:
 
 ```
 
-Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
+在使用这些配置前，你需要替换文件中的一些配置：
 
-* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+* `{{ seed_node_address }}`：种子节点地址，格式为 `ID@IP:port`。
 
-  You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+Oasis 种子节点地址可以在 [网络参数](../../oasis-network/network-parameters.md)这一节发现。
 
-## Starting the Oasis Node
+## 启动 Oasis 节点
 
-You can start the node by running the following command:
+使用以下命令运行节点：
 
 ```bash
 oasis-node --config /node/etc/config.yml
 ```
 
-## Checking Node Status
+## 检查节点状态
 
-To ensure that your node is properly connected with the network, you can run the following command after the node has started:
+为了确保节点已正确连接到网络，你可以运行以下命令：
 
 ```bash
 oasis-node control status -a unix:/node/data/internal.sock
