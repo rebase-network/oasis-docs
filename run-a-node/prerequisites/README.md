@@ -1,6 +1,6 @@
-# Prerequisites
+#  前提条件
 
-This sections lists hardware and software prerequisites for running an Oasis node.
+本节列出了运行 Oasis 节点的硬件和软件的前提条件。
 
 {% page-ref page="hardware-recommendations.md" %}
 
