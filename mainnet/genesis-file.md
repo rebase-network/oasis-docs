@@ -4,6 +4,8 @@ description: >-
   for the Oasis Network Mainnet launch.
 ---
 
+当前单词数 2111
+
 # Genesis File Overview
 
 {% hint style="info" %}
@@ -61,7 +63,7 @@ If you are an operator who successfully completed the KYC process and submitted 
 
 ## Gas Costs
 
-The following parameters define the gas costs for various types of transactions on the network: 
+The following parameters define the gas costs for various types of transactions on the network:
 
 * **compute\_commit** - The cost for a compute commit for a ParaTime node. The value is set to 10000 gas.
 * **merge\_commit** - The cost for a ParaTime merge commit. The value is set to 10000 gas.
@@ -73,7 +75,7 @@ The following parameters define the gas costs for various types of transactions 
 
 ## Node & Runtime Token Thresholds
 
-There are several **threshold** parameters that specify the minimum number of tokens that need to be staked in order for a particular entity or a particular type of node to participate in the network. The minimum threshold specified for the **entity,** **node-compute, node-keymanager, node-storage,** and **node-validator** parameters is set to 100000000000 nROSE for each, indicating that you need to stake at least 100 ROSE tokens in order to have your entity or any of the specified nodes go live on the network. 
+There are several **threshold** parameters that specify the minimum number of tokens that need to be staked in order for a particular entity or a particular type of node to participate in the network. The minimum threshold specified for the **entity,** **node-compute, node-keymanager, node-storage,** and **node-validator** parameters is set to 100000000000 nROSE for each, indicating that you need to stake at least 100 ROSE tokens in order to have your entity or any of the specified nodes go live on the network.
 
 There are also minimum thresholds for registering new runtimes. The minimum thresholds for registering **runtime-compute** and **runtime-keymanager** are set to 50000000000000 nROSE, indicating that you need to stake at least 50000 ROSE tokens in order to register a runtime.
 
@@ -85,19 +87,19 @@ These key parameters are related to staking and rewards on the network:
 * **reward\_schedule** - The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time.
 * **signing\_reward\_threshold\_numerator** and **signing\_reward\_threshold\_denominator** - These parameters define the proportion of blocks that a validator must sign during each epoch to receive staking rewards. A proportion of 3/4 means that a validator must maintain an uptime of at least 75% during an epoch in order to receive staking rewards for that period.
 * **rate\_change\_interval** - The granularity at which at rate changes can be specified in a commission schedule. This limits the complexity of the commission schedule; the value is set to 1, indicating that the commission rate can change once per epoch.
-* **rate\_bound\_lead** - The minimum lead time \(in epochs\) needed for changes to commission rate bounds. Operators need to wait before any rate bound changes go into effect. The value is set to 336, which is expected to be approximately 14 days. 
+* **rate\_bound\_lead** - The minimum lead time \(in epochs\) needed for changes to commission rate bounds. Operators need to wait before any rate bound changes go into effect. The value is set to 336, which is expected to be approximately 14 days.
 * **max\_rate\_steps** - The maximum allowed number of rate step changes in a commission schedule.The value is set to 10, indicating that the commission schedule can have a maximum of 10 rate steps.
 * **max\_bound\_steps** - The maximum allowed number of commission rate bound step changes in the commission schedule. The value is set to 10, indicating that the commission schedule can have a maximum of 10 bound steps.
 * **min\_delegation** - The minimum amount of tokens required in a delegation. The value is set to 100000000000 nROSE, or 100 ROSE tokens.
 * **fee\_split\_weight\_propose** - The block proposer's share of transaction fees, set to a value of 2.
 * **fee\_split\_weight\_next\_propose** - The next proposer's share of transaction fees, set to a value of 1.
 * **fee\_split\_weight\_vote** - A signer’s/voter’s share of transaction fees, set to a value of 1.
-* **reward\_factor\_epoch\_signed** - The factor for rewards distributed to validators who signed at least threshold blocks in a given epoch, set to a value of 1. 
+* **reward\_factor\_epoch\_signed** - The factor for rewards distributed to validators who signed at least threshold blocks in a given epoch, set to a value of 1.
 * **reward\_factor\_block\_proposed** - The factor for rewards earned for block proposal. Set to 0, indicating validators get no extra staking rewards for proposing block.
 
 ## Token Supply & Ledger
 
-The following parameters specify the total token supply, total token pool reserved for staking rewards, and account balances across the network at the time of genesis: 
+The following parameters specify the total token supply, total token pool reserved for staking rewards, and account balances across the network at the time of genesis:
 
 * **total\_supply** - Specifies the total token supply for the network, which is fixed at 10 billion ROSE tokens.
 * **common\_pool** - The tokens reserved for staking rewards to be paid out over time.
@@ -112,14 +114,14 @@ If you are an operator who successfully completed the KYC process and submitted 
 **Interpreting your account balance in the ledger:** Your **general** balance includes all of your tokens that have not been staked or delegated. This will be set to 100 tokens at genesis to cover gas, as most of your tokens \(except that general balance of 100 tokens\) will initially be staked \(i.e. self-delegated\) on your behalf. Within the **escrow** field, your **active** parameter shows the total tokens that have been allocated or delegated to you.
 {% endhint %}
 
-## Slashing 
+## Slashing
 
 These parameters specify key values for the network's slashing mechanism:
 
 * **amount** - The amount of tokens to slash for double signing. The value is set to 100000000000 nROSE, or 100 ROSE tokens.
 * **freeze\_interval** - The duration, in epochs, for which a node that has been slashed for double signing is “frozen,” or barred from participating in the network's consensus committee. A value of 18446744073709551615 \(the maximum value for a 64-bit unsigned integer\) means that any node slashed for double signing is, in effect, permanently banned from the network.
 
-## Consensus 
+## Consensus
 
 The following parameters are used to define key values for the network's consensus protocol:
 
@@ -130,7 +132,7 @@ The following parameters are used to define key values for the network's consens
 * **timeout\_commit** - Specifies long to wait after committing a block before starting a new block height, in nanoseconds \(this affects block interval\). Set to 5000000000 nanoseconds, or 5 seconds.
 * **max\_tx\_size** - Maximum size for consensus-layer transactions, in bytes, set to 32768 bytes.
 * **max\_block\_size** - Maximum block size, in bytes, set to 22020096 bytes
-* **max\_block\_gas** - Maximum block gas, set to 0, which specifies an unlimited amount of gas. 
+* **max\_block\_gas** - Maximum block gas, set to 0, which specifies an unlimited amount of gas.
 * **public\_key\_blacklist** - A list of the public keys that cannot be used on the network.
 
 ## Transfers
@@ -139,7 +141,7 @@ Please note that transfers will be disabled for Mainnet Beta and we expect once 
 
 ## Feedback
 
-We look forward to receiving the community’s feedback on the Oasis Network’s genesis file! If you have any specific feedback or questions, please let us know via the genesis file [feedback form](https://oasisfoundation.typeform.com/to/yG4pp57W). 
+We look forward to receiving the community’s feedback on the Oasis Network’s genesis file! If you have any specific feedback or questions, please let us know via the genesis file [feedback form](https://oasisfoundation.typeform.com/to/yG4pp57W).
 
-## 
+##
 

@@ -5,6 +5,8 @@ description: >-
   questions and responses.
 ---
 
+当前单词数 3430
+
 # Oasis Network FAQ
 
 ## **Overview**
@@ -23,27 +25,27 @@ The Oasis Network offers many unique features aimed directly at unlocking the fu
   * Growing ecosystem of Open Data apps that enable increased data control and privacy protections for users
 * Vibrant and dedicated community
   * Leading Validators from 6 continents stake on Oasis today
-  * Largest Layer 1 University Program 
+  * Largest Layer 1 University Program
   * Growing global Ambassador Programs
 * High quality team of contributors
-  * International team of computer security researchers, academics, engineers, and product leaders from Apple, Google, Amazon, UC Berkeley, MIT, Harvard, Stanford, Carnegie Mellon, and more 
+  * International team of computer security researchers, academics, engineers, and product leaders from Apple, Google, Amazon, UC Berkeley, MIT, Harvard, Stanford, Carnegie Mellon, and more
 
-### **What are the key advantages of using the Oasis Network over other networks?** 
+### **What are the key advantages of using the Oasis Network over other networks?**
 
 The Oasis Network offers key advantages over other blockchain networks across a wide array of performance metrics:
 
-* Scalability 
+* Scalability
   * Separating simple transactions from complex transactions; not to have complex transactions starve/delay simple transactions
-  * High-throughput for simple transactions 
+  * High-throughput for simple transactions
   * Parallel execution for complex transactions \(through ParaTimes\)
     * More scalable than sharding; less replication needed for the same level of security
 * Efficient Verification
-  * Efficient verification enabled via discrepancy detection 
+  * Efficient verification enabled via discrepancy detection
   * Detects errors even for F+1 compute committee size
   * Smaller compute committee size can achieve the same level of security → less replication, lower overhead, and better scalability
     * \(“Same level of security” using concrete probabilistic security analysis\)
 * Speed
-  * Fast finality from BFT proof-of-stake consensus protocol; 1.5-6s blocktime and instant finality 
+  * Fast finality from BFT proof-of-stake consensus protocol; 1.5-6s blocktime and instant finality
 * Flexibility
   * Intrinsic support for a broad range of different workloads
   * Easy to add new runtime environments by creating ParaTimes
@@ -62,33 +64,33 @@ The Oasis Network offers key advantages over other blockchain networks across a 
 * Privacy
   * Built-in support for confidential runtimes that leverage Trusted Execution Environments \(TEEs\)
   * Seamless integration of blockchain technology and secure computing
-* Developer friendliness 
+* Developer friendliness
   * EVM compatible runtime\(s\)
   * Confidential runtimes
   * Developer tooling for building User Privacy as a Service \(UPaaS\) applications:
     * Immutable log of data rights
     * Enforcement of controlled data usage
     * Data use is fully auditable via blockchain
-    * Complexities of blockchain are abstracted away to make features more accessible to app developers and users 
+    * Complexities of blockchain are abstracted away to make features more accessible to app developers and users
   * Programmable with WASM, so developers’ barrier to entry is lower than learning a network-specific language
   * WASM allows for frictionless adoption of evolving languages and language features \(e.g. Rust’s memory safety comes free\)
 * Applications
   * New application domains are unlocked
     * Scalable DeFi to support more complex DeFi applications and transactions
     * Privacy-enchanced DeFi
-    * Data tokenization, data staking, and data yields  
+    * Data tokenization, data staking, and data yields
 
 ### **Is the Oasis Protocol Foundation still taking grant applications for projects that are building new dApps?**
 
-Yes! We are still taking grant applications. You can apply any time [here](https://medium.com/oasis-protocol-project/oasis-foundation-grant-wishlist-3ad73b723d7%20). 
+Yes! We are still taking grant applications. You can apply any time [here](https://medium.com/oasis-protocol-project/oasis-foundation-grant-wishlist-3ad73b723d7%20).
 
 ### **Who are your main competitors?**
 
-We see the Oasis Network as being competitive with and having key advantages over leading Layer 1 blockchain protocols like Ethereum, Polkadot, and others. 
+We see the Oasis Network as being competitive with and having key advantages over leading Layer 1 blockchain protocols like Ethereum, Polkadot, and others.
 
 ### **When is mainnet launch?**
 
-We’ll have more to announce on this soon. We just started collecting final entity packages and wallet addresses from validators and will continue to do so for a few weeks. After that, it's on to building the genesis file for mainnet, reviewing it as a community, and then if all goes well...launching! 
+We’ll have more to announce on this soon. We just started collecting final entity packages and wallet addresses from validators and will continue to do so for a few weeks. After that, it's on to building the genesis file for mainnet, reviewing it as a community, and then if all goes well...launching!
 
 ## **Architecture**
 
@@ -100,7 +102,7 @@ The Oasis Network is a Layer 1 blockchain protocol using a BFT, proof-of-stake c
 
 The Oasis Network’s architecture is composed of two key parts:
 
-* Consensus Layer: 
+* Consensus Layer:
   * BFT proof-of-stake consensus protocol \(Tendermint\)
 * Runtime Layer - virtual machine \(VM\) / runtime support:
   * EVM/Solidity compatible
@@ -110,7 +112,7 @@ The Oasis Network’s architecture is composed of two key parts:
 
 ### **How is a ParaTime different from a Parachain?**
 
-Unlike a Parachain, a ParaTime does not need to do consensus. ParaTimes just need to take care of compute and discrepancy detection is used to ensure correctness and integrity of execution, making ParaTimes more efficient than Parachains and other chain designs that rely on sharding. 
+Unlike a Parachain, a ParaTime does not need to do consensus. ParaTimes just need to take care of compute and discrepancy detection is used to ensure correctness and integrity of execution, making ParaTimes more efficient than Parachains and other chain designs that rely on sharding.
 
 ### **Who will be running all of these ParaTimes? Can anyone run a ParaTime?**
 
@@ -138,7 +140,7 @@ For example, the Ethereum 1.0 would not be suitable since:
 
 The Oasis Network uses Tendermint as its BFT consensus protocol. Given that the consensus layer uses a BFT protocol, the Oasis Network offers instant finality, meaning that once a block is finalized, it cannot be reverted \(at least not for full nodes\). A ParaTime commitment goes into a block and as such the ParaTime state is also finalized and cannot be reverted once a block is finalized.
 
-### **Why doesn’t the Oasis Network do sharding? Does that mean it’s slow?** 
+### **Why doesn’t the Oasis Network do sharding? Does that mean it’s slow?**
 
 The Oasis Network does not use sharding. Instead, Oasis leverages a discrepancy detection model leading up to roothash updates, giving the network the same scalability benefits that sharding offers but with added benefits that come from a design that is much simpler to implement in practice. Sharding is a nice idea in theory but comes with a lot of complexity and costs that make it harder to implement in practice. From a security perspective, the complexity of sharding also makes it harder to audit and inherently more vulnerable to security breaches The Oasis Network’s discrepancy detection-based approach provides the same benefits as sharding through a cleaner, simpler, more efficient implementation. Ultimately, the Oasis Network’s unique scalability mechanism ensures that the network is not only fast \(like sharding networks purport to be\) but also versatile and secure enough to support a wide range of real-world workloads.
 
@@ -162,18 +164,18 @@ We have built partnerships with several leading oracle providers. Provable is a 
 
 ### **What aspects of DeFi require privacy? How can the Oasis Network’s focus on privacy help with DeFi applications?**
 
-In the current generation of DeFi, some miners and traders are leveraging the inefficiencies of Ethereum to stack mining fees and interest rates, while preventing many more people from participating in the industry. Privacy can play a strong role in making the network function properly by reducing these inefficiencies. At the application level, privacy is an enabler. For instance, strong privacy guarantees can encourage established institutions to participate in the system because these institutions would be able to protect their interests and relationships. Additionally, privacy features can serve as the foundation for a reputation system, thereby unlocking the full potential of undercollateralized lending. We keep hearing that privacy is the next big thing in DeFi, and we look forward to empowering developers to build the next generation of DeFi applications. 
+In the current generation of DeFi, some miners and traders are leveraging the inefficiencies of Ethereum to stack mining fees and interest rates, while preventing many more people from participating in the industry. Privacy can play a strong role in making the network function properly by reducing these inefficiencies. At the application level, privacy is an enabler. For instance, strong privacy guarantees can encourage established institutions to participate in the system because these institutions would be able to protect their interests and relationships. Additionally, privacy features can serve as the foundation for a reputation system, thereby unlocking the full potential of undercollateralized lending. We keep hearing that privacy is the next big thing in DeFi, and we look forward to empowering developers to build the next generation of DeFi applications.
 
 ### **How does privacy help create a new system of Open Finance?**
 
 Existing financial systems and data systems are not open at all. They are only accessible to a select few. Privacy has a much broader meaning than just keeping something private. Thanks to privacy-preserving computation, users can retain ownership of their information and grant others access to compute on their data without actually revealing \(or transferring\) their data. This will enable users to accrue data yields by essentially staking their data on the blockchain, unlocking a wide range of new financial opportunities. Open Finance refers to the idea that status, wealth, and geography won't block you from accessing a certain financial product. Adherence to a programmable set of parameters will determine whether someone can participate or not, making new financial opportunities open to more people around the world. For example, services such as lending protocols could offer different interest rates depending on the history of that user. What's game changing for the world of finance is that companies would not have to rely on a centralized score such as FICO - they would be able to build their own models.
 
-### **What DeFi tools and services will be available on the Oasis Network?** 
+### **What DeFi tools and services will be available on the Oasis Network?**
 
 We see DeFi applications as being composed of several different building blocks \(oracles, liquidity, exchanges, wallets, on/off ramps, etc.\). We have established partnerships with key players across all major DeFi product and tooling categories. At the same time, we are working with existing players in the space to bring their services to our network. Below are just a few examples of the DeFi partners building disruptive, high quality services on the Oasis Network:
 
 * Keyless is a rising star in the field of passwordless authentication. Using a combination of zero-knowledge biometric authentication and key management, Keyless helps replace passwords with just who you are.
-* Provable is a flexible open source oracle service that leverages secure enclaves and software-based isolation, very much in line with the Oasis Network vision. 
+* Provable is a flexible open source oracle service that leverages secure enclaves and software-based isolation, very much in line with the Oasis Network vision.
 * Bankex is a digital asset platform that wants to bring digital money to underbanked users via social networks and messaging platforms.
 * Totle is a liquidity-focused service that aggregates decentralized exchanges and synthetic asset providers to help source liquidity at the best price. Additionally, users get insurance for up to 600 ETH via Nexus Mutual.
 
@@ -185,19 +187,19 @@ There are two key factors to consider: 1\) technical features and 2\) the presen
 
 From a technical perspective, in the short term, we are seeing how the slow speed of Ethereum is causing miners and yield farmers to create a “fee market.” These miners and yield farmers are able to execute just a few transactions, and the fact that the transaction is visible to everyone creates the perfect situation for a few people to skew the system towards their own financial motives. Ultimately, just a select few risk takers profit from this inefficiency \(stacking yields\) and prevent DeFi developers from building mainstream applications. The Oasis Network has a strong advantage here by offering substantial speed and scalability advantages over Ethereum.
 
-Regarding the presence of liquidity, Ethererum currently has an advantage. However, it’s worth noting that the current DeFi space is still extremely small relative to both the blockchain industry as a whole and the FinTech industry as a whole, in terms of liquidity, so there is a lot of room for new players like the Oasis Network to come in and leverage state-of-the-art features to attract liquidity. Moreover, blockchains will become interoperable going forward, allowing for liquidity to flow freely between different blockchain networks. The Oasis Network itself will have interoperability features that will let it access liquidity available on other platforms. 
+Regarding the presence of liquidity, Ethererum currently has an advantage. However, it’s worth noting that the current DeFi space is still extremely small relative to both the blockchain industry as a whole and the FinTech industry as a whole, in terms of liquidity, so there is a lot of room for new players like the Oasis Network to come in and leverage state-of-the-art features to attract liquidity. Moreover, blockchains will become interoperable going forward, allowing for liquidity to flow freely between different blockchain networks. The Oasis Network itself will have interoperability features that will let it access liquidity available on other platforms.
 
 ### **What is Oasis bringing to DeFi that doesn’t currently exist on other networks?**
 
-The status quo is that there are two ways to deal with data: 1\) not revealing your data to anyone and hence not being able to consume a certain service, or 2\) revealing the data and losing ownership. The Oasis Network disrupts the status quo by introducing a third option: sharing your data but retaining ownership and control. Simply put, this is a breakthrough. This enables entirely new application use cases and new ways of collaborating that were simply not possible before. Iin addition, this enables data owners to “stake” their data and earn a yield in exchange for contributing their data to service or project. Tokenizing data and staking data to produce yields that get paid out to data owners opens up a whole new world of possibilities, bringing us closer to building a responsible data economy. You can learn more about this vision in [this blog post](https://medium.com/oasis-protocol-project/programming-data-and-money-the-data-market-yield-ad27a8b35c10). 
+The status quo is that there are two ways to deal with data: 1\) not revealing your data to anyone and hence not being able to consume a certain service, or 2\) revealing the data and losing ownership. The Oasis Network disrupts the status quo by introducing a third option: sharing your data but retaining ownership and control. Simply put, this is a breakthrough. This enables entirely new application use cases and new ways of collaborating that were simply not possible before. Iin addition, this enables data owners to “stake” their data and earn a yield in exchange for contributing their data to service or project. Tokenizing data and staking data to produce yields that get paid out to data owners opens up a whole new world of possibilities, bringing us closer to building a responsible data economy. You can learn more about this vision in [this blog post](https://medium.com/oasis-protocol-project/programming-data-and-money-the-data-market-yield-ad27a8b35c10).
 
 ### **Will yield farming be possible on the Oasis Network?**
 
-Absolutely. Being able to execute many transactions and keeping transactions private creates a much more efficient DeFi market because participants would follow rational economic principles instead of micro bubbles. We are already working with top projects to understand how to use privacy-preserving features to bring more people to the world of DeFi. We believe that privacy features can serve as key draw for both developers and users, driving sustained, long-term organic growth for DeFi applications on the Oasis Network. 
+Absolutely. Being able to execute many transactions and keeping transactions private creates a much more efficient DeFi market because participants would follow rational economic principles instead of micro bubbles. We are already working with top projects to understand how to use privacy-preserving features to bring more people to the world of DeFi. We believe that privacy features can serve as key draw for both developers and users, driving sustained, long-term organic growth for DeFi applications on the Oasis Network.
 
 ### **What are data yields?**
 
-Every time you use an application, you generate some data that you leave with the application itself. You clearly derive some value out of the experience, but this is just a fraction of the value that data has. Given that the data is stored in places you don’t have access to or control over, there’s nothing you can do about it. Now imagine a different scenario: whenever you generate data, this data goes into a “capsule” that you control. The application through which you generate this information has “computation-only access”; every other application needs to request access to your capsule. What’s particularly interesting is that the data is not transferred anymore. Rather, your personal data is only available in a secure environment that allows a specific set of computations to be done on the data but never reveals the data itself. With this model, you can then “charge” or earn some reward for granting others the ability to compute on your data, which we call a “data yield.” You can learn more about data yields in [this blog post](https://medium.com/oasis-protocol-project/programming-data-and-money-the-data-market-yield-ad27a8b35c10). 
+Every time you use an application, you generate some data that you leave with the application itself. You clearly derive some value out of the experience, but this is just a fraction of the value that data has. Given that the data is stored in places you don’t have access to or control over, there’s nothing you can do about it. Now imagine a different scenario: whenever you generate data, this data goes into a “capsule” that you control. The application through which you generate this information has “computation-only access”; every other application needs to request access to your capsule. What’s particularly interesting is that the data is not transferred anymore. Rather, your personal data is only available in a secure environment that allows a specific set of computations to be done on the data but never reveals the data itself. With this model, you can then “charge” or earn some reward for granting others the ability to compute on your data, which we call a “data yield.” You can learn more about data yields in [this blog post](https://medium.com/oasis-protocol-project/programming-data-and-money-the-data-market-yield-ad27a8b35c10).
 
 ## **Token**
 
@@ -217,7 +219,7 @@ Something worth noting is that privacy and confidentiality are not equivalent. P
 
 ### **Can you run Ethereum smart contracts on the Oasis Network? Or if not directly run smart contracts, could you access a bridge between Ethereum ERC20 assets and Oasis?**
 
-In short, yes! The Oasis Network supports EVM-compatible ParaTimes which will support a wide range of applications. For bridging, we are eager to implement an IBC after mainnet.   
-  
+In short, yes! The Oasis Network supports EVM-compatible ParaTimes which will support a wide range of applications. For bridging, we are eager to implement an IBC after mainnet.
+
 
 

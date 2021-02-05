@@ -1,5 +1,7 @@
 # Network Incentives Proposal
 
+当前单词数 1507
+
 {% hint style="info" %}
 This is a draft proposal and is subject to change pending the outcome of an economic audit, feedback from the community, and the results of the Oasis Foundation’s staking competition.
 {% endhint %}

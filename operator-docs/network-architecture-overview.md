@@ -2,6 +2,8 @@
 description: Overview of the Oasis Network architecture
 ---
 
+当前单词数 1062
+
 # Network Architecture Overview
 
 As an operator of a Node on the Oasis Network, it is suggested that you have an understanding of the system architecture of the Oasis Network. Here we will provide a high level overview of the Oasis Network's architecture. This overview is used to provide enough guidance to be useful for the purposes of getting started as a Node Operator. Note that not all of these features are available in the Public Testnet, and their design may change in later phases. For more information on our proposed design, see [our research papers](https://oasisprotocol.org/researchpapers).

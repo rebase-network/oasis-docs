@@ -1,5 +1,7 @@
 # Network Governance
 
+当前单词数 1057
+
 {% hint style="info" %}
 The proposed governance model is still being finalized. Please check back for updates.
 
@@ -24,7 +26,7 @@ Moving forward, our proposed process for reviewing and approving major protocol 
 
 * **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues \([for minor features](network-governance.md#minor-feature-requests)\) or [Architectural Decision Records](https://github.com/oasisprotocol/oasis-core/blob/master/docs/adr/index.md) \(ADRs, [for major features](network-governance.md#major-feature-requests)\).
 * **Review and discussion of the proposals.** Decisions about the future of the project are made through discussion with all members of the community, from the newest user to the most experienced. All non-sensitive project management discussion takes place in the Oasis Protocol GitHub via issues \([for minor features](network-governance.md#minor-feature-requests)\) and ADRs \([for major features](network-governance.md#major-feature-requests)\).
-* **Decision making process.** In order to ensure that the project is not bogged down by endless discussion and continual voting, the project operates a policy of lazy consensus. This allows the majority of decisions to be made without resorting to a formal vote.  
+* **Decision making process.** In order to ensure that the project is not bogged down by endless discussion and continual voting, the project operates a policy of lazy consensus. This allows the majority of decisions to be made without resorting to a formal vote.
 
 
   In general, as long as nobody explicitly opposes a proposal or patch, it is recognised as having the support of the community. For lazy consensus to be effective, it is necessary to allow at least 72 hours before assuming that there are no objections to the proposal. This requirement ensures that everyone is given enough time to read, digest and respond to the proposal.

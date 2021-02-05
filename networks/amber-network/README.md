@@ -2,6 +2,8 @@
 
 ## What Is It
 
+当前单词数 582
+
 With the [QuestNet](../quest-network/) reaching a point of stability, the Amber Network is the next phase of the Oasis Network’s path to Mainnet. The Oasis Amber Network is a release candidate for Mainnet and includes all the core features of the network you can expect at Mainnet launch. This includes:
 
 * Fully decentralized consensus layer

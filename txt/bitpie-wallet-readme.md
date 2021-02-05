@@ -1,44 +1,41 @@
 ---
 description: >-
-  This page provides an overview of how you can set up your Bitpie Wallet and
-  then use it to generate an Oasis wallet address as well as receive and
-  transfer ROSE tokens on the Oasis Mainnet.
+  这个页面提供了一个你可以如何设置你的Bitpie钱包然后用它生成以及接收Oasis Wallet地址和在Oasis主网转移Rose代币的概述。
 ---
 
-当前单词数 	1168
-# Bitpie Wallet Guide
+# Bitpie钱包指南
 
-## What is Bitpie?
+## Bitpie是什么?
 
-Bitpie is a safe and user-friendly crypto wallet app available on mobile devices. The Bitpie Wallet lets you generate an Oasis wallet address so that you can receive ROSE tokens, as well as transfer out ROSE tokens to other valid Oasis wallet addresses. In addition to letting you manage your ROSE tokens for use on the Oasis Network, the Bitpie Wallet is also compatible with many other crypto assets, including BTC, ETH, and USDT, so it can serve as a one-stop shop for many of your crypto management needs.
+Bitpie是一款可在移动设备上使用的安全且对用户友好的加密钱包应用程序。Bitpie钱包可以让你生成一个Oasis钱包地址，这样你就可以收到Rose代币以及将Rose代币转移到其他有效的Oasis地址。Bitpie钱包除了管理在Oasis网络上的Rose代币外，还支持其他更多加密资产，包括BTC，ETH和USDT，因此它可以作为一站式服务，满足你的许多加密管理需求。
 
-The Bitpie team is an official partner of the Oasis Protocol Foundation, so you can be sure that the Bitpie Wallet is secure and up-to-date with the latest Oasis Network integrations.
+Bitpie团队是Oasis Protocol 基金会的官方合作伙伴，所以你可以确保Bitpie钱包是安全的，并且集成了最新的Oasis网络。
 
 {% hint style="warning" %}
-For your own security and peace of mind, please only use wallet apps that are listed on our official documentation. Any other wallet apps are likely unofficial and may be subject to criticial security vulnerabilities and other technical issues. Using wallet apps that not listed in our official documentation could result in the permanent loss of your ROSE token assets.
+为了你的自身安全和安心，请只使用我们官方文档中列出的钱包应用程序。其他任何的钱包应用程序都有可能是非官方的，可能存在严重的安全漏洞和其他技术问题。使用没有在官方文档中列出的钱包应用，可能会导致你的Rose代币资产丢失。
 {% endhint %}
 
 {% hint style="info" %}
-BitPie Wallet currently only supports address generation and transfer functionality on the Oasis Mainnet. Staking and delegation functionality is currently disabled but in development.
+BitPie钱包目前只支持Oasis主网上的地址生成和交易功能。抵押和委托代理功能目前是禁用的，但在开发中。
 {% endhint %}
 
-## Installation
+## 安装
 
-To install the Bitpie Wallet, you need an iOS or Android device.
+要安装Bitpie钱包，你需要一个iOS或安卓设备。
 
-If you have an iOS device, visit [the App Store](https://apps.apple.com/us/app/bitpie-universal-crypto-wallet/id1481314229), and click "Get" to download the Bitpie app. You may see multiple Bitpie apps listed -- make sure you select the app named **Bitpie-Universal Crypto Wallet**.
-
+如果你使用的是i0S设备，请访问 [App Store](https://apps.apple.com/us/app/bitpie-universal-crypto-wallet/id1481314229)，
+点击“Get“下载Bitpie应用。你可能会看到多个Bitpie应用，确保你选择了名为“Bitpie-Universal Crypto Wallet”的应用程序。
 ![](../../../.gitbook/assets/gqkch2l.png)
 
-If you have an Android device, [visit the Google Play Store](https://play.google.com/store/apps/details?id=com.bitpie), and clicke "Install" to download the Bitpie app.
+如果你使用的是Android设备，请访问[Google Play Store](https://play.google.com/store/apps/details?id=com.bitpie)，并点击“Install"下载Bitpie应用程序。
 
 ![](../../../.gitbook/assets/screenshot_20201119-135919.png)
 
-If you are not able to find the Bitpie app in your respective app marketplace or encounter installation issues, your device may have an operating system version that is not supported by the Bitpie app. Check the app download page to see what operating system versions the Bitpie app is compatible with.
+如果你不能在应用程序市场中找到Bitpie app或遇到安装问题，那么你的设备操作版本可能不支持的Bitpie应用。 查看应用下载页面，查看Bitpie应用兼容哪些操作系统版本。
 
-## Generate Your Oasis Wallet Address
+## 生成Oasis 钱包地址
 
-After you have successfully installed the Bitpie app on your device, open it to get started with generating your Oasis wallet address. Click on the "Creat a New Wallet" button. This will take you to a Security Instruction page -- make sure you read through the content of that page, and click the "Got it. Next." button.
+在你的设备上成功安装Bitpie应用程序后，打开它，开始生成Oasis钱包地址。点击“Creat a New Wallet”。这将把你带到一个安全指示页面--确保你阅读了该页面的内容，然后点击“Got it.Next.” 按钮。
 
 ![](../../../.gitbook/assets/screen-shot-2020-11-19-at-11.12.02-am.png)
 
@@ -87,6 +84,4 @@ On the "ROSE System" interface, click on the "Transfer" button. This takes you t
 {% hint style="danger" %}
 For additional troubleshooting and to provide any feedback on your Bitpie Wallet experience, please reach out to the Bitpie team directly at **support@bitpie.com** or via [their website](www.bitpiehk.com).
 {% endhint %}
-
-
 
