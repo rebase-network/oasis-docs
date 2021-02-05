@@ -1,16 +1,16 @@
-# Common Staking Info
+# 常用权益信息
 
 {% hint style="info" %}
-This example assumes you have read and followed the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
+这个例子假设你已经读过[准备环节](prerequisites.md) 和 [安装小节](setup.md)。
 {% endhint %}
 
-To query an Oasis node for the common staking information, run:
+为了查询 Oasis 节点的常用权益信息，运行：
 
 ```bash
 oasis-node stake info -a $ADDR
 ```
 
-This will output something like:
+该命令会输入如下：
 
 ```text
 Token's ticker symbol: ROSE
@@ -27,11 +27,11 @@ Staking threshold (runtime-compute): ROSE 100.0
 Staking threshold (runtime-keymanager): ROSE 100.0
 ```
 
-We can see that the token's name is ROSE and that 1 token corresponds to 10^9 \(i.e. one billion\) base units.
+我们可以看到代币的名字是 ROSE ，并且1个代币对应有 10^9 \(十亿个\) 基本单位。
 
-Next, we can observe that the **total supply** is 10 billion tokens and that almost 8 billion tokens are in the **common pool**.
+接下来，我们可以看到 **total supply** 是100亿个代币，并且有80亿个代币在 **common pool** 里。
 
-Finally, the **staking thresholds** for the entity, all node kinds \(validator, compute, storage\) and all runtime kinds \(compute, key manager\) are 100 tokens.
+最后，实体的 **staking thresholds**，所有节点类型 \(如validator, compute, storage\)何所有运行期类型 \(如compute, key manager\) 是100个代币。
 
-This means that if you want to register, e.g. an entity with a validator node, you need to escrow \(i.e. stake\) at least 200 tokens.
+也就是说如果你想注册一个验证者节点实体，你需要抵押至少200个代币。
 
