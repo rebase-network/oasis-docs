@@ -1,18 +1,18 @@
-# Delegate/Stake Tokens
+# 托管代币和权益代币
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
+这个例子假设你已经读过[准备环节](prerequisites.md) 和 [安装小节](setup.md)。
 {% endhint %}
 
-Let's assume:
+假设：
 
-* we want to stake \(i.e. self-delegate\) 208 tokens,
-* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw` is our staking account address.
+* 我们想要抵押 \(比如自我托管\) 208 个代币,
+* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw` 是我们的权益账号地址。
 
 {% hint style="info" %}
-Minimum delegation amount is specified by the `staking.params.min_delegation` consensus parameter.
+最小托管数量用 `staking.params.min_delegation` 共识参数指定。
 
-To obtain its value from the genesis file, run:
+为了从 genesis 文件中获得这个值，运行：
 
 ```bash
 cat $GENESIS_FILE | \
@@ -20,14 +20,14 @@ cat $GENESIS_FILE | \
   print(json.dumps(json.load(sys.stdin)["staking"]["params"]["min_delegation"], indent=4))'
 ```
 
-Note that this value is in base units. E.g., a value of `"10000000000"` would correspond to 10 tokens.
+注意这个数值是基础单位，比如 `"10000000000"` 的意思是10个代币。
 {% endhint %}
 
-To achieve this we need to put 208 tokens to our own escrow account.
+为了达到这个目的，我们需要把208个代币放到自己的托管账户中。
 
-## Query Our Account's Info
+## 查询账号信息
 
-To query our staking account's information, use the following command:
+查询权益账号信息，使用下面的命令：
 
 ```bash
 oasis-node stake account info \
@@ -36,10 +36,10 @@ oasis-node stake account info \
 ```
 
 {% hint style="info" %}
-For a detailed explanation on querying account information, see [t](get-account-info.md)he [Get Info](get-account-info.md) section.
+查看账号信息的详细描述，参考 [获取信息](get-account-info.md) 小节。
 {% endhint %}
 
-Before the transaction, this outputs:
+交易之前，输出如下：
 
 ```javascript
 General Account:
@@ -55,16 +55,16 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我们可以看到：
 
-* General account's balance is ~431 tokens.
-* Account's nonce is 8.
-* ~11242 tokens are actively bounded to the escrow account.
-* The amount of tokens that are currently debonding is 0.
+* General account's 余额是431.492490765
+* 账号的随机值（nonce） 8.
+* ~11242 个代币绑定在托管账号中。
+* debonding的代币数量是0.
 
-## Generate an Escrow Transaction
+## 生成托管交易
 
-Let's generate an escrow transaction of 208 tokens \(i.e. 208 \* 10^9 base units\) to our own escrow account and store it to `tx_escrow.json`:
+生成托管 208 个代币的交易 \(i.e. 208 \* 10^9 基础单位\) 到托管账号，并存入 `tx_escrow.json`:
 
 ```bash
 oasis-node stake account gen_escrow \
@@ -77,7 +77,7 @@ oasis-node stake account gen_escrow \
   --transaction.fee.amount 2000
 ```
 
-This will output a preview of the generated transaction:
+该命令输出生成的交易预览如下：
 
 ```javascript
 You are about to sign the following transaction:
@@ -94,11 +94,11 @@ Other info:
   Genesis document's hash: 976c302f696e417bd861b599e79261244f4391f3887a488212ee122ca7bbf0a8
 ```
 
-and ask you for confirmation.
+然后需要进行确认。
 
-## Submit the Transaction
+## 提交交易
 
-To submit the generated transaction, we need to copy `tx_escrow.json` to the online Oasis node \(i.e. the `server`\) and submit it from there:
+为了提交生成的交易，我们需要复制 `tx_escrow.json` 到线上的 Oasis 节点\(i.e. the `server`\) 并提交：
 
 ```bash
 oasis-node consensus submit_tx \
@@ -106,9 +106,9 @@ oasis-node consensus submit_tx \
   --transaction.file tx_escrow.json
 ```
 
-## Query Our Account's Info Again
+## 再次查询账号信息
 
-Let's check [our account's info](delegate-tokens.md#query-our-accounts-info) again:
+再次检查 [账号信息](delegate-tokens.md#query-our-accounts-info) :
 
 ```javascript
 General Account:
@@ -124,26 +124,25 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我们可以看到：
 
-* Our general account's balance decreased for 208.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
-* Our account's nonce increased to 9.
-* Our escrow account's active balance increased for 208 tokens.
-* The total number of shares in our escrow account's active part
+* general account's 余额减少了 208.000002 个代币。0.000002 个代币是我们为这次交易支付的费用。
+* 账号的随机值（nonce）增加到9.
+* 托管账号的余额增加了 208 个代币。
+* 托管账号的活跃部分总股份数量（total shares）。
 
-  increased from 10,000,000,000,000 to 10,185,014,125,910.
+  从 10,000,000,000,000 增加到 10,185,014,125,910.
 
-### Computation of Shares
+### 股份的计算
 
-When a delegator delegates some amount of tokens to a staking account, the delegator receives the number of shares proportional to the current **share price** \(in tokens\) calculated from the total number of tokens delegated to a staking account so far and the number of shares issued so far:
+委托人将一定数量的代币委托给押金账户时，委托人获得的股份数量与当前 **股价**（以代币为单位）成正比，计算方法为：迄今为止委托给押金账户的代币总数和迄今为止发行的股份数量。
 
 ```text
 shares_per_token = account_issued_shares / account_delegated_tokens
 ```
 
-In our case, the current share price \(i.e. `shares_per_token`\) is 10,000,000,000,000 / 11242.384816640 which is 889,490,989.9542729 shares per token.
+在我们的例子中，目前的股价 \(即 'shares_per_token'\) 是10,000,000,000,000 / 11242.384816640，即每个代币为889,490,989.9542729股。
 
-For 208 tokens, the amount of newly issued shares is thus 208 \* 889,490,989.9542729 which is 185,014,125,910.48877 shares \(rounded to 185,014,125,910 shares\).
+因此，对于208个代币，新发行的股票数量为 208 \* 889,490,989.9542729，即185,014,125,910.48877股 \(四舍五入为185,014,125,910股\)。
 
-Hence, the escrow account's total number of shares increased for 185,014,125,910 shares.
-
+因此，托管账户的总股数增加为185,014,125,910股。

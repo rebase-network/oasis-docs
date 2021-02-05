@@ -1,15 +1,15 @@
-# Oasis CLI Tools
+# Oasis 命令行工具
 
-This section provides documentation on how to manage your tokens via Oasis CLI tools.
+本节讲述如何通过 Oasis 命令行工具管理代币。
 
 {% hint style="warning" %}
-If you are not familiar with the command line, we recommend using one of the available [Web Wallets](../web-wallets.md).
+如果你不熟悉命令行，我们建议可以使用[网页钱包](../web-wallets.md)。
 {% endhint %}
 
 {% hint style="warning" %}
-Oasis CLI Tools are only fully supported on x86\_64 Linux systems.
+Oasis 命令行工具仅支持 x86\_64 Linux 系统。
 
-Support for x86\_64 macOS systems is in development. Currently, macOS binary [releases of Oasis Core Ledger](https://github.com/oasisprotocol/oasis-core-ledger/releases) include both, the Oasis Core Ledger CLI and the Ledger Signer Plugin, while  there are no binary releases of [Oasis Node CLI](../../run-a-node/prerequisites/oasis-node.md) for macOS systems. To use Oasis Node CLI on macOS, you will need to [build it from source](../../run-a-node/prerequisites/oasis-node.md#building-from-source).
+x86\_64 macOS 系统的支持还在开发中。当前，macOS 二进制包 [releases of Oasis Core Ledger](https://github.com/oasisprotocol/oasis-core-ledger/releases) 包含 Oasis Core Ledger CLI and the Ledger Signer Plugin，但没有[Oasis Node CLI](../../run-a-node/prerequisites/oasis-node.md) macOS系统的二进制版本。如果想在 macOS 上使用Oasis Node CLI，需要[从源码编译](../../run-a-node/prerequisites/oasis-node.md#building-from-source)。
 {% endhint %}
 
 ## 

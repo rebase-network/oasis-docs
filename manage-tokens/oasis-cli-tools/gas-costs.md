@@ -1,12 +1,12 @@
-# Gas Costs
+# Gas 成本
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
+这个例子假设你已经读过[准备环节](prerequisites.md) 和 [安装小节](setup.md)。
 {% endhint %}
 
-### Obtaining Transactions' Gas Costs
+### 获取交易的 Gas 成本
 
-As explained in the [Common Transaction Flags](setup.md#common-transaction-flags) section, we can obtain gas costs for different staking transactions from the genesis file by running:
+在 [常见交易标识](setup.md#common-transaction-flags) 小节中，我们可以通过下面的命令从 genesis 文件中获取不同的权益交易的 gas 成本：
 
 ```bash
 cat $GENESIS_FILE | \
@@ -14,7 +14,7 @@ cat $GENESIS_FILE | \
   print(json.dumps(json.load(sys.stdin)["staking"]["params"]["gas_costs"], indent=4))'
 ```
 
-For our network, this returns:
+返回数值如下：
 
 ```javascript
 {
@@ -25,5 +25,5 @@ For our network, this returns:
 }
 ```
 
-Hence, we will need to set the `--transaction.fee.gas` flag, i.e. the maximum amount of gas a transaction can spend, in the following transactions to at least 1000 **gas units**.
+因此，我们需要设定 `--transaction.fee.gas` ， 如交易花费的最大数量的gas，以后的交易最少需要 1000 **gas单位**。
 
