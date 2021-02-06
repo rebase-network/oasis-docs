@@ -12,7 +12,7 @@ description: 本页面描述符如何在Oasis Network上运行验证器节点。
 
 ## 前提条件
 
-在阅读本指南之前，请确保你已经阅读了[前提准备](../prerequisites/)部分，并在你的系统上安装了 Oasis Node 文件。
+开始之前，假设你已经读过[准备环节](../prerequisites/)，并在系统上安装了 Oasis Node 文件。
 
 ### 抵押需求
 

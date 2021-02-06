@@ -1,20 +1,21 @@
-# Handling Network Upgrades
+# 处理网络升级
 
 {% hint style="warning" %}
-Following this guide when there is no network upgrade will result in you losing your place on the current network.
+如果没有网络升级的时候，则按照本指南进行操作会导致你失去当前网络的资格。
 {% endhint %}
 
-The following guide should be used when the network has agreed to do a software upgrade.
+当网络同意进行软件升级时，请使用以下指南。
 
 ## Dump Network State
 
 {% hint style="info" %}
-Do not stop your [Oasis Node](../prerequisites/oasis-node.md) process just yet.
+暂时不要停止[Oasis Node](../prerequisites/oasis-node.md) 进程。
 {% endhint %}
 
-Before an upgrade we will update the [Upgrade Log](../upgrade-log.md) to specify the block height at which to dump.
 
-To dump the state of the network to a genesis file, run:
+升级之前，我们将更新[升级日志](../upgrade-log.md)，以指定要转储的区块块高度。
+
+要将网络状态转储到genesis文件中，请运行：
 
 ```bash
 oasis-node genesis dump \
@@ -23,31 +24,33 @@ oasis-node genesis dump \
   --height <HEIGHT-TO-DUMP>
 ```
 
-replacing `<HEIGHT-TO-DUMP>` with the block height we specified.
+用我们指定的区块高替换`<HEIGHT-TO-DUMP>`。
 
 {% hint style="warning" %}
-You can only run the following command _after_ the `<HEIGHT-TO-DUMP>` block height has been reached on the network.
 
-To see the network's current height, run:
+你只能在网络达到 `<HEIGHT-TO-DUMP>` 区块的高度后才能运行以下命令。
+
+查看当前的区块高度，请运行：
 
 ```bash
 oasis-node control status -a unix:/serverdir/node/internal.sock
 ```
 
-and observe the value of the `consensus.latest_height` key.
+并观察`consensus.last_height`的值。
+
 {% endhint %}
 
 ## Patch Dumped State
 
 {% hint style="info" %}
-At the moment, we don't provide state patches.
+目前，我们不提供状态补丁。
 {% endhint %}
 
 ## Download and Verify the Provided Genesis File
 
-Download the new genesis file linked in the [Network Parameters](../../oasis-network/network-parameters.md) and save it as `/serverdir/etc/genesis.json`.
+从[Network Parameters](../../oasis-network/network-parameters.md)  下载新的 genesis 文件，保存为 `/serverdir/etc/genesis.json`。
 
-Then compare the dumped state with the downloaded genesis file:
+然后将转储状态与下载的genesis文件进行比较：
 
 ```bash
 diff --unified=3 genesis_dump.json genesis.json
@@ -55,7 +58,7 @@ diff --unified=3 genesis_dump.json genesis.json
 
 ### Example diff for Mainnet Beta to Mainnet network upgrade
 
-Let's assume that the above `diff` command returns:
+假设上面的`diff`命令返回：
 
 ```diff
 --- genesis_dump.json	2020-11-16 17:49:46.864554271 +0100
@@ -138,53 +141,59 @@ Let's assume that the above `diff` command returns:
  }
 ```
 
-We can observe that the provided genesis file mostly updates some particular network parameters. In addition, some ROSE tokens were transferred from an account to the Common Pool. All other things remained unchanged.
+我们可以观察到，提供的genesis文件主要更新了某些特定的网络参数。 此外，一些ROSE token已从帐户转移到Common Pool。 其他内容保持不变。
+让我们来分析一下变化，并解释一下发生了什么变动。
 
-Let's break down the diff and explain what has changed.
+在网络升级时，以下genesis文件字段总是会改变：
 
-The following genesis file fields will always change on a network upgrade:
-
-* `chain_id`: A unique ID of the network.
-* `genesis_time`: Time from which the genesis file is valid.
-* `halt_epoch`: The epoch when the node will stop functioning. We set this to intentionally force an upgrade.
+* `chain_id`：网络的唯一ID。
+* `genesis_time`：genesis 文件的有效时间。
+* `halt_epoch`： 节点停止运行的时间。设置这个值是为了强制升级。
 
 The following fields were a particular change in this upgrade:
 
-* `staking.params.reward_schedule`: This field describes the staking reward model. It was changed to start at 20% \(annualized\) and range from 20% to 2% over the first 4 years of the network. For more details, see the updated [Token Metrics and Distribution](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution) doc.
-* `staking.params.disable_transfers`: This field was removed to enable token transfers.
-* `staking.common_pool`: This field represents the Common Pool. Its balance was increased by 450M ROSE to fund increased staking rewards.
-* `staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`: This field corresponds to the Community and Ecosystem Wallet. Its `general.balance` was reduced by 450M ROSE and transferred to the Common Pool to fund increased staking rewards.
-* `extra_data`: This field can hold network's extra data, but is currently ignored everywhere. For this upgrade, we changed it back to the value in the Mainnet Beta genesis file to include the Oasis network's genesis quote: _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]._
+下面的字段是此次升级中的特殊改动：
+
+* `staking.params.reward_schedule`：描述了权益奖励模型。改为从20%/(年化)开始，在头4年中年化从20%到2%不等。更多细节，请看更新后的[token 分发](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution)文档。
+
+* `staking.params.disable_transfers`: 字段已删除，以实现代币转账。
+
+* `staking.common_pool`：代表的是Common Pool。其余额增加了4.5亿ROSE，为增加抵押奖励提供资金。
+
+* `staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`：对应的是 Community and Ecosystem 钱包地址。
+
+* `extra_data`：该字段可以保存网络的额外数据，但目前被忽略。此次升级，我们把它改回了Mainnet Beta genesis文件中的值，以包含Oasis的创世引言：“_[Quis custodiet ipsos custodes?](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_”。[由Oasis社区成员Daniyar Borangaziyev提交]。
 
 {% hint style="info" %}
-The balances in the genesis file are enumerated in nROSE, with 1 billion nROSE being equivalent to 1 ROSE token. For more details, see the [Genesis File Overview](../../mainnet/genesis-file.md).
+Genesis 文件中的余额以nROSE为单位，10亿nROSE相当于1个ROSE代币。更多细节请看[Genesis 文件](../../mainnet/genesis-file.md)。
 {% endhint %}
 
-If you obtain the same result, then you have successfully verified the provided genesis file.
+如果获得相同的结果，则说明你已成功验证了Genesis文件。
 
 ## Stop Your Node
 
-This will depend on your process manager. You should stop your [Oasis Node](../prerequisites/oasis-node.md) process however this is done for your setup.
+这将取决于你的进程管理器。你应该停止[Oasis Node](.../prerequisites/oasis-node.md)进程。
 
 ## Wipe State
 
 {% hint style="warning" %}
-We do not suggest that you wipe _all_ state. You might lose node identities and keys if you do it this way.
+我们不建议你擦除 _所有_ 状态。如果你这样做，可能会丢失节点标识和密钥。
 {% endhint %}
 
-Before restarting your node you should wipe consensus state. The process for this is described in the [Wiping Node State](wiping-node-state.md#state-wipe-and-keep-node-identity) document.
+在重新启动节点之前，你应该擦除共识状态。[擦除 Node 状态](wiping-node-state.md#state-wipe-and-keep-node-identity)文档中介绍了这个过程。
 
 ## Update Configuration
 
-If the [Upgrade Log](../upgrade-log.md) provides instructions for updating your node's configuration, update the `/serverdir/etc/config.yml` file accordingly.
+如果[升级日志](../upgrade-log.md)提供了更新后的节点配置的说明，请相应更新 `/serverdir/etc/config.yml`文件。
 
 ## Upgrade Oasis Node
 
-Before starting your node again, make sure you upgrade your [Oasis Node](../prerequisites/oasis-node.md) binary to the current version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
+在再次启动节点之前，请确保将 [Oasis Node](../prerequisites/oasis-node.md) 二进制程序升级到 [Network Parameters](../../oasis-network/network-parameters.md) 中指定的版本。
 
 ## Start Your Node
 
-This will depend on your process manager. If you don't have a process manager, you should use one. However, to start the node without a process manager you can start the [Oasis Node](../prerequisites/oasis-node.md) like so:
+这将取决于你的过程管理器。如果没有流程管理器，你可以选择使用一个。
+如果在没有进程管理器的情况下启动节点，可以运行一下命令启动 [Oasis Node](../prerequisites/oasis-node.md)：
 
 ```bash
 oasis-node --config /serverdir/etc/config.yml
@@ -192,5 +201,4 @@ oasis-node --config /serverdir/etc/config.yml
 
 ## Clean Up
 
-After you're comfortable with your node deployment, you can clean up the `genesis_dump.json` file.
-
+当节点部署成功，你可以清理掉`genesis_dump.json`文件。

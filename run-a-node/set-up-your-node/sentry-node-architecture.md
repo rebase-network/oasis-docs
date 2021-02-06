@@ -12,7 +12,7 @@
 
 ## 前提条件
 
-开始之前，需要你了解[前提准备]((../prerequisites/oasis-node.md)和 [运行节点](run-validator.md)，并创建了自己的 Entity
+开始之前，假设你已经读过[准备环节](../prerequisites/oasis-node.md) 和 [运行节点](run-validator.md)，并创建了自己的 Entity
 
 ## Oasis Sentry 节点配置
 

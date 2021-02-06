@@ -1,24 +1,24 @@
-# Amend Commission Schedule
+# 修改佣金表
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](../../manage-tokens/oasis-cli-tools/prerequisites.md) and [Setup](../../manage-tokens/oasis-cli-tools/setup.md) sections of the _Use Your Tokens_ docs.
+假设你已经阅读并遵循[准备环节](../../manage-tokens/oasis-cli-tools/准备环节.md) 和 [安装环节](../../manage-tokens/oasis-cli-tools/setup.md) 的 _使用你的代币_。
 {% endhint %}
 
-We can configure our account to take a commission on staking rewards given to our node\(s\). The **commission rate** must be within **commission rate bounds**, which we can also configure.
+我们可以配置账户，对给节点抵押奖励收取佣金。**佣金率**必须在**佣金率范围内**，我们也可以自行配置。
 
-Let's assume:
+假设：
 
-* we want to change our commission rate bounds to allow us to set any rate between 0% - 25%, and
-* change our commission rate to 10%,
-* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw6`is our staking account address.
+* 我们要更改佣金率范围，我们可以在0％-25％之间设置任何比率，并且
+* 佣金率 改为10%，
+* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw6` 是我们的抵押地址。
 
-We're not allowed to change the commission bounds too close in near future, so we'd have to make changes a number of epochs in the future.
+我们不允许在近期内把佣金范围改得太近，所以必须在以后的几个周期内进行修改。
 
 ## Commission Schedule Rules
 
-The commission schedule rules are specified by the `staking.params.commission_schedule_rules` consensus parameter.
+佣金表规则由`staking.params.commission_schedule_rules`共识参数指定。
 
-To obtain its value from the genesis file, run:
+从genesis文件中获取这个值，运行：
 
 ```bash
 cat $GENESIS_FILE | \
@@ -27,7 +27,7 @@ cat $GENESIS_FILE | \
   print(json.dumps(rules, indent=4))'
 ```
 
-For our example network this returns:
+将返回的内容如下：
 
 ```javascript
 {
@@ -38,13 +38,14 @@ For our example network this returns:
 }
 ```
 
-This means that we must submit a commission rate bound at least 336 epochs in advance \(`rate_bound_lead`\) and that we can change it on every epoch \(`rate_change_interval`\).
+这意味着，我们必须至少提前336个周期提交佣金率(`rate_bound_lead`)，并且我们可以在每个周期(`rate_change_interval`)改变它。
 
-The `max_rate_steps` and `max_bound_steps` determine the maximum number of commission rate steps and rate bound steps, respectively.
+`max_rate_steps`和 `max_bound_steps` 分别决定了佣金率步数和费率约束步数的最大值。
+
 
 ## Query Our Account's Info
 
-To query our staking account's information, use the following command:
+要查询我们的抵押账户信息，使用以下命令：
 
 ```bash
 oasis-node stake account info \
@@ -53,10 +54,10 @@ oasis-node stake account info \
 ```
 
 {% hint style="info" %}
-For a detailed explanation on querying account information, see the [Get Info](../../manage-tokens/oasis-cli-tools/get-account-info.md) section of the _Use Your Tokens_ docs.
+关于查询账户信息的详细说明，请看 [Get Info](../../manage-tokens/oasis-cli-tools/get-account-info.md) 章节的 _使用你的代币_ 内容。
 {% endhint %}
 
-Before the transaction, this outputs:
+在交易之前，这个输出是：
 
 ```javascript
 General Account:
@@ -70,16 +71,16 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我我们观察到
 
-* Account's nonce is 10.
-* No commissions rates or bounds are currently set.
+* 账户的 nonce 是 10。
+* 目前没有设定佣金率或限制。
 
 ## Generate an Amend Commission Schedule Transaction
 
-In this example, we'll set the bounds to start on epoch 1500. An account's default bounds are 0% maximum, so we have to wait until our new bounds go into effect to raise our rate to 10%. Because of that, we'll specify that our rate also starts on epoch 1500.
+在这个例子中，我们将设置范围从epoch 1500开始。一个账户的默认上限是0%，所以我们必须等到新的上限生效后才能将利率提高到10%。正因为如此，我们将指定费率也从epoch 1500开始。
 
-Let's generate an amend commission schedule transaction for this example and store it to `tx_amend_commission_schedule.json`:
+让我们为这个例子生成一个修改佣金计划交易，并将其存储到`tx_amend_commission_schedule.json`。
 
 ```bash
 oasis-node stake account gen_amend_commission_schedule \
@@ -93,10 +94,12 @@ oasis-node stake account gen_amend_commission_schedule \
 ```
 
 {% hint style="info" %}
-Rates and minimum/maximum rates are in units of 1/100,000, so `0`, `50000`, and `100000` come out to 0%, 50%, and 100%, respectively.
+
+费率的最低/最高费率以1/100,000为单位，因此`0`、`50000`和`100000`分别为0%、50%和100%。
+
 {% endhint %}
 
-This will output a preview of the generated transaction:
+这将输出一个生成的交易的预览：
 
 ```javascript
 You are about to sign the following transaction:
@@ -119,11 +122,12 @@ Other info:
   Genesis document's hash: 976c302f696e417bd861b599e79261244f4391f3887a488212ee122ca7bbf0a8
 ```
 
-and ask you for confirmation.
+并向你确认。
 
 ## Submit the Transaction
 
-To submit the generated transaction, we need to copy `tx_amend_commission_schedule.json` to the online Oasis node \(i.e. the `server`\) and submit it from there:
+为了提交生成的交易，我们需要将`tx_amend_commission_schedule.json` 复制到Oasis的在线节点(即`server`)，并从那里提交。
+
 
 ```bash
 oasis-node consensus submit_tx \
@@ -133,7 +137,7 @@ oasis-node consensus submit_tx \
 
 ## Query Our Account's Info Again
 
-Let's check [our account's info](amend-commission-schedule.md#query-our-accounts-info) again:
+再次检查我们的[账户信息](amend-commission-schedule.md#query-our-accounts-info)：
 
 ```javascript
 General Account:
@@ -152,21 +156,21 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我们观察到：
 
-* Our account's nonce increased to 11.
-* We set the commission rate of 10.0% to start on epoch 1500.
-* We set the commission rate bounds of 0% - 25% to also start on epoch 1500.
+* 账户的 nonce增加到11。
+* 我们将佣金率设定为10.0%，从 epoch 1500开始。
+* 我们设置了0%-25%的佣金率范围，也是从 epoch 1500年开始。
 
 {% hint style="info" %}
-For more information on how commissions work in general, see the [Commission](../../manage-tokens/terminology.md#commission) explanation in the _Use Your Tokens_ docs.
+更多关于佣金如何运作的信息，请参考 _使用你的代币_ 中的对[佣金](.../.../manage-token/terminology.md#commission)介绍。
 {% endhint %}
 
 ## Setting a More Complex Commission Schedule
 
-It is also possible to set multiple commission rate steps and rate bound steps by passing the `--stake.commission_schedule.rates` and `--stake.commission_schedule.bounds` CLI flags multiple times.
+也可以通过多次传递 `--stake.commission_schedule.rates` and `--stake.commission_schedule.bounds` 命令行来设置多个佣金费率步长和费率约束步长。
 
-For example, setting multiple commission rate steps and rate bound steps \(for the same account as in the previous example\) as follows:
+例如，如下设置多个佣金费率步长和费率约束步长 \(对于与上一个示例相同的帐户\)：
 
 ```
 oasis-node stake account gen_amend_commission_schedule \
@@ -185,6 +189,8 @@ oasis-node stake account gen_amend_commission_schedule \
 ```
 
 would result in the following commission schedule being printed out in [our account's info](amend-commission-schedule.md#query-our-accounts-info):
+
+将会在[账户信息](amend-commission-schedule.md#query-our-accounts-info)中打印出以下佣金表：
 
 ```text
 ...
@@ -218,6 +224,7 @@ Escrow Account:
 ```
 
 {% hint style="info" %}
-To troubleshoot an amendment that's rejected, consult our [compendium of 23 common ways for a commission schedule amendment to fail](https://github.com/oasisprotocol/oasis-core/blob/0dee03d75b3e8cfb36293fbf8ecaaec6f45dd3a5/go/staking/api/commission_test.go#L61-L610).
+
+要解决被拒绝的修正案的问题，请参考我们的[佣金表修正案失败的23种常见方法汇总](https://github.com/oasisprotocol/oasis-core/blob/0dee03d75b3e8cfb36293fbf8ecaaec6f45dd3a5/go/staking/api/commission_test.go#L61-L610)
 {% endhint %}
 
