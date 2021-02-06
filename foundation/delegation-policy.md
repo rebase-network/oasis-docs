@@ -1,33 +1,33 @@
 ---
-description: This page describe the Oasis Protocol Foundation's Delegation Policy.
+description: Oasis Protocol Foundation的 代理政策。
 ---
 
 # Delegation Policy
 
-## Delegations to Entities Participating in Pre-Mainnet Incentivized Networks
+## 参加Main-Mainnet激励网络的实体的代表团
 
-This portion of Foundation's ROSE delegations is given to validators based on their participation in the Amber Network, Quest incentivized Network, availability rankings and their community engagement.
+基金会的ROSE代表团的这一部分激励提供给验证者的，会根据他们在 Amber网络、Quest激励网络、可用性排名以及在社区的参与情况进行激励。
 
-Our initial delegation will last at least 6 months and is contingent on:
+我们的最初代表团将持续至少6个月，具体取决于：
 
-1. commission rates that are +/- 10% of the weighted median network commission rate,
-2. commission rates and commission rate bounds that are no greater than 20%,
-3. maintaining the validator status,
-4. maintaining &gt;99% uptime,
-5. not exhibiting dishonest, fraudulent, or malicious behavior.
+1. 佣金率为网络中位数加权佣金率的+/- 10％，
+2. 佣金率和佣金率范围不大于20％，
+3. 保持验证者身份，
+4. 维持> 99％的正常运行时间，
+5. 不能表现出不诚实，欺诈或恶意行为。
 
-If we detect a violation of rules 1 - 4, we will take the following actions:
+如果被我们发现违反了规则1-4，我们将采取以下措施：
 
-* Send a warning notice to entity via multiple communication channels \(e.g. Slack, Email, ...\).
-* If the violation is not remediated within 3 working days, we will send a notice that we are removing our delegation.
+* 通过多个通讯方式\(e.g. Slack, Email, ...\)向实体发送警告通知。
+* 如果在3个工作日内未纠正违规行为，我们将发送通知，将撤消我们的代理。
 
-If we detect a violation of rule 5,  we will remove the delegation as soon as possible.
+如果我们发现违反了规则5，我们将尽快删除该代理。
 
-If the entity remediates their violation and asks that their delegation be re-instantiated, we reserve the discretion to delegate up to 50% of the initial amount.
+如果实体补救了他们的违规行为，并要求重新实例化其授权，我们酌情保留决定权，最多可授权初始金额的50％。
 
-If an entity makes repetitive violations, we reserve the right to remove our delegation permanently.
+如果一个实体多次犯规，我们保留永久删除代理权利。
 
-## Delegations to new Entities
+## 代理新实体
 
-_We are drafting the policy and will post it soon._
+_我们正在起草政策，并将尽快发布。_
 

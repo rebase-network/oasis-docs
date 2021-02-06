@@ -1,38 +1,37 @@
 ---
 description: >-
-  These are the current parameters for the Testnet, a test-only network for
-  testing out upcoming features and changes to the protocol.
+  这些是Testnet的当前参数，Testnet是一个只用于测试的网络。
+  测试新的功能和协议的变化。
 ---
 
 # The Testnet
 
 {% hint style="danger" %}
-**The Testnet may be subject to frequent version upgrades and state resets.**
+**Testnet可能会经常进行版本升级和状态重置。**
 {% endhint %}
 
 {% hint style="info" %}
-On the Testnet, TEST tokens are in use -- if you need some to test your clients, nodes or paratimes, feel free to request them on [**\#testnet** in the Community Slack](../oasis-network/connect-with-us.md). Note that these are test-only tokens and account balances, as any other state, may be frequently reset.
+在测试网上，正在使用TEST代币——如果你需要一些代币来测试客户端，节点或 paratime，请随时在[Slack](../oasis-network/connect-with-us.md)上申请。 请注意，这些代币仅限于测试，帐户余额和其他任何状态一样，可能会经常重置。
 {% endhint %}
 
-This page is meant to be kept up to date with the information from the currently released Testnet. Use the information here to deploy or upgrade your node on the Testnet.
+本页旨在及时更新当前发布的Testnet的信息。使用这里的信息来部署或升级你在Testnet上的节点。
 
-* Latest Testnet version: **2020-11-04**
+* 最新的测试网版本：**2020-11-04**
 * [Genesis file](https://github.com/oasisprotocol/public-testnet-artifacts/releases/download/2020-11-04/genesis.json):
   * SHA1: `31883216b4737b8b46c24e8d86796ba78310fe8b`
   * SHA256: `ce7cc41db609e39646eb29fd719f88397a698227611acd1c09142c9f2d4e6a50`
 * Genesis document's hash \([explanation](../mainnet/genesis-file.md#genesis-file-vs-genesis-document)\):
   * `086a764a7a748eb6a2a3b046f152caf7e1cc9713478ce0565df253e1c5872963`
-* Oasis seed node address:
+* Oasis 种子节点地址：
   * `05EAC99BB37F6DAAD4B13386FF5E087ACBDDC450@34.86.165.6:26656`
 
 {% hint style="success" %}
-Feel free to use other seed nodes besides the one provided here.
+除了此处提供的种子节点外，还可以随意使用其他种子节点。
 {% endhint %}
 
-* [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
+* [Oasis Core](https://github.com/oasisprotocol/oasis-core) 版本:
   * [20.12.4](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.4)
 
 {% hint style="info" %}
-The Oasis Node is part of the Oasis Core release.
+Oasis Node 是Oasis Core版本的一部分。
 {% endhint %}
-

@@ -1,8 +1,7 @@
 # Contribution Guidelines
 
 {% hint style="info" %}
-This document outlines our guidelines for contributing to the Oasis Network's codebase and documentation. If you are interested in learning more about the Oasis Network's governance model, including the processes for submitting feature requests and bug fixes, [please see our governance overview here](network-governance.md).
+本文档会介绍我们为Oasis Network的代码库和文档如何做贡献。 如果你想了解关于Oasis Network治理模型的更多信息，包括提交pr和错误修复的过程，请查看[我们的治理指南](network-governance.md)。
 {% endhint %}
 
-If you wish to contribute either code, documentation or larger enhancement proposals, feel free to read our [Oasis Core Contributing Guidelines](https://github.com/oasisprotocol/oasis-core/blob/master/CONTRIBUTING.md).
-
+如果你希望贡献代码、文档或其他建议，请随时阅读我们的[Oasis核心贡献指南](https://github.com/oasisprotocol/oasis-core/blob/master/CONTRIBUTING.md)。

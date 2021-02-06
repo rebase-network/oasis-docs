@@ -44,7 +44,7 @@ The following parts of the genesis file will be updated:
 * **`staking.params.reward_schedule`** will be updated to reflect the updated reward schedule as mentioned above.
 * **`staking.common_pool`** will be increased by 450M ROSE to fund increased staking rewards.
 * **`staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`**, which corresponds to the Community and Ecosystem Wallet, will have its `general.balance` reduced by 450M ROSE to `1183038701000000000` and transferred to the Common Pool to fund increased staking rewards.
-* **`extra_data`** will be set back to the value in the [Mainnet Beta genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json) 
+* **`extra_data`** will be set back to the value in the [Mainnet Beta genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json)
 
   to include the Oasis network's genesis quote: _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]:_
 
@@ -69,5 +69,4 @@ The Oasis team will be offering live video support during the launch of Mainnet.
 
 For any additional support, please reach out via the [**\#nodeoperators** Oasis Community Slack channel](../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet Beta.
 
-To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/). 
-
+To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).

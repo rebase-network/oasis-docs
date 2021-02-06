@@ -20,8 +20,8 @@ After a successful [Mainnet Dry Run](), in which the Dry Run test network went l
 
 Mainnet Beta is the first phase of launching the Mainnet Network. It includes the finalized Mainnet [genesis file](genesis-file.md) and initial token allocations. A few key highlights:
 
-* **Transfers are disabled during Mainnet Beta.**  
-* **Validators** participating in Mainnet Beta will be able to **start earning staking rewards**. 
+* **Transfers are disabled during Mainnet Beta.**
+* **Validators** participating in Mainnet Beta will be able to **start earning staking rewards**.
 * All **account balances** from Mainnet Beta **will carry over to Mainnet** when the network is upgraded and token transfers are enabled.
 * The **reward schedule** will be **reset for Mainnet**, but the rewards earned during Mainnet Beta will persist on Mainnet with the generation of the ROSE token.
 
@@ -65,11 +65,10 @@ You can verify the file with the following hashes:
 * SHA1: `3a17891f73ae2079e5a2cf7e53c25f7b26f63d3e`
 * SHA256: `a188bcae5b6ba7b1d2bf7fd4b3972381db611989ab11a45059f6faee28ad2a8d`
 
-For additional information about the genesis file and key parameters, please refer to [the Genesis File Overview document](https://docs.oasis.dev/general/pre-mainnet/genesis-file). 
+For additional information about the genesis file and key parameters, please refer to [the Genesis File Overview document](https://docs.oasis.dev/general/pre-mainnet/genesis-file).
 
 ## Mainnet Beta Support
 
 The Oasis team will be offering live video support during the launch of Mainnet Beta. Video call link and calendar details will be shared with node operators via email and Slack.
 
 For any additional support, please reach out via the [**\#nodeoperators** Oasis Community Slack channel](../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet Beta.
-
