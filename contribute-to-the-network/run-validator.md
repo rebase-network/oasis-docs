@@ -6,8 +6,6 @@ description: >-
 
 # 运行验证节点
 
-[Oasis Network](../oasis-network/overview.md)'s Consensus Layer is a decentralised set of validator nodes that maintain a proof-of-stake blockchain.
-
 [Oasis Network](../oasis-network/overview.md) 的共识层是一组去中心化的验证者节点，它们维护着一个 PoS 区块链。这些节点由独立的节点操作者操作。
 
 因此，它需要一套运行不同功能的分布式节点\(包括验证程序节点\)。

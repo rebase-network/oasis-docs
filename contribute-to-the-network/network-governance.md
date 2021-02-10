@@ -1,70 +1,69 @@
-# Network Governance
-
-当前单词数 1057
+# 网络治理
 
 {% hint style="info" %}
-The proposed governance model is still being finalized. Please check back for updates.
+治理模式仍在敲定中。请随时查看最新情况。
 
-If you have a general question on how to use and deploy our software, please read our [Run a Node](../run-a-node/node-operator-overview.md) section or join our [community Slack](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
+如果你有关于如何使用和部署软件的问题，请看[运行节点](../run-a-node/node-operator-overview.md) 这篇文章或加入我们的[Slack](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
 
-All community members are welcome and encouraged to commit code, documentation and enhancement proposals to the platform. Contribution guidelines can be found [here](contribution-guidelines.md).
+欢迎并鼓励社区所尊有成员向平台提交代码、文档和建议。贡献指南可以在[这里](contribution-guidelines.md)找到。
 {% endhint %}
 
 ### Proposed Governance Model Overview
 
-The Oasis Protocol Foundation proposes a representative democracy governance model based on a combination of off-chain and on-chain processes for the continued development of the Oasis Network. The Oasis Protocol Foundation will be tasked with guiding the long-term development of the platform and coordinating the community of development and network operations, with input collected from community members and changes to the network being voted on by node operators, with voting power based proportionally on staked and delegated tokens. We propose this model because we think it will provide a balanced voice to all engaged community members -- from developers of all sizes, to node owners, to token holders -- while at the same time still facilitating the swift deployment of network updates, new features, critical bug fixes.
+Oasis Protocol基金会为Oasis网络的持续发展提出了基于链下和链上流程相结合的代议制民主治理模式。Oasis Protocol基金会将负责指导平台的长期发展，并协调开发和网络运营的社区，收集社区成员的意见，网络的变化由节点运营者投票决定，投票权基于有桩和委托代币的比例。我们之所以提出这种模式，是因为我们认为这种模式可以为所有参与的社区成员--从各种规模的开发者，到节点所有者，再到代币持有者--提供一个平衡的话语权，同时还能促进网络更新、新功能、关键bug修复的快速部署。
 
-In order for the community to balance distributed ownership and participation with speed and quality of platform development, we propose a hybrid model of off- and on-chain mechanisms, organized around the following key components:
+为了让社区在分布式所有权和参与度与平台开发的速度和质量之间取得平衡，我们提出了一种链下机制和链上机制的混合模式，主要围绕以下几个部分展开：
 
-1. Minor Feature Requests
-2. Major Feature Requests
-3. Bug Fixes
+1. 小功能要求
+2. 主要功能要求
+3. 错误修复
 
 ### Decision Making Process
 
-Moving forward, our proposed process for reviewing and approving major protocol updates is:
+今后，我们提议的审查和批准主要议定书更新的程序是：
 
-* **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues \([for minor features](network-governance.md#minor-feature-requests)\) or [Architectural Decision Records](https://github.com/oasisprotocol/oasis-core/blob/master/docs/adr/index.md) \(ADRs, [for major features](network-governance.md#major-feature-requests)\).
-* **Review and discussion of the proposals.** Decisions about the future of the project are made through discussion with all members of the community, from the newest user to the most experienced. All non-sensitive project management discussion takes place in the Oasis Protocol GitHub via issues \([for minor features](network-governance.md#minor-feature-requests)\) and ADRs \([for major features](network-governance.md#major-feature-requests)\).
-* **Decision making process.** In order to ensure that the project is not bogged down by endless discussion and continual voting, the project operates a policy of lazy consensus. This allows the majority of decisions to be made without resorting to a formal vote.
+**提案** 的功能和路线图更新的建议可以由社区中的任何人以 issues（[小功能](network-governance.md#minor-feature-requests)）或[建筑决策记录](https://github.com/oasisprotocol/oasis-core/blob/master/docs/adr/index.md)（[主要功能](network-governance.md#major-feature-requests)）的形式提出。
 
+* **审查和讨论这些提案** 关于项目未来的决定是通过与社区所有成员的讨论做出的，从最新的用户到最有经验的用户。所有非敏感的项目管理讨论都会在Oasis Protocol GitHub上通过issues([针对次要功能](network-governance.md#minor-feature-requests))和ADRs([针对主要功能](network-governance.md#major-feature-requests))进行。
 
-  In general, as long as nobody explicitly opposes a proposal or patch, it is recognised as having the support of the community. For lazy consensus to be effective, it is necessary to allow at least 72 hours before assuming that there are no objections to the proposal. This requirement ensures that everyone is given enough time to read, digest and respond to the proposal.
+* **决策过程** 为了确保该项目不被无休止的讨论和持续的投票所困扰，该项目实行一种懒惰的协商一致政策。这使得大多数决定不需要经过正式表决就能作出。
 
+一般来说，只要没有人明确反对一个提案或补丁，就会被认为得到了社区的支持。为了使懒人共识有效，在假设没有人反对该提案之前，有必要允许至少72小时。这个要求可以确保每个人都有足够的时间来阅读、消化和回应提案。
 
+如果通过讨论没有达成共识，[项目提交人](https://github.com/oasisprotocol/oasis-core/blob/master/GOVERNANCE.md#committers)可以投票决定接受或拒绝该提案。投票是通过提案拉请求中的评论来进行的。提案以简单的多数票被接受。
 
-  In case consensus is not reached through discussion, the [project committers](https://github.com/oasisprotocol/oasis-core/blob/master/GOVERNANCE.md#committers) may vote to either accept the proposal or reject it. Votes are cast using comments in the proposal pull request. The proposal is accepted by a simple majority vote.
+* **最后投票通过** 建成后，社区会投票批准每一次升级和提案中包含的相应功能。这个投票过程最初可能会在链下进行，但最终会变成链上过程。持有股权的实体将投票批准变更，每个实体的投票权与他们所押注的代币份额相对于押注的总代币成正比。
 
-* **Final vote for approval.** Once built, the community votes to approve each upgrade and the corresponding features that are included in the proposal. This voting process may initially be done off-chain but will eventually become an on-chain process. Entities holding stake will vote to approve changes, with each entity's voting power being proportional to their share of tokens staked relative to the total tokens staked.
-* **Upgrade.** Node operators autonomously upgrade their system to run the new version of the software.
+* **升级** 节点运营商自主升级系统，运行新版软件。
 
 ### Minor Feature Requests
 
-To request new functionality, there are two primary approaches that will be most effective at receiving input and making progress.
+要请求新的功能，有两种最有效的方法来接收意见并取得进展。
 
-If the feature is small - a change to a single piece of functionality, or an addition that can be expressed clearly and succinctly in a few sentences, then the most appropriate place to [propose it is as a new feature request](https://github.com/oasisprotocol/oasis-core/issues/new?template=feature_request.md) in the Oasis Core repository.
+如果这个功能很小--只是对一个功能的改变，或者是增加了一个可以用几句话清晰简洁地表达出来的功能，那么最合适的地方就是在Oasis核心仓库中[以新功能请求的形式提出](https://github.com/oasisprotocol/oasis-core/issues/new?template=feature_request.md)。
 
 ### Major Feature Requests
 
-If the feature is more complicated, involves protocol changes, or has potential safety or performance implications, then consider [proposing an Architectural Decision Record \(ADR\)](https://github.com/oasisprotocol/oasis-core/blob/master/docs/adr/index.md) and submit it as a pull request to the Oasis Core repository. This will allow a structured review and commenting of the proposed changes. You should aim to get the ADR accepted and merged before starting on implementation. Please keep in mind that the project's committers still have the final word on what is accepted into the project.
+如果该功能比较复杂，涉及 Protocol变更，或者具有潜在的安全或性能影响，那么可以考虑提出[架构决策记录(Architectural Decision Record，ADR)](https://github.com/oasisprotocol/oasis-core/blob/master/docs/adr/index.md)，并将其作为拉动请求提交到Oasis核心存储库。
+
+这将允许对拟议的修改进行有条理的审查和评论。在开始实施之前，你应该争取让ADR被接受和合并。请记住，项目的提交者仍然对项目中的内容有最终决定权。
 
 {% hint style="info" %}
-We recommend that major protocol updates including a need to hard fork, roadmap and feature planning be conducted with recommendations from the Oasis Protocol Foundation and its technical advisory committee.
+我们建议在Oasis Protocol基金会及其技术咨询委员会的建议下，进行重大 Protocol更新，包括需要硬分叉、路线图和功能规划。
 {% endhint %}
 
 ### Urgent Bug Fixes
 
-Urgent bug fixes will primarily be coordinated off-chain to optimize for speed in addressing any issues that are critical to the immediate health of the network. The Oasis Network community as a whole is collectively responsible for identifying and addressing bugs. As bugs are identified, the Oasis Protocol Foundation can serve as a line of first defense to triage these bugs and coordinate security patches for quick release.
+紧急错误修复将主要在链外进行协调，以优化处理任何对网络即时健康至关重要的问题的速度。Oasis网络社区作为一个整体，共同负责识别和解决错误。当发现bug时，Oasis Protocol基金会可以作为第一道防线，对bug进行分配，并协调安全补丁的快速发布。
 
-Bugs are a reality for any software project. We can't fix what we don't know about!
+对于任何软件项目来说，bug不能避免。
 
-If you believe a bug report presents a security risk, please follow [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure) and report it by following the [security disclosure information](https://oasisprotocol.org/security) instead of filing a public issue or posting it to a public forum.
+如果您认为某个错误报告会带来安全风险，请遵循[责任披露](https://en.wikipedia.org/wiki/Responsible_disclosure)，并按照[安全披露信息](https://oasisprotocol.org/security)进行报告，而不是提交公开问题或发布到公共论坛。
 
-We will get back to you promptly.
+我们会及时给你回复。
 
-Otherwise, please, first search between [existing issues in our repository](https://github.com/oasisprotocol/oasis-core/issues) and if the issue is not reported yet, [file a new one](https://github.com/oasisprotocol/oasis-core/issues/new?template=bug_report.md).
+否则，请先在[我们版本库中已有的问题](https://github.com/oasisprotocol/oasis-core/issues)之间搜索，如果问题还没有被报告，请[提交一个新的问题](https://github.com/oasisprotocol/oasis-core/issues/new?template=bug_report.md)。
 
 ### Contributing to the Network
 
-If you are interested in contributing to the Oasis Network's codebase or documentation, please [review our contribution guidelines here.](contribution-guidelines.md)
-
+如果你有兴趣为 Oasis 代码库或文档做出贡献，请查看我们的[贡献指南](contribution-guidelines.md)

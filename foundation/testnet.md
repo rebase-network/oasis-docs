@@ -4,10 +4,10 @@ description: >-
   测试新的功能和协议的变化。
 ---
 
-# The Testnet
+# 测试网
 
 {% hint style="danger" %}
-**Testnet可能会经常进行版本升级和状态重置。**
+**测试网可能会经常进行版本升级和状态重置。**
 {% endhint %}
 
 {% hint style="info" %}

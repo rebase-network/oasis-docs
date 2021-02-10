@@ -3,7 +3,7 @@ description: >-
   我们将用这个页面来回答一些我们最常被问到的问题接收关于Oasis Network 的信息。本页将不断更新。
 ---
 
-# Oasis Network FAQ
+# Oasis Network 问答
 
 ## **概述**
 

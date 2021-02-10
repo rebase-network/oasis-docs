@@ -1,44 +1,40 @@
 ---
 description: >-
-  This document is intended to provide an overview of the proposed genesis file
-  for the Oasis Network Mainnet launch.
+  本文介绍 Oasis主网 genesis文件。
 ---
 
-当前单词数 2111
-
-# Genesis File Overview
+# Genesis 文件介绍
 
 {% hint style="info" %}
-Up to date information about the current Genesis file can be found on the [Network Parameters](../oasis-network/network-parameters.md) page.
+可以在 [Network Parameters](../oasis-network/network-parameters.md) 找到 Genesis 文件。
 {% endhint %}
 
 {% hint style="warning" %}
-Please note that the parameters and corresponding values in the genesis file are subject to change prior to the Oasis Network Mainnet launch.
+请注意，在Oasis主网启动前，genesis文件中的参数和对应的数值可能会发生变化。
 {% endhint %}
 
 ## What is a Genesis File?
 
-A genesis file is a JSON document file which contains a set of parameters that outline the initial state of a network.
-
-The state defined in the Oasis Network’s genesis file contains all of the necessary information for launching the Oasis Network Mainnet, including initial token allocations, network parameters, and more.
-
-We will discuss some of the key parameters in the genesis file this document. You can view all of the parameters in their raw form in the full genesis file linked at the top of this document.
+genesis文件是一个JSON文档文件，它包含一组参数，概述了网络的初始状态。
+Oasis Network的genesis文件中定义的状态包含了启动Oasis Network Mainnet的所有必要信息，包括初始代币分配、网络参数等。我们将在这里介绍的genesis文件中的一些关键参数。
 
 ### Genesis File vs. Genesis Document
 
-When Oasis Node loads a genesis file \(i.e. a JSON document\) it converts it to a genesis document.
+当Oasis 节点加载genesis文件\(JSON 文档\)时，它将其转换为genesis文档。
 
-The important thing to note is that the genesis document is used to compute the [genesis document's hash](https://docs.oasis.dev/oasis-core/high-level-components/index/genesis#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
+需要注意的是，genesis文档是用来计算[genesis文档hash](https://docs.oasis.dev/oasis-core/high-level-components/index/genesis#genesis-documents-hash)的。
+
+此hash用于验证交易用于哪个网络。
 
 {% hint style="info" %}
-For a more in-depth explanation of the genesis document, see the [Genesis Document](https://docs.oasis.dev/oasis-core/high-level-components/index/genesis) part of Oasis Core's developer documentation.
+关于 genesis 文档更多的介绍， 请看 [Genesis 文档](https://docs.oasis.dev/oasis-core/high-level-components/index/genesis)。
 {% endhint %}
 
 ## Genesis Time and Chain ID
 
-The **genesis\_time** parameter is an ISO8601 UTC timestamp that specifies when the blockchain is officially going to launch. At the time of genesis, validators are expected to come online and start participating in the consensus process for operating the network. The network will start once validators representing more than 2/3 of stake in the initial consensus committee are online.
+**genesis\_time** 参数是ISO8601 UTC时间戳，用于指定何时正式启动区块链。在创世之时，验证者有望上线并开始参与网络运营的共识过程。 一旦代表初始共识委员会超过2/3股份的验证人在线，网络便会启动。
 
-The **chain\_id** is a human-readable version identifier for a blockchain. It is important to note, that this value alone doesn't dictate the version of the genesis file. To determine the correct version of a genesis file, the shasum of that genesis file will need to be generated. This can be done on Linux/macOS like so:
+**chain\_id** 是区块链的可读版本标识符。要注意，仅此值并不决定genesis文件的版本。 为了确定genesis文件的正确版本，将需要生成该创世文件的hash。执行以下命令极即可：
 
 ```text
 shasum -a 256 genesis.json
@@ -46,102 +42,126 @@ shasum -a 256 genesis.json
 
 ## Epoch Time
 
-The **interval** parameter specifies the number of blocks in an _epoch_. Epochs are used as a measure of time for staking reward schedules, debonding intervals, non-Mainnet test network expiration periods, and more. This value is set to 600, indicating that a new epoch on the Oasis Network transpires each time 600 new blocks are generated.
+参数**interval**指定了一个 _epoch_ 的块数。Epoch 用于衡量奖励计划， 非Mainnet测试网络到期时间等的时间量度。
+该值设置为600，表示每次生成600个新块时，都会在Oasis网络上出现一个新Epoch。
 
 ## Node Operator Registry
+在**registry**对象中，有各种各样的参数可以指定节点运算符的初始集合及其相应的初始节点状态。
 
-Within the **registry** object, there are a broad range of parameters that specify the initial set of node operators and their corresponding initial node statuses.
+* **max\_node\_expiration** - 节点注册持续的最大持续时间\(epochs\)。初始值设置为2，以确保节点持续在线，因为每次过了2个epoch，节点的注册就会失效，需要节点重新注册。
 
-* **max\_node\_expiration** - The maximum duration \(in epochs\) that node registrations last. The starting value is set to 2 in order to ensure that a node is continuously online, since the node’s registration would expire each time 2 epochs pass, requiring the node to re-register.
-* **entities** - The entity registrations for initial node operators, including public key and signature information. The values here were obtained during the entity package collection process that took place during early September.
+* **entities** - 初始节点操作者的实体登记，包括公钥和签名信息。这里的数值是在9月初进行的实体包收集过程中获得的。
 
 {% hint style="warning" %}
-If you are an operator who successfully completed the KYC process and submitted your entity package by the deadline in early September, your entity should be included in the genesis file. Please review the entities section of the genesis file [here](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-09-22/genesis.json) to make sure that your entity is included in the genesis file if you were expecting it to be included. You can search for your entity in the genesis file using the entity public key from the entity package you submitted. If you encounter any issues with finding your entity, please let us know via the genesis file [feedback form](https://oasisfoundation.typeform.com/to/yG4pp57W).
+如果你是成功完成KYC流程的运营商，并在9月初的截止日期前提交了实体包，你的实体应该包含在genesis文件中。
+如果你希望你的实体被包含在genesis文件中，请查看[genesis文件](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-09-22/genesis.json)的实体部分，以确保你的实体被包含在genesis文件中。
+
+你可以使用提交的实体包中的实体公钥在genesis文件中搜索自己实体。如果在查找实体时遇到任何问题，请通过genesis文件[反馈表]
+(https://oasisfoundation.typeform.com/to/yG4pp57W)告诉我们。
 {% endhint %}
 
-* **nodes** - The node registrations for initial node operators, including public key and signature information.
+* **nodes** - 初始节点操作人员的节点注册，包括公钥和签名信息。
 
 ## Gas Costs
 
-The following parameters define the gas costs for various types of transactions on the network:
+以下参数确定了网络上各种类型交易的gas成本：
 
-* **compute\_commit** - The cost for a compute commit for a ParaTime node. The value is set to 10000 gas.
-* **merge\_commit** - The cost for a ParaTime merge commit. The value is set to 10000 gas.
-* **add\_escrow** - The cost for an add\_escrow \(staking\) transaction. The value is set to 1000 gas.
-* **burn** - The cost for a burn transaction. The value is set to 1000 gas.
-* **reclaim\_escrow** - The cost for a reclaim\_escrow transaction \(for withdrawing staked tokens\). The value is set to 1000 gas.
-* **transfer** - The cost for a transfer transaction \(for sending tokens\). The value is set to 1000 gas.
-* **amend\_commission\_schedule** - The cost for amending, or changing, a commission schedule. The value is set to 1000 gas.
+
+* **compute\_commit** - ParaTime节点的计算提交成本。该值设置为10000 gas。
+* **merge\_commit** - ParaTime合并提交的费用。该值设置为10000 gas。
+* **add\_escrow** -  一次add_escrow（增加抵押）的费用。该值设定为1000gas。
+* **burn** - 一次销毁交易的成本。该值设定为1000gas.
+* **reclaim\_escrow** - reclaim\_escrow（取回抵押）交易的费用。该值设定为1000gas.
+* **transfer** - 一次交易的成本（发送代币). 该值设定为1000gas.
+* **amend\_commission\_schedule** - 更改佣金表的费用。该值设定为1000gas.
 
 ## Node & Runtime Token Thresholds
 
-There are several **threshold** parameters that specify the minimum number of tokens that need to be staked in order for a particular entity or a particular type of node to participate in the network. The minimum threshold specified for the **entity,** **node-compute, node-keymanager, node-storage,** and **node-validator** parameters is set to 100000000000 nROSE for each, indicating that you need to stake at least 100 ROSE tokens in order to have your entity or any of the specified nodes go live on the network.
+有几个**阈值**参数指定了特定实体或特定类型节点参与网络所需的最低代币数量。
 
-There are also minimum thresholds for registering new runtimes. The minimum thresholds for registering **runtime-compute** and **runtime-keymanager** are set to 50000000000000 nROSE, indicating that you need to stake at least 50000 ROSE tokens in order to register a runtime.
+为**entity,** **node-compute, node-keymanager, node-storage,** 和 **node-validator** 参数指定的最小阈值为100000000000 nROSE，表示你需要至少抵押100个ROSE代币，才能让你的实体或任何一个指定节点上线。
+注册新运行时也有最低门槛。注册**runtime-compute**和**runtime-keymanager**的最低门槛为50000000000000 nROSE，表示至少需要抵押50000个ROSE代币才能注册一个运行时。
 
 ## Staking & Rewards
 
-These key parameters are related to staking and rewards on the network:
+这些关键参数与网络上的抵押和奖励有关：
 
-* **debonding\_interval** - The period of time \(in epochs\) that must pass before staked or delegated tokens that are requested to be withdrawn are returned to the account's general balance. The value is set to 336 epochs, which is expected to be approximately 14 days.
-* **reward\_schedule** - The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time.
-* **signing\_reward\_threshold\_numerator** and **signing\_reward\_threshold\_denominator** - These parameters define the proportion of blocks that a validator must sign during each epoch to receive staking rewards. A proportion of 3/4 means that a validator must maintain an uptime of at least 75% during an epoch in order to receive staking rewards for that period.
-* **rate\_change\_interval** - The granularity at which at rate changes can be specified in a commission schedule. This limits the complexity of the commission schedule; the value is set to 1, indicating that the commission rate can change once per epoch.
-* **rate\_bound\_lead** - The minimum lead time \(in epochs\) needed for changes to commission rate bounds. Operators need to wait before any rate bound changes go into effect. The value is set to 336, which is expected to be approximately 14 days.
-* **max\_rate\_steps** - The maximum allowed number of rate step changes in a commission schedule.The value is set to 10, indicating that the commission schedule can have a maximum of 10 rate steps.
-* **max\_bound\_steps** - The maximum allowed number of commission rate bound step changes in the commission schedule. The value is set to 10, indicating that the commission schedule can have a maximum of 10 bound steps.
-* **min\_delegation** - The minimum amount of tokens required in a delegation. The value is set to 100000000000 nROSE, or 100 ROSE tokens.
-* **fee\_split\_weight\_propose** - The block proposer's share of transaction fees, set to a value of 2.
-* **fee\_split\_weight\_next\_propose** - The next proposer's share of transaction fees, set to a value of 1.
-* **fee\_split\_weight\_vote** - A signer’s/voter’s share of transaction fees, set to a value of 1.
-* **reward\_factor\_epoch\_signed** - The factor for rewards distributed to validators who signed at least threshold blocks in a given epoch, set to a value of 1.
-* **reward\_factor\_block\_proposed** - The factor for rewards earned for block proposal. Set to 0, indicating validators get no extra staking rewards for proposing block.
+* **debonding\_interval** - 在申请提取的定金或委托代币返回到账户之前必须经过的时间段（以epoch为单位）。该值设置为336个epoch，预计约为14天。
+
+* **reward\_schedule** - 抵押奖励时间表，表明抵押奖励率如何随时间变化，按每个epoch的颗粒度定义。奖励表采用渐进式，在较早的epoch支付较高的奖励，然后随着时间的推移逐渐减少。
+
+* **signing\_reward\_threshold\_numerator** 和 **signing\_reward\_threshold\_denominator** - 这些参数定义了验证者在每个纪元中必须签署的区块比例，以获得抵押奖励。3/4的比例意味着验证者必须在一个周期内保持至少75%的正常运行时间，才能获得该周期的抵押奖励。
+
+* **rate\_change\_interval** - 在佣金表中可以指定佣金率变化的粒度。这限制了佣金表的复杂程度；该值设置为1，表示佣金率每epoch可以改变一次。
+
+* **rate\_bound\_lead** - 佣金费率界限变化所需的最短准备时间。运营商需要在任何费率界限变化生效前等待。该值为336，预计约为14天。
+
+* **max\_rate\_steps** - 佣金表中允许的最大费率级数变化，该值设置为10，表示佣金表最多可以有10个费率级数。
+
+* **max\_bound\_steps** - 佣金表中最大允许的佣金率约束步数变化。该值设置为10，表示佣金表最多可以有10个约束步数。
+
+* **min\_delegation** - 授权中所需要的最低数量的代币。该值设置为100000000000 nROSE，即100个ROSE代币。
+
+* **fee\_split\_weight\_propose** - 区块提案人的交易费份额，设为2。
+
+* **fee\_split\_weight\_next\_propose** - 下一个提案人的交易费用份额，设为1。
+
+* **fee\_split\_weight\_vote** - 签名人/投票人在交易费中的份额，设为1；
+
+* **reward\_factor\_epoch\_signed** - 分配给在某一epoch至少签署了阈值区块的验证者的奖励系数，设为1。
+
+* **reward\_factor\_block\_proposed** - 提出区块所获得的奖励的系数。设为0，表示验证者不会因为提出区块而获得额外的赌注奖励。
 
 ## Token Supply & Ledger
 
-The following parameters specify the total token supply, total token pool reserved for staking rewards, and account balances across the network at the time of genesis:
+* **total\_supply** - 代币的总供应总量，固定为100亿ROSE代币。
 
-* **total\_supply** - Specifies the total token supply for the network, which is fixed at 10 billion ROSE tokens.
-* **common\_pool** - The tokens reserved for staking rewards to be paid out over time.
-* **ledger** - The staking ledger, encoding all accounts and corresponding account balances on the network at the time of genesis, including accounts for initial operators, backers, custodial wallets, etc.
-* **delegations** - The encoding of the initial delegations at the time of genesis.
+* **common\_pool** - 预留的抵押奖励的代币，将按时间发放。
+
+* **ledger** - 抵押总帐目，编码所有账户和在创世时网络上的相应账户余额，包括初始操作员的账户，支持者，保管钱包等。
+
+* **delegations** - 在创世时最初的委托编码。
 
 {% hint style="warning" %}
-If you are an operator who successfully completed the KYC process and submitted your entity package by the deadline in early September, your account should be included in the genesis file, with an account general balance and escrow amount reflecting any grants, rewards, and Amber Network delegations you have received leading up to Mainnet. Please review the ledger section of the genesis file [here](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-09-22/genesis.json) to make sure that your account is included in the genesis file if you were expecting it to be included. Keep in mind that token balances are enumerated in nROSE, with 1 billion nROSE being equivalent to 1 ROSE token. You can search for account node in the ledger section of the genesis file by searching for your staking address, which is a Bech32-encoded address with the prefix "oasis". If you encounter any issues with finding your account in the ledger, please let us know via the genesis file [feedback form](https://oasisfoundation.typeform.com/to/yG4pp57W).
+
+如果你是成功完成KYC流程的运营商，并在9月初的截止日期前提交了实体包，你的账户应该包含在创世文件中，账户总余额和托管金额反映了你在Mainnet之前收到的任何赠款、奖励等。如果你希望账户被纳入创世文件，请查看[创世文件]的分类账部分，以确保你的账户被纳入[genesis 文件](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-09-22/genesis.json)。
+请记住，代币的单位是nROSE，10亿nROSE相当于1个ROSE代币。你可以在genesis文件的账目部分搜索账户节点，搜索你的抵押地址，这是一个Bech32编码的地址，前缀为 "oasis"。如果你在账本中找不到账户，请通过创世文件[反馈表](https://oasisfoundation.typeform.com/to/yG4pp57W)告诉我们。
 {% endhint %}
 
 {% hint style="info" %}
-**Interpreting your account balance in the ledger:** Your **general** balance includes all of your tokens that have not been staked or delegated. This will be set to 100 tokens at genesis to cover gas, as most of your tokens \(except that general balance of 100 tokens\) will initially be staked \(i.e. self-delegated\) on your behalf. Within the **escrow** field, your **active** parameter shows the total tokens that have been allocated or delegated to you.
+**Interpreting your account balance in the ledger:**
+你的**一般**余额包括你所有没有被抵押或授权的代币。这将在创世时设置为100个代币，以覆盖gas，因为你的大部分代币（除了一般余额100外）最初将代表你进行抵押（自我委托）。在**escrow**中，你的**active**参数显示的是已经分配或委托给你的代币总数。
 {% endhint %}
 
 ## Slashing
 
-These parameters specify key values for the network's slashing mechanism:
+这些参数为网络的削减机制指定了关键值：
 
-* **amount** - The amount of tokens to slash for double signing. The value is set to 100000000000 nROSE, or 100 ROSE tokens.
-* **freeze\_interval** - The duration, in epochs, for which a node that has been slashed for double signing is “frozen,” or barred from participating in the network's consensus committee. A value of 18446744073709551615 \(the maximum value for a 64-bit unsigned integer\) means that any node slashed for double signing is, in effect, permanently banned from the network.
+* **amount** - 要进行双重签名的token数量，请减少。 该值设置为100000000000 nROSE或100个ROSEtoken。
+
+* **freeze\_interval** - 被冻结进行双重签名的节点的持续时间（以epoch为单位）为“冻结”，或者被禁止参加网络的共识委员会。18446744073709551615 \（64位无符号整数的最大值\）表示实际上已永久禁止从网络中删除任何进行双签名的节点。
 
 ## Consensus
 
-The following parameters are used to define key values for the network's consensus protocol:
+以下是用于定义网络共识协议的关键参数：
 
-* **min\_validators** - The minimum size for the consensus committee, set to 15 validators.
-* **max\_validators** - The maximum size for consensus committee, set to 80 validators.
-* **max\_validators\_per\_entity** - The maximum number of nodes from a given entity that can be in the consensus committee at any time. Set to a value of 1.
-* **backend** - Defines the backend consensus protocol. Specified as "tendermint".
-* **timeout\_commit** - Specifies long to wait after committing a block before starting a new block height, in nanoseconds \(this affects block interval\). Set to 5000000000 nanoseconds, or 5 seconds.
-* **max\_tx\_size** - Maximum size for consensus-layer transactions, in bytes, set to 32768 bytes.
-* **max\_block\_size** - Maximum block size, in bytes, set to 22020096 bytes
-* **max\_block\_gas** - Maximum block gas, set to 0, which specifies an unlimited amount of gas.
-* **public\_key\_blacklist** - A list of the public keys that cannot be used on the network.
+* **min\_validators** - 委员会的最小规模，为 15个验证者.
+* **max\_validators** - 委员会的最大规模, 为 80 个验证者.
+* **max\_validators\_per\_entity** - 某一实体在任何时候可以加入共识委员会的最大节点数。值为 1.
+* **backend** - 定义后台共识协议。指定为 "tendermint"。
+* **timeout\_commit** - 指定在提交一个块后，在开始一个新的块高度之前等待的时间，单位为纳秒。 \(区块的间隔\). 值为 5000000000 纳秒, or 5秒.
+* **max\_tx\_size** - 共识层交易的最大字节数。 为 32768 字节.
+* **max\_block\_size** - 区块最大尺寸，单位是字节，为 22020096 字节。
+* **max\_block\_gas** - 最大区块 gas, 值为 0，gas量不限。
+* **public\_key\_blacklist** - 公钥列黒名单。
 
 ## Transfers
 
-Please note that transfers will be disabled for Mainnet Beta and we expect once proposed by the community and adopted enabled to begin Mainnet. Transfers are enabled on Mainnet Dry Run to test this feature out completely.
+请注意，Mainnet测试版的交易将被禁止，我们希望一旦由社区提出并通过启用开始Mainnet。交易在Mainnet Dry上启用，以完全测试这个功能。
 
 ## Feedback
 
-We look forward to receiving the community’s feedback on the Oasis Network’s genesis file! If you have any specific feedback or questions, please let us know via the genesis file [feedback form](https://oasisfoundation.typeform.com/to/yG4pp57W).
+你可以使用提交的实体包中的实体公钥在genesis文件中搜索自己实体。如果在查找实体时遇到任何问题，请通过genesis文件[反馈表]
+(https://oasisfoundation.typeform.com/to/yG4pp57W)告诉我们。
 
 ##
-

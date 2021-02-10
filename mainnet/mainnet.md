@@ -1,52 +1,53 @@
-# Mainnet Overview
+# 主网介绍
 
-This document provides an overview of the proposed criteria and changes to upgrade from Mainnet Beta to Mainnet. This has been [reviewed and approved by community members and validators of the Oasis Network](https://github.com/oasisprotocol/community-forum/issues/1) and is being reproduced and summarized here for easy access.
+本文件介绍了从Mainnet Beta升级到Mainnet的标准的变化。本文件已经 经[Oasis Network的社区成员和验证者审查和批准](https://github.com/oasisprotocol/community-forum/issues/1)，现转载并摘编于此，以方便查阅。
 
 {% hint style="warning" %}
-As proposed by the community, the upgrade from Mainnet Beta to Mainnet will kick off on November 18, 2020 at 16:00 UTC.
+根据社区提议，从Mainnet Beta到Mainnet的升级将于2020年11月18日16:00UTC启动。
 {% endhint %}
 
 ## Criteria for Mainnet
 
-In order to transition from Mainnet Beta to Mainnet, community members have collectively suggested the following criteria be met. This is a collection of community feedback.
+为了从Mainnet Beta过渡到Mainnet，社区成员集体建议满足以下条件。这是社区反馈的集合。
 
-* [x]  Validators representing more than 2/3 of stake in the initial consensus committee successfully get online to launch Mainnet Beta.
-* [x]  Beta network runs successfully for at least 10 days.
-* [x]  No major security risks on the Beta Network have been discovered or otherwise unremediated and untested in the past 10 days.
-* [x]  At least 50 validators run on the Network.
-  * _Throughout Mainnet Beta there have been between 75 and 77 active validators on the network._
-* [x]  There are NO Oasis Protocol Foundation or Oasis Labs nodes serving as validators.
-* [x]  At least one block explorer exists to track network stability, transactions, and validator activity.
-  * _There is much more. See_ [_Block Explorers & Validator Leaderboards_](https://docs.oasis.dev/general/community-resources/community-made-resources#block-explorers-validator-leaderboards) _part of our docs._
-* [x]  At least one qualified custodian supports the native ROSE token.
-  * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](https://docs.oasis.dev/general/use-your-tokens/holding-tokens/custody-providers) _part of our docs._
-* [x]  At least one web wallet or hardware wallet supports native ROSE token.
-  * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](https://docs.oasis.dev/general/use-your-tokens/mobile-wallets) _and_ [_Web Wallets_](https://docs.oasis.dev/general/use-your-tokens/web-wallets) _parts of our docs._
+* [x] 代表最初的共识委员会2/3以上股份的验证人成功在线启动了Mainnet Beta。
+* [x] Beta网络成功运行了至少10天。
+* [x] 在过去的10天内，没有发现Beta网络上的主要安全风险，也没有对它进行补救和测试。
+* [x] 网络上至少有50个验证者。
+  * _在整个Mainnet Beta中，网络上有75至77个有效的验证者。_
+* [x] 没有Oasis Protocol 基金会或Oasis Labs节点充当验证者。
+* [x] 至少存在一个区块浏览器，以跟踪网络稳定性，交易和验证程序活动。
+  * _还有更多。见_ [_Block Explorers & Validator 排行榜 _](https://docs.oasis.dev/general/community-resources/community-made-resources#block-explorers-validator-leaderboards)。
+
+* [x] 至少有一个合格的保管人支持本地ROSE代币。
+  * _目前，Anchorage和 Finoa支持ROSE代币。详细信息请看[_监护人_](https://docs.oasis.dev/general/use-your-tokens/holding-tokens/custody-providers)。
 
 ## Mechanics of Upgrading to Mainnet
 
-Upgrading from Mainnet Beta to Mainnet will require a coordinated upgrade of the Network. All nodes will need to configure a new genesis file that they can generate or verify independently and reset/archive any state from Mainnet Beta. Once enough \(representing 2/3+ of stake\) nodes have taken this step, the network will start.
+从Mainnet Beta升级到Mainnet需要协调升级网络。所有节点都需要配置一个新的genesis文件，它们可以独立生成或验证，并重置/存档Mainnet Beta的任何状态。一旦有足够多的节点(代表2/3以上的利益)采取了这一步骤，网络就会启动。
 
 ## Proposed Changes From Mainnet Beta to Mainnet
 
-The Mainnet genesis file is intended to be as close as possible to the state of the Mainnet Beta network at the time of upgrade. That includes retaining validator token balances, retaining genesis file wallet allocations, and block height at time of the snapshot.
+Mainnet genesis文件旨在尽可能接近升级时Mainnet Beta网络的状态。这包括保留验证器代币余额，保留enesis文件钱包分配，以及快照时的区块高度。
 
-In addition, after receiving additional feedback from the community, the Oasis Protocol Foundation has proposed to increase the staking rewards model. In the new proposed model staking rewards will start at 20% \(annualized\) and range from 20% to 2% over the first 4 years of the network \(see more in updated [Token Metrics and Distribution](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution) doc\).
+此外，在收到社区的更多反馈后，Oasis Protocol 基金会提出了增加抵押奖励。
+
+在新提出的模式中，抵押奖励将从20%开始，在网络的前4年中从20%到2%不等。 \(查看更多内容，请看 [代币分配](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution)\)。
 
 {% hint style="info" %}
-The following parts of the genesis file will be updated:
+Genesis文件的以下部分将被更新：
 
-* **`height`** will remain the same as at the time of the snapshot of Mainnet Beta, i.e. `702000`.
-* **`genesis_time`** will be set to `2020-11-18T16:00:00Z`.
-* **`chain_id`** will be set to `oasis-1`.
-* **`halt_epoch`** will be set to `9940` \(approximately 1 year from Mainnet launch\).
-* **`staking.params.disable_transfers`** will be omitted \(or set to`false)`to enable transfers.
-* **`staking.params.reward_schedule`** will be updated to reflect the updated reward schedule as mentioned above.
-* **`staking.common_pool`** will be increased by 450M ROSE to fund increased staking rewards.
-* **`staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`**, which corresponds to the Community and Ecosystem Wallet, will have its `general.balance` reduced by 450M ROSE to `1183038701000000000` and transferred to the Common Pool to fund increased staking rewards.
-* **`extra_data`** will be set back to the value in the [Mainnet Beta genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json)
+* **`height`** 将与Mainnet Beta版快照时保持不变，即`702000`。
+* **`genesis_time`**将设置为 `2020-11-18T16:00:00Z`。
+* **`chain_id`** 将设置为 `oasis-1`。
+* **`halt_epoch`** 将设置为 `9940` \(从Mainnet 运行起约1年\)。
+* **`staking.params.disable_transfers`** 将省略(或设置为`false`)以实现转账。
+* **`staking.params.reward_schedule`**  将被更新，以反映上述更新的奖励时间表。
+* **`staking.common_pool`** 将增加4.5亿ROSE，以资助增加押注奖励。
+* **`staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`**,  与社区和生态系统钱包相对应的 `general.balance`将减少4.5亿ROSE至 `1183038701000000000`，并转入共同Common Pool，以资助增加定金奖励。
 
-  to include the Oasis network's genesis quote: _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]:_
+* **`extra_data`** 将被设置为 [Mainnet Beta genesis 文件](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json) 中的值，包含Oasis的创世引言：“_[Quis custodiet ipsos custodes?](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_”。[由Oasis社区成员Daniyar Borangaziyev提交]。
+
 
   ```diff
     "extra_data": {
@@ -55,18 +56,18 @@ The following parts of the genesis file will be updated:
   ```
 {% endhint %}
 
-See the updated [Network Parameters](../oasis-network/network-parameters.md) for the published Mainnet genesis file.
+参见更新后的[网络参数](.../oasis-network/network-parameters.md)发布的主网 genesis 文件。
 
 {% hint style="info" %}
-For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](../run-a-node/maintenance-guides/handling-network-upgrades.md#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
+关于如何通过比较网络状态转储来验证所提供的Mainnet genesis文件的详细说明，请阅读 [处理网络升级](../run-a-node/maintenance-guides/handling-network-upgrades.md#example-diff-for-mainnet-beta-to-mainnet-network-upgrade)。
 {% endhint %}
 
-Mainnet will use [**Oasis Core 20.12.2**](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.2).
+主网将会使用 [**Oasis Core 20.12.2 版本**](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.2)。
 
 ## Mainnet Launch Support
 
-The Oasis team will be offering live video support during the launch of Mainnet. Video call link and calendar details will be shared with node operators via email and Slack.
+在Mainnet发布期间，Oasis团队将提供实时视频支持。视频通话链接和日历细节将通过电子邮件和Slack与节点操作员者分享。
 
-For any additional support, please reach out via the [**\#nodeoperators** Oasis Community Slack channel](../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet Beta.
+如需更多支持，请通过 Oasis社区的[Slack频道](.../oasis-network/connect-with-us.md)联系，提出与Mainnet Beta相关的问题、意见和反馈。
 
-To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).
+关注Oasis，请使用包括[oasisscan.com](https://www.oasisscan.com/)在内的社区版区块浏览器。

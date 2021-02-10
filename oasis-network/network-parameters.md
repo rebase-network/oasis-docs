@@ -3,7 +3,7 @@ description: >-
   本页会及时更新当前发布的网络信息。
 ---
 
-# Network Parameters
+# Network 参数
 
 以下是主网目前的参数：
 

@@ -2,7 +2,7 @@
 description: Oasis Protocol Foundation的 代理政策。
 ---
 
-# Delegation Policy
+# 代表团政策
 
 ## 参加Main-Mainnet激励网络的实体的代表团
 

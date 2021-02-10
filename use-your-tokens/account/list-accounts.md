@@ -1,16 +1,16 @@
-# List Accounts
+# 账户列表
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](../prerequisites.md) and [Setup](../setup.md) sections.
+本例假定您已经阅读了 [前提准备](prerequisites.md)环节和[设置](.../setup.md)环节。
 {% endhint %}
 
-To list all staking accounts with positive balance, run:
+要列出所有余额>0的抵押账户，请运行：
 
 ```bash
 oasis-node stake list -a $ADDR
 ```
 
-This will list all accounts' addresses, e.g.:
+这将列出所有账户的地址，例如：。
 
 ```text
 oasis1qqqfalz4xars9nxn0mjy8fcf9quqg8ml0szm5ped
@@ -35,5 +35,4 @@ oasis1qq2rlaz3yjfk8gtdhnrfkrz5rrxjnnrzeq7mst0r
 ... output trimmed ...
 ```
 
-For more information on account's address format, see the [Address](address.md) section.
-
+想了解更多信息，请看 [地址](address.md)这章。
