@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Setup 翻译 · Oasis Docs</title>
+        <title>Setup · Oasis Docs</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -453,7 +453,7 @@
                 <a href="../overview.html">
             
                     
-                    Overview 翻译
+                    Overview
             
                 </a>
             
@@ -466,7 +466,7 @@
                 <a href="../terminology.html">
             
                     
-                    Terminology 翻译
+                    Terminology
             
                 </a>
             
@@ -479,7 +479,7 @@
                 <a href="../staking-and-delegating.html">
             
                     
-                    Staking and Delegating 翻译
+                    Staking and Delegating
             
                 </a>
             
@@ -492,7 +492,7 @@
                 <a href="../holding-rose-tokens/">
             
                     
-                    Custody & Wallets 翻译
+                    Custody & Wallets
             
                 </a>
             
@@ -506,7 +506,7 @@
                 <a href="../holding-rose-tokens/custody-providers.html">
             
                     
-                    Custody Providers 翻译
+                    Custody Providers
             
                 </a>
             
@@ -519,7 +519,7 @@
                 <a href="../holding-rose-tokens/ledger-wallet.html">
             
                     
-                    Self-Custody With Ledger 翻译
+                    Self-Custody With Ledger
             
                 </a>
             
@@ -532,7 +532,7 @@
                 <a href="../holding-rose-tokens/file-based-signer.html">
             
                     
-                    File-Based Signer 翻译
+                    File-Based Signer
             
                 </a>
             
@@ -550,7 +550,7 @@
                 <a href="../web-wallets.html">
             
                     
-                    Web Wallets 翻译
+                    Web Wallets
             
                 </a>
             
@@ -591,7 +591,7 @@
                 <a href="../mobile-wallets/bitpie-wallet-guide/testing-bitpie.html">
             
                     
-                    Testing Bitpie Wallet 翻译
+                    Testing Bitpie Wallet
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="prerequisites.html">
             
                     
-                    Prerequisites 翻译
+                    Prerequisites
             
                 </a>
             
@@ -641,7 +641,7 @@
                 <a href="setup.html">
             
                     
-                    Setup 翻译
+                    Setup
             
                 </a>
             
@@ -667,7 +667,7 @@
                 <a href="list-accounts.html">
             
                     
-                    List Accounts 翻译
+                    List Accounts
             
                 </a>
             
@@ -680,7 +680,7 @@
                 <a href="get-account-info.html">
             
                     
-                    Get Account Info 翻译
+                    Get Account Info
             
                 </a>
             
@@ -706,7 +706,7 @@
                 <a href="transfer-tokens.html">
             
                     
-                    Transfer Tokens 翻译
+                    Transfer Tokens
             
                 </a>
             
@@ -732,7 +732,7 @@
                 <a href="reclaim-tokens.html">
             
                     
-                    Reclaim Delegated/Staked Tokens 翻译
+                    Reclaim Delegated/Staked Tokens
             
                 </a>
             
@@ -783,7 +783,7 @@
                 <a href="../../contribute-to-the-network/network-governance.html">
             
                     
-                    Network Governance 翻译
+                    Network Governance
             
                 </a>
             
@@ -829,7 +829,7 @@
                 <a href="../../mainnet/mainnet.html">
             
                     
-                    Mainnet Overview 翻译
+                    Mainnet Overview
             
                 </a>
             
@@ -842,7 +842,7 @@
                 <a href="../../mainnet/mainnet-beta-overview.html">
             
                     
-                    Mainnet Beta Overview 翻译
+                    Mainnet Beta Overview
             
                 </a>
             
@@ -855,7 +855,7 @@
                 <a href="../../mainnet/genesis-file.html">
             
                     
-                    Genesis File Overview 翻译
+                    Genesis File Overview
             
                 </a>
             
@@ -999,7 +999,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Setup 翻译</a>
+        <a href="../.." >Setup</a>
     </h1>
 </div>
 
@@ -1014,67 +1014,66 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="setup">Setup</h1>
-<p>Make sure you have installed everything described in the <a href="prerequisites.html">Prerequisites</a> section.</p>
+                                <h1 id="&#x8BBE;&#x7F6E;">&#x8BBE;&#x7F6E;</h1>
+<p>&#x786E;&#x4FDD;&#x5DF2;&#x7ECF;&#x5DF2;&#x7ECF;&#x5728; <a href="prerequisites.html">&#x524D;&#x63D0;&#x51C6;&#x5907;</a>&#x73AF;&#x8282;&#x5B89;&#x88C5;&#x597D;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
 <h2 id="server-commands">Server commands</h2>
-<p>To run a command that requires a connection to an online Oasis node (i.e. the <code>server</code>), you need to either:</p>
+<p>&#x8981;&#x8FDE;&#x63A5;&#x5230;&#x5728;&#x7EBF;Oasis&#x8282;&#x70B9;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4EFB;&#x4E00;&#x547D;&#x4EE4;&#xFF1A;</p>
 <ul>
-<li>change the working directory to where the internal Oasis node UNIX socket is located (e.g. <code>/serverdir/node/</code>) before executing the command, or</li>
-<li>pass the <code>-a $ADDR</code> flag where <code>ADDR</code> represents the path to the internal Oasis node UNIX socket prefixed with <code>unix:</code> (e.g.<code>unix:/serverdir/node/internal.sock</code>).</li>
+<li>&#x5728;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#x4E4B;&#x524D;&#xFF0C;&#x5C06;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x66F4;&#x6539;&#x4E3A;Oasis&#x8282;&#x70B9;UNIX socket&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6216;&#x8005;</li>
+<li>&#x4F20;&#x9012;<code>-a $ ADDR</code>&#xFF0C;&#x5176;&#x4E2D;<code>ADDR</code>&#x4EE3;&#x8868;&#x4EE5;<code>unix:</code>&#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5185;&#x90E8;Oasis&#x8282;&#x70B9;UNIX socket&#x7684;&#x8DEF;&#x5F84;&#x3002;</li>
 </ul>
-<p>Here are some examples of Oasis Node CLI commands that need a connection to an online Oasis node:</p>
+<p>Oasis Node CLI&#x547D;&#x4EE4;&#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
 <ul>
-<li><code>oasis-node stake info</code>: Shows general staking information.</li>
-<li><code>oasis-node stake list</code>: Lists all accounts with positive balance.</li>
-<li><code>oasis-node stake account info</code>: Shows detailed information for an account.</li>
-<li><code>oasis-node consensus submit_tx</code>: Submits a pre-generated transaction to the network.</li>
+<li><code>oasis-node stake info</code>&#xFF1A;&#x663E;&#x793A;&#x5E38;&#x89C4;&#x62B5;&#x62BC;&#x4FE1;&#x606F;&#x3002;</li>
+<li><code>oasis-node stake list</code>&#xFF1A;&#x5217;&#x51FA;&#x6240;&#x6709;&#x4F59;&#x989D;&#x4E3A;&gt;0&#x7684;&#x8D26;&#x6237;&#x3002;</li>
+<li><code>oasis-node stake account info</code>&#xFF1A;&#x663E;&#x793A;&#x8D26;&#x6237;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;</li>
+<li><code>oasis-node consensus submit_tx</code>&#xFF1A;&#x5411;&#x7F51;&#x7EDC;&#x63D0;&#x4EA4;&#x4E00;&#x4E2A;&#x9884;&#x5148;&#x751F;&#x6210;&#x7684;&#x4EA4;&#x6613;&#x3002;</li>
 </ul>
 <h2 id="local-commands">Local commands</h2>
-<p>The following commands are intended to be run on your local machine and only need access to the network&apos;s current <a href="../../mainnet/genesis-file.html">Genesis File</a> and your signer&apos;s private key:</p>
+<p>&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x662F;&#x5728;&#x4F60;&#x7684;&#x672C;&#x5730;&#x673A;&#x5668;&#x4E0A;&#x8FD0;&#x884C;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7F51;&#x7EDC;&#x5F53;&#x524D;&#x7684;<a href="../../mainnet/genesis-file.html">Genesis &#x6587;&#x4EF6;</a>&#x548C;&#x4F60;&#x7684;&#x79C1;&#x94A5;&#x3002;</p>
 <ul>
 <li><code>oasis-node stake account gen_transfer</code></li>
 <li><code>oasis-node stake account gen_escrow</code></li>
 <li><code>oasis-node stake account gen_reclaim_escrow</code></li>
 <li><code>oasis-node stake account gen_amend_commission_schedule</code></li>
 </ul>
-<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>We strongly suggest that you do not use any entity/staking account that is generated with the file-based signer on the Mainnet.</p>
-<p>In case you need to use the file-based signer, make sure you only use it on an <a href="https://en.wikipedia.org/wiki/Air_gap_%28networking%29" target="_blank">offline/air-gapped machine</a>. Gaining access to your entity&apos;s/staking account&apos;s private key can compromise your tokens.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x7B7E;&#x540D;&#x5728;&#x4E3B;&#x7F51;&#x751F;&#x6210; entity&#x3001;&#x62B5;&#x62BC;&#x5E10;&#x6237;&#x3002;
+&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x7B7E;&#x540D;&#xFF0C;&#x786E;&#x4FDD;&#x4EC5;&#x5728; <a href="https://en.wikipedia.org/wiki/Air_gap_%28networking%29" target="_blank">&#x79BB;&#x7EBF;</a>&#x72B6;&#x6001;&#x4E0B;&#x4F7F;&#x7528;&#x3002;
+&#x83B7;&#x53D6; entity/&#x62B5;&#x62BC;&#x8D26;&#x6237;&#x7684;&#x79C1;&#x94A5;&#x53EF;&#x80FD;&#x4F1A;&#x4E22;&#x5931;&#x4F60;&#x7684;&#x4EE3;&#x5E01;&#x3002;</p>
 </div></div></p>
 <h2 id="json-pretty-printing">JSON pretty-printing</h2>
-<p>We will pipe the output of commands that return JSON through <a href="https://docs.python.org/3/library/json.html#module-json.tool" target="_blank">Python&apos;s <code>json.tool</code> module</a> to pretty-print it.</p>
-<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>Be aware that <a href="http://stedolan.github.io/jq/" target="_blank">jq</a>, the popular JSON CLI tool, <a href="https://github.com/stedolan/jq/wiki/FAQ#caveats" target="_blank">converts all numbers to IEEE 754 64-bit values</a> which can result in silent loss of precision and/or other changes.</p>
-<p>Hence, we recommend avoiding its usage until this issue is resolved.</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;Python&#x7684;<a href="https://docs.python.org/3/library/json.html#module-json.tool" target="_blank"><code>json.tool</code>&#x6A21;&#x5757;</a>&#x5C06;&#x8FD4;&#x56DE;&#x7684;JSON&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x66F4;&#x53CB;&#x597D;&#x7684;&#x5C55;&#x793A;&#x3002;</p>
+<p><div class="alert alert-undefined hints-alert"><div class="hints-icon"><i class="undefined"></i></div><div class="hints-container"><p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6D41;&#x884C;&#x7684;JSON CLI&#x5DE5;&#x5177;<a href="http://stedolan.github.io/jq/" target="_blank">jq</a><a href="https://github.com/stedolan/jq/wiki/FAQ#caveats" target="_blank">&#x5C06;&#x6240;&#x6709;&#x6570;&#x5B57;&#x8F6C;&#x6362;&#x4E3A;IEEE 754 64&#x4F4D;&#x503C;</a>&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x6216;&#x5176;&#x4ED6;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x5728;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x4E4B;&#x524D;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
 </div></div></p>
 <h2 id="common-cli-flags">Common CLI Flags</h2>
 <h3 id="base-flags">Base Flags</h3>
-<p>All commands for generating and signing transactions need the following base flags set:</p>
+<p>&#x5728;&#x6240;&#x6709;&#x751F;&#x6210;&#x548C;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x7684;&#x547D;&#x4EE4;&#x90FD;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
 <ul>
-<li><code>--genesis.file</code>: Path to the genesis file, e.g. <code>/localhostdir/genesis.json</code>. </li>
-</ul>
-<p>  For convenience, set the <code>GENESIS_FILE</code> environment value to its value, e.g.:</p>
-<pre><code class="lang-bash">  GENESIS_FILE=/localhostdir/genesis.json
+<li><p><code>--genesis.file</code>&#xFF1A;genesis &#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x6BD4;&#x5982; <code>/localhostdir/genesis.json</code>.</p>
+<p>&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x5C06;<code>GENESIS_FILE</code>genesis &#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-bash">GENESIS_FILE=/localhostdir/genesis.json
 </code></pre>
-<ul>
-<li><p><code>--signer.dir</code>: Path to entity&apos;s artifacts directory, e.g.  <code>entity-$LEDGER_INDEX</code></p>
-<p>or <code>/localhostdir/entity/</code></p>
+</li>
+<li><p><code>--signer.dir</code>&#xFF1A;entity&#x7684;&#x8DEF;&#x5F84;, &#x6BD4;&#x5982; <code>entity-$LEDGER_INDEX</code> &#x6216;&#x8005; <code>/localhostdir/entity/</code></p>
 </li>
 </ul>
 <h3 id="signer-flags">Signer Flags</h3>
-<p>Currently, we provide two options for signing transactions:</p>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
 <ul>
-<li><p><strong>Ledger-based signer.</strong></p>
-<p>You will need to set it up as described in our <a href="https://docs.oasis.dev/oasis-core-ledger/usage/transactions" target="_blank">Oasis Core Ledger</a> docs.</p>
+<li><p><strong>Ledger&#x7B7E;&#x540D;</strong></p>
+<p>&#x4F60;&#x9700;&#x8981;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB; <a href="https://docs.oasis.dev/oasis-core-ledger/usage/transactions" target="_blank">Oasis Core Ledger</a> &#x6587;&#x6863;&#x3002;</p>
 </li>
-<li><p><strong>File-based signer.</strong></p>
-<p>You will need to create your Entity as described in <a href="../../run-a-node/set-up-your-node/run-validator.html#creating-your-entity">Running a Node on the Network</a> docs and set the following flags:</p>
+<li><p><strong>&#x6587;&#x4EF6;&#x7B7E;&#x540D;</strong></p>
+<p>&#x4F60;&#x9700;&#x8981;&#x6309;&#x7167;<a href="../../run-a-node/set-up-your-node/run-validator.html#creating-your-entity">Running a Node on the Network</a>&#x521B;&#x5EFA; entity&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
 <ul>
-<li><code>--signer.backend file</code>: Specifies use of the file signer.</li>
+<li><code>--signer.backend file</code>&#xFF1A;&#x6307;&#x5B9A;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x7B7E;&#x540D;&#x5668;&#x3002;</li>
 </ul>
 </li>
 </ul>
 <h3 id="storing-base-and-signer-flags-in-an-environment-variable">Storing Base and Signer flags in an Environment Variable</h3>
-<p>To make the transaction commands shorter and avoid typing errors, one can create an environment variable, e.g. <code>TX_FLAGS</code>, with all the <a href="setup.html#base-flags">Base Flags</a> and <a href="setup.html#signer-flags">Signer Flags</a> configured for his particular set up.</p>
-<p>For example, one could set <code>TX_FLAGS</code> for a Ledger device like below (make sure all <code>LEDGER_*</code> environment variables are set appropriately):</p>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x4EA4;&#x6613;&#x547D;&#x4EE4;&#x66F4;&#x77ED;&#xFF0C;&#x907F;&#x514D;&#x8F93;&#x5165;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;&#x6BD4;&#x5982; <code>TX_FLAGS</code>&#xFF0C;&#x7ED3;&#x5408; <a href="setup.html#base-flags">Base &#x6307;&#x4EE4;</a> &#x4E0E; <a href="setup.html#signer-flags">Signer &#x6307;&#x4EE4;</a> &#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;Ledger &#x8BBE;&#x5907;&#x8BBE;&#x7F6E;<code>TX_FLAGS</code> &#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A; (&#x786E;&#x4FDD;&#x6240;&#x6709;&#x7684; <code>LEDGER_*</code> &#x53D8;&#x91CF;&#x88AB;&#x6B63;&#x786E;&#x5730;&#x8BBE;&#x7F6E;)&#xFF1A;</p>
 <pre><code class="lang-bash">TX_FLAGS=(--genesis.file <span class="hljs-string">&quot;<span class="hljs-variable">$GENESIS_FILE</span>&quot;</span>
   --signer.dir /localhostdir/entity
   --signer.backend plugin
@@ -1082,43 +1081,41 @@
   --signer.plugin.path <span class="hljs-string">&quot;<span class="hljs-variable">$LEDGER_SIGNER_PATH</span>&quot;</span>
 )
 </code></pre>
-<p>Or, one could set <code>TX_FLAGS</code> like below to use a file signer:</p>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A; &#x6587;&#x4EF6;&#x7B7E;&#x540D;&#x8BBE;&#x7F6E; <code>TX_FLAGS</code></p>
 <pre><code class="lang-bash">TX_FLAGS=(--genesis.file <span class="hljs-string">&quot;<span class="hljs-variable">$GENESIS_FILE</span>&quot;</span>
   --signer.backend file
   --signer.dir /localhostdir/entity/
 )
 </code></pre>
 <h3 id="common-transaction-flags">Common Transaction Flags</h3>
-<p>When generating a transaction, one needs to set the following transaction flags as appropriate for a given transaction:</p>
+<p>&#x5728;&#x751F;&#x6210;&#x4EA4;&#x6613;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x4EA4;&#x6613;&#x7684;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;&#x4EE5;&#x4E0B;&#x4EA4;&#x6613;&#x6807;&#x5FD7;&#x3002;</p>
 <ul>
-<li><code>--stake.amount</code>: Amount of base units to transfer, escrow, burn, etc.</li>
-<li><p><code>--transaction.file</code>: Path to the file where to store the generated</p>
-<p>transaction.</p>
+<li><code>--stake.amount</code>&#xFF1A;&#x8F6C;&#x8BA9;&#x3001;&#x6258;&#x7BA1;&#x7BA1;&#x3001;&#x70E7;&#x6BC1;&#x7684;&#x5E01;&#x7684;&#x6570;&#x91CF;&#x3002;</li>
+<li><code>--transaction.file</code>&#xFF1A;&#x4FDD;&#x5B58;&#x751F;&#x6210;&#x7684;&#x4EA4;&#x6613;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</li>
+<li><p><code>--transaction.nonce</code>&#xFF1A;&#x6BCF;&#x4E2A;&#x8D26;&#x6237;&#x7684;&#x4EA4;&#x6613;nonce&#x5FC5;&#x987B;&#x662F;&#x552F;&#x4E00;&#x7684;&#x9012;&#x589E;&#x6570;&#x5B57;&#x3002;</p>
+<p>&#x5982;&#x4F55;&#x5F97;&#x5230;&#x8D26;&#x6237;&#x7684; nonce, &#x8BF7;&#x770B; <a href="maintenance/checking-account-nonce.md">&#x68C0;&#x67E5;&#x8D26;&#x6237;&#x7684; nonce</a>&#x3002;</p>
 </li>
-<li><p><code>--transaction.nonce</code>: Incremental number that must be unique for each account&apos;s transaction.</p>
-<p>To get your current account&apos;s nonce, see <a href="maintenance/checking-account-nonce.md">Checking Your Account nonce</a> doc.</p>
-</li>
-<li><p><code>--transaction.fee.gas</code>: Maximum amount of gas (in <em>gas units</em>) a transaction can spend.  </p>
-</li>
-</ul>
-<p>  Gas costs for different staking transactions are specified by the <code>staking.params.gas_costs</code> consensus parameter.  </p>
-<p>  To obtain its value from the genesis file, run:</p>
-<pre><code class="lang-bash">  cat <span class="hljs-variable">$GENESIS_FILE</span> | \
-    python3 -c <span class="hljs-string">&apos;import sys, json; \
-    print(json.dumps(json.load(sys.stdin)[&quot;staking&quot;][&quot;params&quot;][&quot;gas_costs&quot;], indent=4))&apos;</span>
+<li><p><code>--transaction.fee.gas</code>&#xFF1A;&#x4E00;&#x7B14;&#x4EA4;&#x6613;&#x53EF;&#x4EE5;&#x82B1;&#x8D39;&#x7684;&#x6700;&#x5927;gas&#x91CF;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x4EA4;&#x6613;&#x7684;gas&#x6210;&#x672C;&#x662F;&#x7531;<code>staking.params.gas_costs</code>&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x7684;&#x3002;</p>
+<p>&#x8981;&#x4ECE;genesis&#x6587;&#x4EF6;&#x4E2D;&#x83B7;&#x53D6;&#x5176;&#x503C;&#xFF0C;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-bash">cat <span class="hljs-variable">$GENESIS_FILE</span> | \
+  python3 -c <span class="hljs-string">&apos;import sys, json; \
+  print(json.dumps(json.load(sys.stdin)[&quot;staking&quot;][&quot;params&quot;][&quot;gas_costs&quot;], indent=4))&apos;</span>
 </code></pre>
-<ul>
-<li><code>--transaction.fee.amount</code>: Amount of base units we will pay as a fee for a transaction.</li>
+</li>
+<li><p><code>--transaction.fee.amount</code>&#xFF1A;&#x6211;&#x4EEC;&#x5C06;&#x652F;&#x4ED8;&#x7684;&#x7684;&#x4EA4;&#x6613;&#x8D39;&#x7528;&#x3002;</p>
+</li>
 </ul>
 <p>Note that specifying a transaction&apos;s fee amount (via <code>--transaction.fee.amount</code>) and maximum gas amount (via <code>--transaction.fee.gas</code>) implicitly defines the <em>gas price</em> (in base units):</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6307;&#x5B9A;&#x4EA4;&#x6613;&#x7684;&#x8D39;&#x7528;&#x91D1;&#x989D;&#xFF08;&#x901A;&#x8FC7;<code>--transaction.fee.amount</code> \&#xFF09;&#x548C;&#x6700;&#x5927;gas&#x91CF;&#xFF08;&#x901A;&#x8FC7;<code>--transaction.fee.gas</code>&#xFF09;&#x4F1A;&#x9690;&#x5F0F;&#x5B9A;&#x4E49; <em>gas price</em>&#xFF1A;</p>
 <pre><code class="lang-text">gas_price = fee_amount / gas_amount
 </code></pre>
-<p>Gas price tells how much base units we are willing to pay for one gas unit.</p>
 <p>Consensus validators can configure their own <em>minimum gas price</em> (via <code>consensus.tendermint.min_gas_price</code> configuration flag) and will refuse to process transactions that have their gas price set below their minimum gas price.</p>
-<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Currently, there is no mechanism to discover what minimum gas prices are used by validators.</p>
-<p>For more details, see <a href="https://github.com/oasisprotocol/oasis-core/issues/2526" target="_blank">Oasis Core #2526</a>.</p>
+<p>&#x5171;&#x8BC6;&#x9A8C;&#x8BC1;&#x8005;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x81EA;&#x5DF1;&#x7684;&#x6700;&#x4F4E;gas&#x4EF7;&#x683C;&#xFF08;&#x901A;&#x8FC7;<code>consensus.tendermint.min_gas_price</code>&#xFF09;&#xFF0C;&#x5E76;&#x62D2;&#x7EDD;&#x5904;&#x7406;gas&#x4EF7;&#x683C;&#x4F4E;&#x4E8E;&#x6700;&#x4F4E;gas&#x4EF7;&#x683C;&#x7684;&#x4EA4;&#x6613;&#x3002;</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>&#x5F53;&#x524D;&#xFF0C;&#x6CA1;&#x6709;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x9A8C;&#x8BC1;&#x8005;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x4F4E;gs&#x4EF7;&#x683C;&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x7EC6;&#x8282; &#x8BF7;&#x770B; <a href="https://github.com/oasisprotocol/oasis-core/issues/2526" target="_blank">Oasis Core #2526</a>&#x3002;</p>
 </div></div></p>
-<h2 id=""> </h2>
+<h1 id="">#</h1>
 
                                 
                                 </section>
@@ -1146,7 +1143,7 @@
 
             
                 
-                <a href="prerequisites.html" class="navigation navigation-prev " aria-label="Previous page: Prerequisites 翻译">
+                <a href="prerequisites.html" class="navigation navigation-prev " aria-label="Previous page: Prerequisites">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1162,7 +1159,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Setup 翻译","level":"4.7.2","depth":2,"next":{"title":"Common Staking Info","level":"4.7.3","depth":2,"path":"manage-tokens/oasis-cli-tools/common-staking-info.md","ref":"manage-tokens/oasis-cli-tools/common-staking-info.md","articles":[]},"previous":{"title":"Prerequisites 翻译","level":"4.7.1","depth":2,"path":"manage-tokens/oasis-cli-tools/prerequisites.md","ref":"manage-tokens/oasis-cli-tools/prerequisites.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","hints","page-ref","tabs"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-ref":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"tabs":{}},"theme":"default","author":"shooter","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Oasis Docs","gitbook":"*","description":"Oasis Docs"},"file":{"path":"manage-tokens/oasis-cli-tools/setup.md","mtime":"2021-02-05T08:56:21.297Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-06T14:13:28.182Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Setup","level":"4.7.2","depth":2,"next":{"title":"Common Staking Info","level":"4.7.3","depth":2,"path":"manage-tokens/oasis-cli-tools/common-staking-info.md","ref":"manage-tokens/oasis-cli-tools/common-staking-info.md","articles":[]},"previous":{"title":"Prerequisites","level":"4.7.1","depth":2,"path":"manage-tokens/oasis-cli-tools/prerequisites.md","ref":"manage-tokens/oasis-cli-tools/prerequisites.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","hints","page-ref","tabs"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-ref":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"tabs":{}},"theme":"default","author":"shooter","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Oasis Docs","gitbook":"*","description":"Oasis Docs"},"file":{"path":"manage-tokens/oasis-cli-tools/setup.md","mtime":"2021-02-09T09:46:47.827Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-10T15:03:54.113Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
