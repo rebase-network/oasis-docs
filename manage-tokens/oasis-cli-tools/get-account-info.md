@@ -1,10 +1,12 @@
-# Get Account Info
+# 获得账户信息
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
+假设你已经阅读了 [前提准备](prerequisites.md)环节和[设置](.../setup.md)环节。
 {% endhint %}
 
-To get more information about a particular staking account, e.g. `oasis1qrvsa8ukfw3p6kw2vcs0fk9t59mceqq7fyttwqgx`, run:
+To get more information about a particular staking account, e.g.
+
+要想获得更多关于某一个抵押账户的信息，例如`oasis1qrvsa8ukfw3p6kw2vcs0fk9t59mceqq7fyttwqgx`，请运行以下命令：
 
 ```bash
 oasis-node stake account info \
@@ -12,7 +14,7 @@ oasis-node stake account info \
   --stake.account.address oasis1qrvsa8ukfw3p6kw2vcs0fk9t59mceqq7fyttwqgx
 ```
 
-This will output all staking information about this particular account, e.g.:
+这将输出这个账户的所有抵押信息，例如：
 
 ```javascript
 General Account:
@@ -40,51 +42,44 @@ Escrow Account:
 
 ## General Account
 
-We can observe that:
+我们可以观察到：
 
-* General account's **balance**, the amount of tokens that are available to the account owner, is ~377 tokens.
-* General account's **nonce**, the incremental number that must be unique for each account's transaction, is 0. That means there haven't been any transactions made with this account as the source. Therefore, the next transaction should have nonce equal to 0.
+* 账户的 **Balance**，是 ~377 tokens.
+* 账户的 **nonce**, 每个账户的交易都必须是唯一的增量数字，如果是0，这意味着这个账户还没有进行过交易。
 
 ## Escrow Account
 
-We can observe that:
+我们可以观察到：
 
-* The amount of tokens that are **actively bounded** to the escrow account is ~10529 tokens.
-* The total number of **shares** for the tokens actively bounded to the escrow account is 10 trillion.
-* The amount of tokens that are currently **debonding** is 0.
-* The total number of **shares** for the tokens that are currently debonding is 0.
+* **actively bounded** 是 ~10529 token。
+* 主动绑定到托管账户的代币的 **share**为10万亿。
+* 当前 **debonding** 是 0。
+* 目前正在脱债的代币的**share**总数为0。
 
 ### Commission Schedule
 
-An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../run-a-node/set-up-your-node/amend-commission-schedule.md) documentation.
+一个实体也可以对委托给它的代币收取佣金。它将定义 **rate steps** 和 **rate bound steps**。
+
+更多内容请看[Amend Commission Schedule](../../run-a-node/set-up-your-node/amend-commission-schedule.md)。
 
 ### Stake Accumulator
 
-Each escrow account also has a corresponding stake accumulator. It stores **stake claims** for an escrow account and ensures all claims are satisfied at any given point. Adding a new claim is only possible if all of the existing claims plus the new claim can be satisfied.
+每个托管账户都有一个相应的股权累加器。它为托管账户存储**的股权债权**，并确保所有债权在任何给定点都得到满足。只有在现有的所有债权加上新的债权都能得到满足的情况下，才有可能增加新的债权。
 
-We can observe that the stake accumulator currently has two claims:
+我们可以观察到：
 
-* The `registry.RegisterEntity` claim is for registering an entity.
+* `registry.RegisterEntity` 声明是注册一个实体。
+  它需要满足由实体共识参数定义的用于注册实体\（`entity` \）的全局阈值。
 
-
-
-  It needs to satisfy the global threshold for registering an entity \(`entity`\) which is defined by the staking consensus parameters.
-
+  更多内容请看[Common Staking Info](common-staking-info.md)的 `oasis-node stake info` 命令。
 
 
-  To see the value of the `entity` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info.md) doc.
+* `registry.RegisterNode.9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=` 声明了 注册node ID 是`9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=`.
 
-* The `registry.RegisterNode.9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=` claim is for registering the node with ID `9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=`.  
+  它需要满足注册验证器节点的全局定点阈值（\(`node-validator`\)，该阈值由共识参数定义。
 
+  更多内容请看[Common Staking Info](common-staking-info.md)的 `oasis-node stake info` 命令。
 
-  It needs to satisfy the global staking threshold for registering a validator node \(`node-validator`\) which is defined by the staking consensus parameters.  
+  除了全局阈值外，节点注册的每个运行时都可以定义自己的阈值，如果节点注册了多个运行时，则需要满足其注册的所有运行时的阈值之和。如果节点注册了多个运行时，它需要满足它注册的所有运行时的阈值之和。
 
-
-  To see the value of the `node-validator` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info.md) doc.  
-
-
-  In addition to the global thresholds, each runtime the node is registering for may define their own thresholds. In case the node is registering for multiple runtimes, it needs to satisfy the sum of thresholds of all the runtimes it is registering for.  
-
-
-  For more details, see [Oasis Core Developer Docs on registering a node](https://github.com/oasisprotocol/oasis-core/blob/master/docs/consensus/registry.md#register-node).
-
+  更多内容请看 [如何注册节点](https://github.com/oasisprotocol/oasis-core/blob/master/docs/consensus/registry.md#register-node)。

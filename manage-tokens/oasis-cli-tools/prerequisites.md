@@ -1,35 +1,36 @@
-# Prerequisites
+# 准备环节
 
-This sections lists the prerequisites for using your tokens.
+本节列出了使用代币的准备环节。
 
 {% hint style="info" %}
-Currently, the only supported and documented way to use your tokens is by utilizing the Oasis Node CLI in combination with:
 
-* [Ledger-based signer](https://docs.oasis.dev/oasis-core-ledger/), or
-* file-based signer.
+目前，唯一支持和记录的使用代币的方式是利用Oasis Node CLI与：
+
+* [Ledger ](https://docs.oasis.dev/oasis-core-ledger/)，或者
+* 文件签名器。
 {% endhint %}
 
 ## Oasis Node CLI
 
-To setup Oasis Node CLI, follow the Oasis Node documentation:
+要设置Oasis Node CLI，请参考Oasis Node文档：
 
 {% page-ref page="../../run-a-node/prerequisites/oasis-node.md" %}
 
 ## Ledger-based signer
 
 {% hint style="info" %}
-This is only needed if you will use the [Ledger wallet](../holding-rose-tokens/ledger-wallet.md) to hold your tokens.
+当你使用[Ledger 钱包](../holding-rose-tokens/ledger-wallet.md)保存代币的时候才需要这样。
 {% endhint %}
 
-To use the Ledger-based signer in combination with Oasis Node CLI, follow the [Setup](https://docs.oasis.dev/oasis-core-ledger/usage/setup) guide in our [Oasis Core Ledger](https://docs.oasis.dev/oasis-core-ledger/) docs.
+使用Ledger与Oasis Node CLI结合使用，请参考[Oasis Core Ledger](https://docs.oasis.dev/oasis-core-ledger/)中的 [设置](https://docs.oasis.dev/oasis-core-ledger/usage/setup)指南。
 
 ## File-based signer
 
 {% hint style="danger" %}
-We strongly suggest that you do not use any entity/staking account that is generated with the file-based signer on the Mainnet.
 
-In case you need to use the file-based signer, make sure you only use it on an [offline/air-gapped machine](https://en.wikipedia.org/wiki/Air_gap_%28networking%29). Gaining access to your entity's/staking account's private key can compromise your tokens.
+强烈建议你不要使用文件签名在主网生成 entity、抵押帐户。
+如果你需要使用文件签名，确保仅在 [离线](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)状态下使用。
+获取 entity/抵押账户的私钥可能会丢失你的代币。
 {% endhint %}
 
-There are no additional things needed since the file-based signer is a part of Oasis Node CLI.
-
+使用文件的签名器是Oasis Node CLI的一部分，不需要额外的东西。

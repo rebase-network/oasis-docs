@@ -1,19 +1,15 @@
-# Reclaim Delegated/Staked Tokens
+# 回收委托/抵押的代币
 
-{% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
-{% endhint %}
+当我们想要回收托管的代币时，我们不能直接这样做。相反，我们需要指定我们想要从托管账户中回收的股份数量。
 
-When we want to reclaim escrowed tokens, we can't do that directly. Instead, we need to specify the number of shares we want to reclaim from an escrow account.
+假设：
 
-Let's assume:
-
-* we want to reclaim 357 billion shares from our escrow account,
-* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw`is our staking account address.
+* 我们想从我们的托管账户中取回3570亿股，
+* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw`是抵押地址。
 
 ## Query Our Account's Info
 
-To query our staking account's information, use the following command:
+查询 抵押地址信息，运行以下信息：
 
 ```bash
 oasis-node stake account info \
@@ -22,10 +18,10 @@ oasis-node stake account info \
 ```
 
 {% hint style="info" %}
-For a detailed explanation on querying account information, see [t](get-account-info.md)he [Get Info](get-account-info.md) section.
+关于查询账户信息的详细说明，请看[获得账户信息](get-account-info.md)。
 {% endhint %}
 
-Before the transaction, this outputs:
+交易之前：
 
 ```javascript
 General Account:
@@ -41,16 +37,18 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+观察到：
 
-* General account's balance is ~223 tokens.
-* Account's nonce is 9.
-* ~11450 tokens are actively bounded to the escrow account.
-* The amount of tokens that are currently debonding is 0.
+* 账户余额是 ~223
+* 账户 nonce 是 9
+* ～11450个代币被绑定到了代管账户
+* 目前正在解绑的代币数量为0。
 
 ## Generate a Reclaim Escrow Transaction
 
 Let's generate a reclaim escrow transaction of 357 billion shares from our own escrow account and store it to `tx_reclaim.json`:
+
+我们交易 357 亿股，交易信息保存到 `tx_reclaim.json`：
 
 ```bash
 oasis-node stake account gen_reclaim_escrow \
@@ -63,7 +61,7 @@ oasis-node stake account gen_reclaim_escrow \
   --transaction.fee.amount 2000
 ```
 
-This will output a preview of the generated transaction:
+输出交易预览：
 
 ```javascript
 You are about to sign the following transaction:
@@ -80,11 +78,11 @@ Other info:
   Genesis document's hash: 976c302f696e417bd861b599e79261244f4391f3887a488212ee122ca7bbf0a8
 ```
 
-and ask you for confirmation.
+并要求你的确认。
 
 ## Submit the Transaction
 
-To submit the generated transaction, we need to copy `tx_reclaim.json` to the online Oasis node \(i.e. the `server`\) and submit it from there:
+要提交生成的交易，我们需要将`tx_reclaim.json`复制到在线的Oasis节点，然后从那里提交：
 
 ```bash
 oasis-node consensus submit_tx \
@@ -93,8 +91,7 @@ oasis-node consensus submit_tx \
 ```
 
 ## Query Our Account's Info Again
-
-Let's check [our account's info](reclaim-tokens.md#query-our-accounts-info) again:
+再次检查 [账户信息](reclaim-tokens.md#query-our-accounts-info)：
 
 ```javascript
 General Account:
@@ -110,48 +107,41 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+观察到：
 
-* Our general account's balance decreased for 0.000002 token. This corresponds to the fee
+* 账户余额减少了0.000002。0.000002是交易费。
+* 账户的 nonce 增加到了 10。
+*  托管账户有效股数减少3570了亿股，现为9,828,014,125,910股。
 
-  that we specified we will pay for this transaction.
+* 我们的托管账户活动余额减少了401.353137954，现为11049.031678686。
 
-* Our account's nonce increased to 10.
-* Our escrow account's active number of shares decreased for 357 billion shares
-
-  to 9,828,014,125,910.
-
-* Our escrow account's active balance decreased for 401.353137954 tokens and
-
-  is now 11049.031678686 tokens.
-
-* Our escrow account's debonding balance increased to 401.353137954 tokens
-
-  and its number of shares to the same amount.
+*我们托管账户的借贷余额增加到401.353137954，其股数也增加到相同的数额。
 
 ### Computation of Reclaimed Tokens
 
-When a delegator wants to reclaim a certain number of escrowed tokens, the **token price** \(in shares\) must be calculated based on the escrow account's current active balance and the number of issued shares:
+当委托人想要收回一定数量的代管代币时，必须根据代管账户的当前活动余额和已发行股数来计算**代币价格** （以股份单位）：
 
 ```text
 tokens_per_share = account_delegated_tokens / account_issued_shares
 ```
 
-In our case, the current token price \(i.e. `tokens_per_share`\) is 11450.384816640 / 10,185,014,125,910 which is 1.124238481664054 \* 10^-9 token per share.
+这个例子中，目前的代币价格为11450.384816640/10,185,014,125,910，即每股1.124238481664054*10^-9个代币。
 
-For 357 billion shares, the amount of tokens that will be reclaimed is thus 357 \* 10^9 \* 1.124238481664054 \* 10^-9 which is 401.35313795406726 tokens \(rounded to 401.353137954 tokens\).
+3570亿股，因此，将回收的代币数量为357/10^9/1.124238481664054/10^-9，即401.35313795406726代币（四舍五入为401.353137954代币）。
 
-Hence, the escrow account's active balance decreased for 401.353137954 tokens and the debonding balance increased for the same amount.
+因此，托管账户的活动余额减少了401.353137954个代币，扣款余额增加了同样的金额。
 
 {% hint style="warning" %}
-While the number of debonding shares currently equals the number of base units that are currently subject to debonding and hence, the amount of tokens we can except to reclaim after debonding period is over is a little over 401 tokens, there is no guarantee that this stays the same until the end of the debonding period. Any slashing \(e.g. for double signing\) could change shares' price.
+虽然目前退市股的数量等于目前被退市的基础单位数量，因此，在退市期结束后，我们可以除外收回的代币数量为401多一点，但不能保证这个数量在退市期结束前保持不变。任何削减（例如双签）都可能改变股价。
 {% endhint %}
 
 ### Debonding Period
 
 The debonding period is specified by the `staking.params.debonding_interval` consensus parameter and is represented as a number of epochs that need to pass.
 
-To obtain its value from the genesis file, run:
+拆分周期由`staking.params.debonding_interval`共识参数指定，通过epoch表示。
+
+要从genesis文件中获取这个值，运行以下命令：
 
 ```bash
 cat $GENESIS_FILE | \
@@ -159,11 +149,10 @@ cat $GENESIS_FILE | \
   print(json.load(sys.stdin)["staking"]["params"]["debonding_interval"])'
 ```
 
-For our example network, this returns:
+对于我们的示例网络，将返回：
 
 ```text
 10
 ```
 
-After the debonding period has passed, the network will automatically move an escrow account's debonding balance into the general account.
-
+扣款期过后，网络会自动将托管账户的扣款余额转入普通账户。

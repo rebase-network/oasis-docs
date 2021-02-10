@@ -1,24 +1,24 @@
-# Setup
+# 设置
 
-Make sure you have installed everything described in the [Prerequisites](prerequisites.md) section.
+确保已经已经在 [前提准备](prerequisites.md)环节安装好了相应的程序。
 
 ## Server commands
 
-To run a command that requires a connection to an online Oasis node \(i.e. the `server`\), you need to either:
+要连接到在线Oasis节点的命令，你需要执行以下任一命令：
 
-* change the working directory to where the internal Oasis node UNIX socket is located \(e.g. `/serverdir/node/`\) before executing the command, or
-* pass the `-a $ADDR` flag where `ADDR` represents the path to the internal Oasis node UNIX socket prefixed with `unix:` \(e.g.`unix:/serverdir/node/internal.sock`\).
+* 在执行该命令之前，将工作目录更改为Oasis节点UNIX socket所在的位置，或者
+* 传递`-a $ ADDR`，其中`ADDR`代表以`unix:`为前缀的内部Oasis节点UNIX socket的路径。
 
-Here are some examples of Oasis Node CLI commands that need a connection to an online Oasis node:
+Oasis Node CLI命令的示例：
 
-* `oasis-node stake info`: Shows general staking information.
-* `oasis-node stake list`: Lists all accounts with positive balance.
-* `oasis-node stake account info`: Shows detailed information for an account.
-* `oasis-node consensus submit_tx`: Submits a pre-generated transaction to the network.
+* `oasis-node stake info`：显示常规抵押信息。
+* `oasis-node stake list`：列出所有余额为>0的账户。
+* `oasis-node stake account info`：显示账户的详细信息。
+* `oasis-node consensus submit_tx`：向网络提交一个预先生成的交易。
 
 ## Local commands
 
-The following commands are intended to be run on your local machine and only need access to the network's current [Genesis File](../../mainnet/genesis-file.md) and your signer's private key:
+以下命令是在你的本地机器上运行，只需要访问网络当前的[Genesis 文件](../../mainnet/genesis-file.md)和你的私钥。
 
 * `oasis-node stake account gen_transfer`
 * `oasis-node stake account gen_escrow`
@@ -26,60 +26,58 @@ The following commands are intended to be run on your local machine and only nee
 * `oasis-node stake account gen_amend_commission_schedule`
 
 {% hint style="danger" %}
-We strongly suggest that you do not use any entity/staking account that is generated with the file-based signer on the Mainnet.
 
-In case you need to use the file-based signer, make sure you only use it on an [offline/air-gapped machine](https://en.wikipedia.org/wiki/Air_gap_%28networking%29). Gaining access to your entity's/staking account's private key can compromise your tokens.
+强烈建议你不要使用文件签名在主网生成 entity、抵押帐户。
+如果你需要使用文件签名，确保仅在 [离线](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)状态下使用。
+获取 entity/抵押账户的私钥可能会丢失你的代币。
+
 {% endhint %}
 
 ## JSON pretty-printing
 
-We will pipe the output of commands that return JSON through [Python's `json.tool` module](https://docs.python.org/3/library/json.html#module-json.tool) to pretty-print it.
+我们将使用Python的[`json.tool`模块](https://docs.python.org/3/library/json.html#module-json.tool)将返回的JSON内容进行更友好的展示。
 
 {% hint style="warning" %}
-Be aware that [jq](http://stedolan.github.io/jq/), the popular JSON CLI tool, [converts all numbers to IEEE 754 64-bit values](https://github.com/stedolan/jq/wiki/FAQ#caveats) which can result in silent loss of precision and/or other changes.
 
-Hence, we recommend avoiding its usage until this issue is resolved.
+请注意，流行的JSON CLI工具[jq](http://stedolan.github.io/jq/)[将所有数字转换为IEEE 754 64位值](https://github.com/stedolan/jq/wiki/FAQ#caveats)可能会导致精度损失或其他变化。
+
+因此，我们建议在这个问题解决之前避免使用它。
 {% endhint %}
 
 ## Common CLI Flags
 
 ### Base Flags
 
-All commands for generating and signing transactions need the following base flags set:
+在所有生成和签名交易的命令都需要设置以下内容：
 
-* `--genesis.file`: Path to the genesis file, e.g. `/localhostdir/genesis.json`. 
+* `--genesis.file`：genesis 文件的路径，比如 `/localhostdir/genesis.json`.
 
-
-
-  For convenience, set the `GENESIS_FILE` environment value to its value, e.g.:
+  为方便起见，将`GENESIS_FILE`genesis 文件的路径，例如：
 
   ```bash
   GENESIS_FILE=/localhostdir/genesis.json
   ```
 
-* `--signer.dir`: Path to entity's artifacts directory, e.g.  `entity-$LEDGER_INDEX`
-
-  or `/localhostdir/entity/`
+* `--signer.dir`：entity的路径, 比如 `entity-$LEDGER_INDEX` 或者 `/localhostdir/entity/`
 
 ### Signer Flags
 
-Currently, we provide two options for signing transactions:
+目前，我们提供了两种签名交易的选择。
 
-* **Ledger-based signer.**
+* **Ledger签名**
 
-  You will need to set it up as described in our [Oasis Core Ledger](https://docs.oasis.dev/oasis-core-ledger/usage/transactions) docs.
+  你需要仔细阅读 [Oasis Core Ledger](https://docs.oasis.dev/oasis-core-ledger/usage/transactions) 文档。
 
-* **File-based signer.**
+* **文件签名**
 
-  You will need to create your Entity as described in [Running a Node on the Network](../../run-a-node/set-up-your-node/run-validator.md#creating-your-entity) docs and set the following flags:
-
-  * `--signer.backend file`: Specifies use of the file signer.
+  你需要按照[Running a Node on the Network](../../run-a-node/set-up-your-node/run-validator.md#creating-your-entity)创建 entity，并使用以下命令：
+  * `--signer.backend file`：指定使用文件签名器。
 
 ### Storing Base and Signer flags in an Environment Variable
 
-To make the transaction commands shorter and avoid typing errors, one can create an environment variable, e.g. `TX_FLAGS`, with all the [Base Flags](setup.md#base-flags) and [Signer Flags](setup.md#signer-flags) configured for his particular set up.
+为了使交易命令更短，避免输入错误，可以创建一个环境变量。比如 `TX_FLAGS`，结合 [Base 指令](setup.md#base-flags) 与 [Signer 指令](setup.md#signer-flags) 进行配置。
 
-For example, one could set `TX_FLAGS` for a Ledger device like below \(make sure all `LEDGER_*` environment variables are set appropriately\):
+比如，我们可以Ledger 设备设置`TX_FLAGS` 命令如下： \(确保所有的 `LEDGER_*` 变量被正确地设置\)：
 
 ```bash
 TX_FLAGS=(--genesis.file "$GENESIS_FILE"
@@ -90,8 +88,7 @@ TX_FLAGS=(--genesis.file "$GENESIS_FILE"
 )
 ```
 
-Or, one could set `TX_FLAGS` like below to use a file signer:
-
+我们也可以为 文件签名设置 `TX_FLAGS`
 ```bash
 TX_FLAGS=(--genesis.file "$GENESIS_FILE"
   --signer.backend file
@@ -101,24 +98,19 @@ TX_FLAGS=(--genesis.file "$GENESIS_FILE"
 
 ### Common Transaction Flags
 
-When generating a transaction, one needs to set the following transaction flags as appropriate for a given transaction:
+在生成交易时，需要根据给定交易的情况设置以下交易标志。
 
-* `--stake.amount`: Amount of base units to transfer, escrow, burn, etc.
-* `--transaction.file`: Path to the file where to store the generated
+* `--stake.amount`：转让、托管管、烧毁的币的数量。
+* `--transaction.file`：保存生成的交易的文件路径。
+* `--transaction.nonce`：每个账户的交易nonce必须是唯一的递增数字。
 
-  transaction.
+ 如何得到账户的 nonce, 请看 [检查账户的 nonce](maintenance/checking-account-nonce.md)。
 
-* `--transaction.nonce`: Incremental number that must be unique for each account's transaction.
+* `--transaction.fee.gas`：一笔交易可以花费的最大gas量。
 
-  To get your current account's nonce, see [Checking Your Account nonce](maintenance/checking-account-nonce.md) doc.
+  不同交易的gas成本是由`staking.params.gas_costs`参数指定的。
 
-* `--transaction.fee.gas`: Maximum amount of gas \(in _gas units_\) a transaction can spend.  
-
-
-  Gas costs for different staking transactions are specified by the `staking.params.gas_costs` consensus parameter.  
-
-
-  To obtain its value from the genesis file, run:
+  要从genesis文件中获取其值，运行以下命令：
 
   ```bash
   cat $GENESIS_FILE | \
@@ -126,23 +118,27 @@ When generating a transaction, one needs to set the following transaction flags 
     print(json.dumps(json.load(sys.stdin)["staking"]["params"]["gas_costs"], indent=4))'
   ```
 
-* `--transaction.fee.amount`: Amount of base units we will pay as a fee for a transaction.
+* `--transaction.fee.amount`：我们将支付的的交易费用。
 
 Note that specifying a transaction's fee amount \(via `--transaction.fee.amount`\) and maximum gas amount \(via `--transaction.fee.gas`\) implicitly defines the _gas price_ \(in base units\):
+
+请注意，指定交易的费用金额（通过`--transaction.fee.amount` \）和最大gas量（通过`--transaction.fee.gas`）会隐式定义 _gas price_：
 
 ```text
 gas_price = fee_amount / gas_amount
 ```
 
-Gas price tells how much base units we are willing to pay for one gas unit.
 
 Consensus validators can configure their own _minimum gas price_ \(via `consensus.tendermint.min_gas_price` configuration flag\) and will refuse to process transactions that have their gas price set below their minimum gas price.
 
-{% hint style="info" %}
-Currently, there is no mechanism to discover what minimum gas prices are used by validators.
 
-For more details, see [Oasis Core \#2526](https://github.com/oasisprotocol/oasis-core/issues/2526).
+共识验证者可以配置自己的最低gas价格（通过`consensus.tendermint.min_gas_price`），并拒绝处理gas价格低于最低gas价格的交易。
+
+{% hint style="info" %}
+
+当前，没有方法可以发现验证者使用的最低gs价格。
+
+更多细节 请看 [Oasis Core \#2526](https://github.com/oasisprotocol/oasis-core/issues/2526)。
 {% endhint %}
 
-## 
-
+##

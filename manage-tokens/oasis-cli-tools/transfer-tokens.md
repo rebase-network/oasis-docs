@@ -1,25 +1,26 @@
-# Transfer Tokens
+# 转账
 
 {% hint style="warning" %}
-Transfers are disabled on the Mainnet Beta Network.
+主网的beta版本禁止转账。
 {% endhint %}
 
 {% hint style="info" %}
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
+假设你已经阅读了 [前提准备](prerequisites.md)环节和[设置](.../setup.md)环节。
 {% endhint %}
 
-Let's assume:
+假设：
 
-* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw6` is our staking account address,
-* `oasis1qr3jc2yfhszpyy0daha2l9xjlkrxnzas0uaje4t3` is the destination's staking account address.
+* `oasis1qr6swa6gsp2ukfjcdmka8wrkrwz294t7ev39nrw6` 是抵押地址，
+* `oasis1qr3jc2yfhszpyy0daha2l9xjlkrxnzas0uaje4t3` 是目标抵押地址。
 
 {% hint style="info" %}
-To convert your entity's ID to a staking account address, see the [Obtain Account Address From Entity's ID](address.md#obtain-account-address-from-entitys-id) section.
+
+要把你的 entity ID转换为押金地址，请看 [从 Entity ID 获取账户地址](address.md#obtain-account-address-from-entitys-id)
 {% endhint %}
 
 ## Query Our Account's Info
 
-To query our staking account's information, use the following command:
+要查询我们的押金账户信息，使用以下命令：
 
 ```bash
 oasis-node stake account info \
@@ -28,10 +29,10 @@ oasis-node stake account info \
 ```
 
 {% hint style="info" %}
-For a detailed explanation on querying account information, see [t](get-account-info.md)he [Get Info](get-account-info.md) section.
+关于查询账户信息的详细说明，请看[获得账户信息](get-account-info.md)。
 {% endhint %}
 
-Before the transaction, this outputs:
+在交易之前，输出是：
 
 ```javascript
 General Account:
@@ -47,24 +48,23 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我们可以看到：
 
-* General account's balance is ~601 tokens.
-* Account's nonce is 7.
-* ~11242 tokens are actively bounded to the escrow account.
-* The amount of tokens that are currently debonding is 0.
+* 账户余额是 ~601
+* 账户 nonce 是 7
+* ~11242个代币被绑定到了代管账户
+* 目前正在解绑的代币数量为0。
 
 ## Query Destination Account's Info
 
-To query the destination account's information, use the following command:
-
+查询账户信息，使用以下命令：
 ```bash
 oasis-node stake account info \
   -a $ADDR \
   --stake.account.address oasis1qr3jc2yfhszpyy0daha2l9xjlkrxnzas0uaje4t3
 ```
 
-Before the transaction, this outputs:
+交易之前，输出是：
 
 ```javascript
 General Account:
@@ -80,11 +80,11 @@ Escrow Account:
   ...
 ```
 
-We can observe that both, the general account and the escrow account \(actively bounded and debonding\), have a balance of 0 tokens.
+我们可以观察到，普通帐户和托管帐户\（主动绑定和解除绑定\）的余额均为0。
 
 ## Generate a Transfer Transaction
 
-Let's generate a transfer transaction of 170 tokens, \(i.e. 170 \* 10^9 base units\), from our account to the chosen destination account and store it to `tx_transfer.json`:
+我们交易 170个token \( 170的 单位是 \* 10^9\)，交易信息保存到 `tx_transfer.json`：
 
 ```bash
 oasis-node stake account gen_transfer \
@@ -97,7 +97,7 @@ oasis-node stake account gen_transfer \
   --transaction.fee.amount 2000
 ```
 
-This will output a preview of the generated transaction:
+输出交易预览：
 
 ```javascript
 You are about to sign the following transaction:
@@ -114,11 +114,11 @@ Other info:
   Genesis document's hash: 976c302f696e417bd861b599e79261244f4391f3887a488212ee122ca7bbf0a8
 ```
 
-and ask you for confirmation.
+并要求你的确认。
 
 ## Submit the Transaction
 
-To submit the generated transaction, we need to copy `tx_transfer.json` to the online Oasis node \(i.e. the `server`\) and submit it from there:
+要提交生成的交易，我们需要将`tx_transfer.json`复制到在线的Oasis节点，然后从那里提交：
 
 ```bash
 oasis-node consensus submit_tx \
@@ -127,9 +127,7 @@ oasis-node consensus submit_tx \
 ```
 
 ## Query Both Accounts' Info
-
-Let's check both accounts' info, [first ours](transfer-tokens.md#query-our-accounts-info):
-
+检查账户信息，首先是
 ```javascript
 General Account:
   Balance: ROSE 431.492490765
@@ -144,7 +142,7 @@ Escrow Account:
   ...
 ```
 
-and then the [destination's](transfer-tokens.md#query-destination-accounts-info):
+然后是：
 
 ```javascript
 General Account:
@@ -160,9 +158,8 @@ Escrow Account:
   ...
 ```
 
-We can observe that:
+我们观察到：
 
-* Our general balance decreased for 170.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
-* Our account's nonce increased to 8.
-* Destination account's general balance increased for 170 tokens.
-
+* 账户余额减少了170.000002。 0.000002是交易费。
+* 账户的 nonce 增加到了 8
+* 目标帐户的总余额增加了170。
