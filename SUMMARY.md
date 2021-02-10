@@ -4,11 +4,11 @@
 
 ## Oasis Network
 
-* [Overview of the Oasis Network 长，已翻译](oasis-network/overview.md)
+* [Overview of the Oasis Network](oasis-network/overview.md)
 * [Network Parameters](oasis-network/network-parameters.md)
-* [Why Oasis? 与faq内容一样，长](https://docs.oasis.dev/oasis-network-primer/)
-* [ROSE Token Metrics 跳转到链外](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution)
-* [Papers 3篇白皮书，跳转到链外](https://oasisprotocol.org/papers)
+* [Why Oasis?](https://docs.oasis.dev/oasis-network-primer/)
+* [ROSE Token Metrics](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution)
+* [Papers](https://oasisprotocol.org/papers)
 * [Community Channels](oasis-network/connect-with-us.md)
 
 ## Run a Node
@@ -18,7 +18,7 @@
   * [Hardware](run-a-node/prerequisites/hardware-recommendations.md)
   * [Oasis Node](run-a-node/prerequisites/oasis-node.md)
 * [Set Up Your Node](run-a-node/set-up-your-node/README.md)
-  * [Run a Validator Node 已翻译](run-a-node/set-up-your-node/run-validator.md)
+  * [Run a Validator Node](run-a-node/set-up-your-node/run-validator.md)
   * [Run a Non-validator Node](run-a-node/set-up-your-node/run-non-validator.md)
   * [Run a Seed Node](run-a-node/set-up-your-node/run-seed-node.md)
   * [Create an Entity Package](run-a-node/set-up-your-node/creating-an-entity-package.md)
@@ -31,7 +31,7 @@
 * [Node Troubleshooting](run-a-node/troubleshooting.md)
 * [Upgrade Log](run-a-node/upgrade-log.md)
 
-## Manage Your ROSE Tokens <a id="manage-tokens"></a> 介绍钱包
+## Manage Your ROSE Tokens <a id="manage-tokens"></a>
 
 * [Overview](manage-tokens/overview.md)
 * [Terminology](manage-tokens/terminology.md)
@@ -42,7 +42,7 @@
   * [File-Based Signer](manage-tokens/holding-rose-tokens/file-based-signer.md)
 * [Web Wallets](manage-tokens/web-wallets.md)
 * [Mobile Wallets](manage-tokens/mobile-wallets/README.md)
-  * [Bitpie Wallet Guide 比特派钱包](manage-tokens/mobile-wallets/bitpie-wallet-guide/README.md)
+  * [Bitpie Wallet Guide](manage-tokens/mobile-wallets/bitpie-wallet-guide/README.md)
     * [Testing Bitpie Wallet](manage-tokens/mobile-wallets/bitpie-wallet-guide/testing-bitpie.md)
 * [Oasis CLI Tools](manage-tokens/oasis-cli-tools/README.md)
   * [Prerequisites](manage-tokens/oasis-cli-tools/prerequisites.md)
@@ -59,7 +59,7 @@
 ## Contribute to the Network
 
 * [Run a Validator Node](contribute-to-the-network/run-validator.md)
-* [Network Governance 略长](contribute-to-the-network/network-governance.md)
+* [Network Governance](contribute-to-the-network/network-governance.md)
 * [Contribution Guidelines](contribute-to-the-network/contribution-guidelines.md)
 * [访问我们的Github](https://github.com/oasisprotocol)
 
@@ -67,7 +67,7 @@
 
 * [Mainnet Overview](mainnet/mainnet.md)
 * [Mainnet Beta Overview](mainnet/mainnet-beta-overview.md)
-* [Genesis File Overview 参数配置多](mainnet/genesis-file.md)
+* [Genesis File Overview](mainnet/genesis-file.md)
 
 ## Oasis Protocol Foundation <a id="foundation"></a>
 
@@ -76,7 +76,7 @@
 
 ## Developer Resources
 
-* [Oasis Core Documentation 跳转到链外](https://docs.oasis.dev/oasis-core)
+* [Oasis Core Documentation](https://docs.oasis.dev/oasis-core)
 * [GitHub](https://github.com/oasisprotocol)
 
 ## Community Resources
@@ -85,4 +85,4 @@
 
 ## Frequently Asked Questions <a id="faq"></a>
 
-* [Oasis Network FAQ 已翻译](faq/oasis-network-faq.md)
+* [Oasis Network FAQ](faq/oasis-network-faq.md)
