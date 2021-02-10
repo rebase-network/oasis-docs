@@ -1,50 +1,49 @@
-# Terminology
+# 术语
 
 ### Account
 
-A staking **account** is an entry in the staking ledger.
+权益**账户**是权益分类账中的一个条目。
 
-It has two \(sub\)accounts:
+它有两个帐户：
 
-* **General account.**
+* **一般帐户**
 
-  It is used to keep the funds that are freely available to the account owner to transfer, delegate/stake, pay gas fees, ...
+  它是用来保存账户所有者可自由支配的资金，用于转账、委托/入股、支付gas、......
 
-* **Escrow account**.
+* **托管账户**
 
-  It are used to keep the funds needed for specific consensus-layer operations \(e.g. registering and running nodes, staking and delegation of tokens, ...\).
+  它用于保存特定共识层操作所需的资金(如注册和运行节点、存储和委托代币，...)。
 
+  为了简化会计核算，每次托管都会导致源头账户被发行股票，在回收托管操作过程中，这些股票可以被兑换回押金代币。回收托管并不会立即完成，但可能会有一个除权期，在此期间，代币仍处于托管状态。
 
-
-  To simplify accounting, each escrow results in the source account being issued shares which can be converted back into staking tokens during the reclaim escrow operation. Reclaiming escrow does not complete immediately, but may be subject to a debonding period during which the tokens still remain escrowed.
 
 ### Address
 
-A staking account **address** is represented by a truncated hash of a corresponding entity's public key, prefixed by a 1 byte address version.
-
-It uses [Bech32 encoding](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32) for text serialization with `oasis` as its human readable part \(HRP\) prefix.
+抵押 **地址** 由对应实体公钥的一部分哈希表示，并以1个字节表示地址版本的前缀。
+它使用[Bech32编码]进行序列化，并以 `oasis` 作为人类可读部分（human readable part，HRP）前缀。
 
 ### Delegation
 
-You can **delegate** your tokens by submitting an **escrow** transaction that deposits a specific number of tokens into someone else’s escrow account \(as opposed to **staking** tokens, which usually refers to depositing tokens into your own escrow account\).
+你可以通过提交 **托管**交易来**委托**代币，该交易会将特定数量的代币存入他人的代管账户中（与**抵押**代币相反，后者通常是指将代币存入自己的托管账户）。
 
-In other words, delegating your tokens is equivalent to staking your tokens in someone else's validator node. Delegating your tokens can give you the opportunity to participate in the Oasis Network's proof-of-stake consensus system and earn rewards via someone else's validator node.
+换句话说，委托你的代币相当于把代币押在别人的验证者节点中。委托你的代币可以让你有机会参与oasis的PoS系统，并通过别人的验证者节点获得奖励。
 
 ### Staking
 
-You can stake your tokens by submitting an **escrow** transaction that deposits a specific number of tokens into your escrow account.
+你可以通过提交**托管**交易，将特定数量的代币存入你的托管账户，来押注你的代币。
 
 ### Rewards
 
-By delegating your tokens to someone else's node, you can earn a portion of the rewards earned by that node through its participation in the Oasis Network.
+将你的代币委托给别人的节点，你可以通过该节点参与 Oasis 赚取部分奖励。
 
 ### Commission
 
-Node operators collect **commissions** when their node earns a **staking reward** for delegators. A validator node earns a staking reward for participating in the consensus protocol each epoch. The **commission rate** is a fraction of the staking reward.
+节点运营者在其节点赚取委托人的**押注奖励**时收取**佣金**。验证者节点在每个epoch参与共识协议时都会获得抵押奖励。
+**佣金率**是押注奖励的一小部分。
 
-For example, if our validator node earns a reward of 0.007 tokens, 0.0035 tokens are added to the escrow pool \(increasing the value of our escrow pool shares uniformly\), and 0.0035 tokens are given to us \(issuing us new shares as if we manually deposited them\).
+
+例如，如果我们的验证者节点获得0.007个代币的奖励，则将0.0035个代币添加到托管池中 \(统一增加托管池股份的价值\), a和0.0035代币给我们\(发行新股给我们，就像我们手动存入股票一样\)。
 
 ### Slashing
 
-Your delegated tokens can be slashed if the node that you delegated your tokens to gets slashed for double signing.
-
+如果将你委托代币的节点进行双签，则可以削减你的委托代币。

@@ -1,39 +1,38 @@
-# Staking and Delegating
+# 抵押和代理
 
-Staking and Delegation on the Oasis Network is a wonderful way to hold your ROSE tokens. A few key resources to get started!
+文本介绍如何在 Oasis上进行抵押和代理。
 
 ### Rewards and Tokenonomics
 
-Mining rewards vary over the course of the Network. In the first four years rewards will range between 20-2% over time. More [here](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution#staking-incentives).
+挖矿的奖励在网络的过程中会有所不同。在前四年，随着时间的推移，奖励将在20-2%之间。更多信息请看[这里](https://docs.oasis.dev/oasis-network-primer/token-metrics-and-distribution#staking-incentives)。
 
 ### How to Stake and Delegate
 
-The Oasis Network is supported by an amazing community of validators and infrastructure providers. Many provide services to help you set up your own validator node and/or make delegation easy.
+Oasis网络得到了验证器和基础设施提供商社区非常多的支持。许多验证器提供服务来帮助你设置自己的验证器节点或简化委托。
 
 #### Tools to use for Staking and Delegation
 
-In addition to using the [Oasis CLI](https://app.gitbook.com/@oasisprotocol/s/general/~/drafts/-MMQWgyLljbUORgRYwzo/use-your-tokens/oasis-cli-tools), there are number of wallets, Ledger GUIs and Custodians support staking and delegation on the Oasis Network. Those include:
+除了使用【[Oasis CLI](https://docs.oasis.dev/general/manage-tokens/oasis-cli-tools)，还有一些钱包，包括：
 
-* [Chorus One Anthem](https://anthem.chorus.one/) \(Ledger GUI\)
-* [Bitpie](https://bitpie.com/) \(mobile wallet\)
-* [Anchorage](https://anchorage.com/) \(custodian\)
-* [Finoa](https://finoa.io/) \(custodian\)
+* [Chorus One Anthem](https://anthem.chorus.one/) \(Ledger 图形界面\)
+* [Bitpie](https://bitpie.com/) \(手机钱包\)
+* [Anchorage](https://anchorage.com/) \(托管\)
+* [Finoa](https://finoa.io/) \(托管\)
 
 #### Oasis Validators and Infrastructure Providers
 
-A summary of validators interested in delegations or providing infrastructure support to token holders is [here](https://airtable.com/shrPKNSKjc8rkAhEn) \(including contact info and a bit more detail about the team and project\). Please feel free to reach out to the teams directly for more information on staking and delegation logistics, fees and more. 
+对授权或对代币持有人提供基础设施支持感兴趣的验证人的摘要为[此处](https://airtable.com/shrPKNSKjc8rkAhEn) \(包括联系信息和团队和项目的更多细节\).
 
-Many can also help you set up delegations directly as well.
+请随时直接与各团队联系，了解更多关于抵押和代表团、费用等信息。
+
+许多人也可以直接帮你建立代表团。
 
 {% hint style="info" %}
-The validator registry is in alphabetical order and includes information provided by each validator. To check performance, commission rates and more about each validator please visit one of our many [blockexplorers](www.oasisscan.com) and [leaderboards](https://hubble.figment.io/oasis/chains/mainnet-beta). For those that have not listed a name you can cross-reference their entity ID in the table below to validate performance on the network.
+验证器注册表是按字母顺序排列的，包括每个验证器提供的信息。
+
+要查看佣金率和更多关于每个验证者请访问我们的区块浏览器[blockexplorers](www.oasisscan.com) 和 [leaderboards](https://hubble.figment.io/oasis/chains/mainnet-beta)。对于那些没有列出名字的，你可以在下表中引用他们的实体ID来验证网络上的性能。
 {% endhint %}
 
 #### Run your own Node
 
-Instead, if you're interested in running your own node you can get started [here](../run-a-node/node-operator-overview.md). Be sure to also join the \#nodeoperator channel on [slack](www.oasisprotocol.org/slack) and sign up for the node operator mailing list!
-
-
-
-
-
+如果你有兴趣运行你自己的节点，你可以使用 [这个链接](../run-a-node/node-operator-overview.md)。加入 [slack](www.oasisprotocol.org/slack) 获取更多支持。

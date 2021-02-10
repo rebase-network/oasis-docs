@@ -1,6 +1,6 @@
-# Overview
+# 钱包介绍
 
-This documentation will guide you on how to use your ROSE tokens, where to keep them, how to transfer them, how to stake/delegate them, and more.
+本文将介绍你如何使用ROSE代币，如何保存，如何进行转账，如何将它们注抵押/委托给他人等等。
 
 ## Quick Navigation
 

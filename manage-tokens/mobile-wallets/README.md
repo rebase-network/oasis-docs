@@ -1,29 +1,28 @@
-# Mobile Wallets
+# 手机钱包
 
-This section provides documentation on how to manage your ROSE tokens via different mobile wallets.
+关于如何通过不同的移动钱包管理你的ROSE代币。
 
 {% hint style="warning" %}
-These mobile wallets are still in development, so they don't support the full set of token-related operations.
+这些移动钱包还在开发中，所以不支持所有的代币相关操作。
 
-If you need features that are not yet supported, consider using the [Oasis CLI Tools](../oasis-cli-tools/).
+如果你需要尚未支持的功能，请考虑使用[Oasis CLI Tools](./oasis-cli-tools/)。
 {% endhint %}
 
 ## Bitpie Wallet
 
-* Available for [Android](https://play.google.com/store/apps/details?id=com.bitpie) and [iOS](https://apps.apple.com/us/app/bitpie-wallet/id1481314229).
-* Currently supports address generation and transfer functionality.
-* To use Bitpie Wallet to manage your ROSE tokens, [check out our Bitpie Wallet Guide](bitpie-wallet-guide/).
+*  可用于 [Android](https://play.google.com/store/apps/details?id=com.bitpie) 和 [iOS](https://apps.apple.com/us/app/bitpie-wallet/id1481314229).
+
+* 目前支持地址生成和交易功能。
+
+* 要使用Bitpie钱包来管理你的ROSE代币，查看我们的[Bitpie钱包指南](bitpie-wallet-guide/)。
 
 {% hint style="info" %}
-Transfers on [Mainnet Beta](../../mainnet/mainnet-beta-overview.md) are disabled.
+[Mainnet Beta](.../.../mainnet/mainnet-beta-overview.md)禁止交易。
 {% endhint %}
 
-* Staking and delegation functionality are in development.
+* 正在开发抵押和代理功能。
 
 ## Trust Wallet
 
-* ROSE token Trust Wallet support is currently in development.
-* To learn more about Trust Wallet, visit [their website](https://trustwallet.com). 
-
-
-
+* ROSE代币信托钱包支持目前正在开发中。
+* 要了解更多关于Trust Wallet的信息，请访问[网站](https://trustwallet.com)。

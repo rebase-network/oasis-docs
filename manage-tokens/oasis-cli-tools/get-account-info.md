@@ -4,8 +4,6 @@
 假设你已经阅读了 [前提准备](prerequisites.md)环节和[设置](.../setup.md)环节。
 {% endhint %}
 
-To get more information about a particular staking account, e.g.
-
 要想获得更多关于某一个抵押账户的信息，例如`oasis1qrvsa8ukfw3p6kw2vcs0fk9t59mceqq7fyttwqgx`，请运行以下命令：
 
 ```bash
