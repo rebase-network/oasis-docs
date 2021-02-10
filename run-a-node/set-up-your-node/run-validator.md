@@ -88,7 +88,7 @@ Entity 对于控制网络上的节点至关重要，因为它控制着个人或�
 #### Using a File-based Signer 使用文件签名器
 
 {% hint style="danger" %}
-我们强烈建议你不要在主网上使用文件签名器生成的任何 entity。当使用文件的签名器时，强烈建议使用[网闸](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)。获得对 entity 私钥的访问权限可能会使的你的 token 处于风险中。
+我们强烈建议你不要在主网上使用文件签名生成的任何 entity。当使用文件的签名时，强烈建议在[离线](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)状态使用。获得对 entity 私钥的访问权限可能会使的你的 token 处于风险中。
 {% endhint %}
 
 要初始化一个 entity，只需在`/localhostdir/entity`中运行以下命令：

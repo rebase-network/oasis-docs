@@ -11,7 +11,7 @@ description: 如何在 Oasis 网络中运行种子节点
 开始之前，假设你已经读过[准备环节](../prerequisites/oasis-node.md)，并了解如何使用 `oasis-node`。
 
 {% hint style="danger" %}
-**Due to recent improvements to the seed node, it is recommended to use `oasis-node` with version** [**20.11.2**](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.11.2) **\(or later\).**
+**由于最近对种子节点的改进，建议使用[20.11.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.11.2) (或更高版本)的`oasis-node`**。
 {% endhint %}
 
 ### 创建工作目录

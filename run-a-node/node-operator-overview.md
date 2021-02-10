@@ -1,4 +1,4 @@
-# Overview
+# 介绍
 
 [Oasis Network](../oasis-network/overview.md) 的共识层是一组去中心化的验证者节点，它们维护着一个 PoS 区块链。这些节点由独立的节点操作者操作。
 
